@@ -18,8 +18,43 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Color.fromRGBO(191, 229, 192, 1),
       body: Column(
         children: [
+          SizedBox(
+            height: 30,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  width: w * 0.2,
+                  height: h * 0.04,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/loginbtn.png',
+                      ),
+                      //fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Guest Mode',
+                      style: TextStyle(
+                          fontSize: 8,
+                          fontFamily: 'Khepri',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
           Container(
-            width: w,
+            width: w * 0.8,
             height: h * 0.3,
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -31,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 15,
           ),
           Container(
             margin: const EdgeInsets.only(left: 20, right: 20),
@@ -42,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   'Welcome!',
                   style: TextStyle(
-                      fontSize: 50,
+                      fontSize: 40,
                       fontFamily: 'Khepri',
                       fontWeight: FontWeight.bold),
                 ),
@@ -54,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.grey[500]),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 15,
                 ),
                 Container(
                   decoration: BoxDecoration(
