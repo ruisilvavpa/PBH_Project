@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:pbh_project/app_styles.dart';
+import 'package:pbh_project/models/onboard_data.dart';
+import 'package:pbh_project/size_configs.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({
@@ -12,57 +15,91 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  late PageController _pageController;
+  int currentPage = 0;
 
-  @override
-  void initState() {
-    _pageController = PageController(initialPage: 0);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
+  PageController _pageController = PageController(initialPage: 0);
+  Container dotIndicator(index) {
+    return Container(
+      height: 10,
+      width: 10,
+      decoration: BoxDecoration(
+        color: currentPage == index ? kPrimaryColor : kSecondaryColor,
+        shape: BoxShape.circle,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    //Initialize size config
+    SizeConfig().init(context);
+    double sizeH = SizeConfig.blockSizeH!;
+    double sizeV = SizeConfig.blockSizeV!;
     return Scaffold(
-      body: PageView(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+          child: Column(
         children: [
-          Container(
-            color: Color.fromRGBO(191, 229, 192, 1),
-            child: OnboardContent(
-              image: 'assets/images/mainlogo.jpg',
-              title:
-                  'Um lugar que te ajudará a alcançar um futuro na carreira de escritor!',
-              description:
-                  'Transforma o teu sonho em realidade e publica as tuas obras com facilidade através de nossa aplicação, a plataforma perfeita para te ajudar a compartilhar as tuas primeiras obras e dar-te a conhecer ao mundo!',
+          Expanded(
+            flex: 9,
+            child: PageView.builder(
+              controller: _pageController,
+              onPageChanged: (value) {
+                setState(() {
+                  currentPage = value;
+                });
+              },
+              itemCount: onboardingContents.length,
+              itemBuilder: (context, index) => Column(
+                children: [
+                  SizedBox(
+                    height: sizeV * 2,
+                  ),
+                  Text(
+                    onboardingContents[index].title,
+                    style: kTitle,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: sizeV * 1,
+                  ),
+                  Container(
+                    height: sizeV * 45,
+                    child: Image.asset(
+                      onboardingContents[index].image,
+                    ),
+                  ),
+                  SizedBox(
+                    height: sizeV * 3,
+                  ),
+                  Text(
+                    onboardingContents[index].description,
+                    style: kBodyText1,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: sizeV * 5,
+                  ),
+                ],
+              ),
             ),
           ),
-          Container(
-            color: Color.fromRGBO(235, 178, 125, 1),
-            child: OnboardContent(
-              image: 'assets/images/writterlogo.jpg',
-              title:
-                  'Um lugar que te ajudará a alcançar um futuro na carreira de escritor!',
-              description:
-                  'Transforma o teu sonho em realidade e publica as tuas obras com facilidade através de nossa aplicação, a plataforma perfeita para te ajudar a compartilhar as tuas primeiras obras e dar-te a conhecer ao mundo!',
+          Expanded(
+            flex: 1,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  children: List.generate(
+                    onboardingContents.length,
+                    (index) => dotIndicator(index),
+                  ),
+                ),
+              ],
             ),
-          ),
-          Container(
-            color: Color.fromRGBO(138, 210, 224, 1),
-            child: OnboardContent(
-              image: 'assets/images/userlogo.jpg',
-              title:
-                  'Um lugar que te ajudará a alcançar um futuro na carreira de escritor!',
-              description:
-                  'Transforma o teu sonho em realidade e publica as tuas obras com facilidade através de nossa aplicação, a plataforma perfeita para te ajudar a compartilhar as tuas primeiras obras e dar-te a conhecer ao mundo!',
-            ),
-          ),
+          )
         ],
-      ),
+      )),
     );
   }
 }
