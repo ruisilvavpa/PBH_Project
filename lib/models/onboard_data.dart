@@ -1,3 +1,5 @@
+import 'package:pbh_project/models/enums/type_account.dart';
+
 class OnBoarding {
   final String title;
   final String image;
@@ -28,3 +30,22 @@ List<OnBoarding> onboardingContents = [
         'Join us and make a difference: Help writers and institutions through our app!',
   ),
 ];
+
+class Account {
+  String _name = '';
+  String _email = '';
+  String _password = '';
+  Type _type = Type.writter;
+
+  String get name => _name;
+  set name(value) => _name = value;
+
+  String get email => _email;
+  set email(value) => _email = value;
+
+  String get password => _password;
+  set password(value) => _password = value;
+
+  Type get type => _type;
+  set type(value) => _type = value;
+}

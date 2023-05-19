@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,10 +13,10 @@ class _LoginPageState extends State<LoginPage> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(191, 229, 192, 1),
+      backgroundColor: const Color.fromRGBO(191, 229, 192, 1),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Column(
@@ -32,14 +30,14 @@ class _LoginPageState extends State<LoginPage> {
                   height: h * 0.04,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage(
                         'assets/images/loginbtn.png',
                       ),
                       //fit: BoxFit.cover,
                     ),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Guest Mode',
                       style: TextStyle(
@@ -56,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
           Container(
             width: w * 0.8,
             height: h * 0.3,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
                   'assets/images/mainlogo.jpg',
@@ -65,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
@@ -74,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Welcome!',
                   style: TextStyle(
                       fontSize: 40,
@@ -88,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                       fontFamily: 'Khepri',
                       color: Colors.grey[500]),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Container(
@@ -105,17 +103,17 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1.0)),
+                            borderSide: const BorderSide(
+                                color: Colors.white, width: 1.0)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1.0)),
+                            borderSide: const BorderSide(
+                                color: Colors.white, width: 1.0)),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30))),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -125,24 +123,24 @@ class _LoginPageState extends State<LoginPage> {
                       boxShadow: [
                         BoxShadow(
                             blurRadius: 10,
-                            offset: Offset(1, 1),
+                            offset: const Offset(1, 1),
                             color: Colors.grey.withOpacity(0.5))
                       ]),
                   child: TextField(
                     decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1.0)),
+                            borderSide: const BorderSide(
+                                color: Colors.white, width: 1.0)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1.0)),
+                            borderSide: const BorderSide(
+                                color: Colors.white, width: 1.0)),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30))),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -162,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Container(
@@ -170,14 +168,14 @@ class _LoginPageState extends State<LoginPage> {
             height: h * 0.08,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage(
                   'assets/images/loginbtn.png',
                 ),
                 fit: BoxFit.cover,
               ),
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 'Sign in',
                 style: TextStyle(
@@ -198,7 +196,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.grey[500],
                       fontFamily: 'Itim',
                       fontSize: 20),
-                  children: [
+                  children: const [
                 TextSpan(
                     text: 'Create',
                     style: TextStyle(

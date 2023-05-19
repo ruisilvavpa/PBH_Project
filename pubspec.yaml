@@ -66,6 +66,7 @@ flutter:
     - assets/images/publishing.jpg
     - assets/images/visualize.jpg
     - assets/images/help.jpg
+    - assets/images/profile_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:pbh_project/app_styles.dart';
 import 'package:pbh_project/models/onboard_data.dart';
 import 'package:pbh_project/size_configs.dart';
@@ -17,7 +15,7 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   int currentPage = 0;
 
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   Container dotIndicator(index) {
     return Container(
       height: 10,
