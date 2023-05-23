@@ -1,15 +1,23 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+import 'package:pbh_project/controllers/registration_controller.dart';
 import 'package:pbh_project/models/data_base_helper.dart';
 import 'package:pbh_project/models/email_validator.dart';
 import 'package:pbh_project/models/type_account.dart';
 import 'package:pbh_project/models/onboard_data.dart';
 import 'package:pbh_project/models/user_data.dart';
+import 'package:pbh_project/reusable_widgets/input_fields.dart';
+import 'package:pbh_project/reusable_widgets/submit_button.dart';
+import 'package:pbh_project/screens/home_screen.dart';
+import 'package:pbh_project/screens/login/login_page.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-
+import 'package:pbh_project/reusable_widgets/auth_screen.dart';
 import '../../data/database.dart';
+import '../../reusable_widgets/reusable_widgets.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,15 +29,13 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   //variables
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // Variáveis de controlador
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
 
   final Account _account = Account();
 
   @override
   Widget build(BuildContext context) {
+    RegistrationController registrationController =
+        Get.put(RegistrationController());
     //variables
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -37,6 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
     String? selectedValue = 'Writter';
     Type type = Type.user;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color.fromRGBO(191, 229, 192, 1),
       body: Padding(
         padding: EdgeInsets.zero,
@@ -62,25 +69,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-              //Text
-              RichText(
-                text: const TextSpan(
-                  text: 'Already have an account?',
-                  style: TextStyle(
-                      color: Color.fromRGBO(87, 61, 28, 1),
-                      fontFamily: 'Itim',
-                      fontSize: 20),
-                  children: [
-                    TextSpan(
-                        text: 'Sign in',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Itim',
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold)),
-                  ],
-                ),
-              ),
+              signInOption(context),
               const SizedBox(
                 height: 40,
               ),
@@ -136,170 +125,65 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    //First TextField
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white60,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                                blurRadius: 10,
-                                offset: const Offset(1, 1),
-                                color: Colors.grey.withOpacity(0.5))
-                          ]),
-                      child: TextFormField(
-                        controller: nameController,
-                        decoration: InputDecoration(
-                          hintText: 'Name',
-                          prefixIcon: const Icon(
-                            Icons.mode_standby,
-                            color: Color.fromRGBO(87, 61, 28, 1),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0)),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0)),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
+                    SizedBox(
                       height: 20,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    //Second TextField
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white60,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                                blurRadius: 10,
-                                offset: const Offset(1, 1),
-                                color: Colors.grey.withOpacity(0.5))
-                          ]),
-                      child: TextFormField(
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          hintText: 'Email',
-                          prefixIcon: const Icon(
-                            Icons.email,
-                            color: Color.fromRGBO(87, 61, 28, 1),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0)),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0)),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)),
-                        ),
-                        validator: (value) =>
-                            EmailValidator.isValid(email: value)
-                                ? null
-                                : EmailValidator.emailRegexExpression,
-                      ),
-                    ),
-                    const SizedBox(
+                    InputTextFieldWidget(registrationController.nameController,
+                        'Name', Icons.person_outline),
+                    SizedBox(
                       height: 20,
                     ),
-                    const SizedBox(
-                      height: 10,
+                    InputTextFieldWidget(registrationController.emailController,
+                        'Email', Icons.email),
+                    SizedBox(
+                      height: 30,
                     ),
-                    //Third TextField
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white60,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                                blurRadius: 10,
-                                offset: const Offset(1, 1),
-                                color: Colors.grey.withOpacity(0.5))
-                          ]),
-                      child: TextFormField(
-                        controller: passwordController,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          prefixIcon: const Icon(
-                            Icons.password,
-                            color: Color.fromRGBO(87, 61, 28, 1),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0)),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0)),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        validator: (value) =>
-                            EmailValidator.isValid(password: value)
-                                ? null
-                                : EmailValidator.passwordRegexExpression,
-                      ),
+                    InputTextFieldWidget(
+                        registrationController.passwordController,
+                        'Password',
+                        Icons.password),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SubmitButton(
+                      onPressed: () =>
+                          registrationController.registerWithEmail(),
+                      title: 'Register',
                     ),
                   ],
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Container(
-                width: w * 0.5,
-                height: h * 0.08,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      'assets/images/loginbtn.png',
-                    ),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: ElevatedButton(
-                  onPressed: () async {
-                    Database? database = await openDatabaseInstance();
-                    User user = User(
-                      name: nameController.text,
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
-
-                    int insertedId =
-                        await DatabaseHelper.instance.insertUser(user);
-
-                    if (insertedId != 0) {
-                      print('Usuário inserido com sucesso. ID: $insertedId');
-                    } else {
-                      print('Falha ao inserir o usuário.');
-                    }
-                  },
-                  child: Text('Sign Up'),
                 ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row signInOption(context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          'Already have account?   ',
+          style: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => LoginPage()));
+          },
+          child: const Text(
+            'Sign In',
+            style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Khepri',
+                fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
     );
   }
 }
