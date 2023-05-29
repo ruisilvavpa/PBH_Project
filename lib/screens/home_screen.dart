@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pbh_project/screens/login/login_page.dart';
 import 'package:pbh_project/screens/sign_up/sign_up_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../reusable_widgets/auth_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () async {
               final SharedPreferences? prefs = await _prefs;
               prefs?.clear();
-              Get.offAll(AuthScreen());
+              Get.offAll(LoginPage());
             },
             child: Text(
               'LogOut',

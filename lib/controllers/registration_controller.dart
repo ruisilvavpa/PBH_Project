@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../screens/home_screen.dart';
 import '../utils/api_endpoints.dart';
 
 class RegistrationController extends GetxController {
@@ -17,7 +17,7 @@ class RegistrationController extends GetxController {
 
   Future<void> registerWithEmail() async {
     try {
-      var headers = {'Content-Type': 'application/jason'};
+      var headers = {'Content-Type': 'application/json'};
       var url = Uri.parse(
           ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.registerEmail);
       Map body = {
@@ -32,20 +32,31 @@ class RegistrationController extends GetxController {
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
         if (json['code'] == 0) {
-          var token = json['data']['Token'];
+          var token = json['data']['token'];
           print(token);
-          final SharedPreferences? prefs = await _prefs;
+          final SharedPreferences prefs = await _prefs;
 
           await prefs?.setString('token', token);
           nameController.clear();
           emailController.clear();
           passwordController.clear();
-          //go to home
+          Get.off(const HomeScreen());
         } else {
           throw jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
         }
       } else {
-        jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
+        showDialog(
+            context: Get.context!,
+            builder: (context) {
+              return SimpleDialog(
+                title: const Text('Error'),
+                contentPadding: const EdgeInsets.all(20),
+                children: [
+                  Text(jsonDecode(response.body)['message'] ??
+                      'Unknown Error Occured')
+                ],
+              );
+            });
       }
     } catch (e) {
       Get.back();
@@ -53,8 +64,8 @@ class RegistrationController extends GetxController {
           context: Get.context!,
           builder: (context) {
             return SimpleDialog(
-              title: Text('Error'),
-              contentPadding: EdgeInsets.all(20),
+              title: const Text('Error'),
+              contentPadding: const EdgeInsets.all(20),
               children: [Text(e.toString())],
             );
           });
