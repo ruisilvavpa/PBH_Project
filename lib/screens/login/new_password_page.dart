@@ -8,12 +8,11 @@ import 'package:pbh_project/screens/login/login_page.dart';
 
 import '../../controllers/login_controller.dart';
 import '../../reusable_widgets/alert_forgot_pass_dialog.dart';
-import '../../reusable_widgets/alert_reset_pass_dialog.dart';
 import '../../reusable_widgets/input_fields.dart';
 import '../../reusable_widgets/submit_button.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  ForgotPasswordPage({super.key});
+class NewPasswordPage extends StatelessWidget {
+  NewPasswordPage({super.key});
 
   LoginController loginController = Get.put(LoginController());
 
@@ -38,7 +37,7 @@ class ForgotPasswordPage extends StatelessWidget {
               height: 5,
             ),
             const Text(
-              'Forgot Password',
+              'Reset Password',
               style: TextStyle(
                 fontFamily: 'Khepri',
                 fontSize: 30,
@@ -46,23 +45,31 @@ class ForgotPasswordPage extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 80,
+              height: 40,
             ),
             const SizedBox(
               height: 100,
             ),
             InputTextFieldWidget(
               loginController.emailController,
-              'Enter your Email',
+              'New password',
               Icons.email,
             ),
             const SizedBox(
               height: 30,
             ),
+            InputTextFieldWidget(
+              loginController.emailController,
+              'Confirm new password',
+              Icons.email,
+            ),
+            const SizedBox(
+              height: 90,
+            ),
             SubmitButton(
-                onPressed: () => AlertResetPassDialog.alertType(context,
-                    'Forgot Password', 'The Request as sent to your Email!'),
-                title: 'Send Request'),
+                onPressed: () => AlertForgotPassDialog.alertType(
+                    context, 'Reset Password', 'Your Password has been Reset!'),
+                title: 'Confirm Password'),
           ],
         ),
       ),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
+import 'package:pbh_project/screens/login/new_password_page.dart';
 
-class AlertForgotPassDialog {
+class AlertResetPassDialog {
   BuildContext context;
-  AlertForgotPassDialog(this.context);
+  AlertResetPassDialog(this.context);
 
   static void alertType(
     BuildContext context,
@@ -20,8 +21,8 @@ class AlertForgotPassDialog {
             "Ok",
           ),
           onPressed: () {
-            Navigator.of(context)
-                .push(new MaterialPageRoute(builder: (context) => LoginPage()));
+            Navigator.of(context).push(
+                new MaterialPageRoute(builder: (context) => NewPasswordPage()));
           },
         ),
       ],

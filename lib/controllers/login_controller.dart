@@ -2,14 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pbh_project/models/user_data.dart';
 import 'package:pbh_project/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/validations.dart';
 import '../utils/api_endpoints.dart';
 
 class LoginController extends GetxController {
-  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -21,8 +22,8 @@ class LoginController extends GetxController {
       var url = Uri.parse(
           ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.loginEmail);
       Map body = {
-        'email': emailController.text.trim(),
-        'password': passwordController.text
+        'email': EmailValidator(),
+        'password': PasswordValidator(),
       };
 
       http.Response response =

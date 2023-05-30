@@ -1,3 +1,5 @@
+import 'package:pbh_project/exceptions/invalid_email_exception.dart';
+
 class User {
   final int? id;
   final String name;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Onborading Page Size Configuration
 class SizeConfig {
   static MediaQueryData? _mediaQueryData;
   static double? screenWidth;

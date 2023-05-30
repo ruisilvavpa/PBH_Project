@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.1.1
   http: ^0.13.6
   get: ^4.6.5
+  image_picker: ^0.8.7+5
 
 dev_dependencies:
   flutter_test:
@@ -68,15 +69,13 @@ flutter:
     - assets/images/mainlogo.jpg
     - assets/images/userlogo.jpg
     - assets/images/writterlogo.jpg
-    - assets/images/loginimg.png
     - assets/images/loginbtn.png
     - assets/images/publishing.jpg
     - assets/images/visualize.jpg
     - assets/images/help.jpg
     - assets/images/profile_icon.png
-    - assets/images/t.png
-    - assets/images/f.png
-    - assets/images/g.png
+    - assets/images/add_image_icon.png
+    - assets/images/circle_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

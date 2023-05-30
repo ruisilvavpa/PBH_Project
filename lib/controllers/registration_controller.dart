@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pbh_project/models/validations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,8 +23,8 @@ class RegistrationController extends GetxController {
           ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.registerEmail);
       Map body = {
         'name': nameController.text,
-        'email': emailController.text.trim(),
-        'password': passwordController.text
+        'email': EmailValidator(),
+        'password': PasswordValidator(),
       };
 
       http.Response response =
