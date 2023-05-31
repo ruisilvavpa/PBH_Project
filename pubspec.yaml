@@ -30,10 +30,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: ^2.0.0
+  path: ^1.8.0
+
+  smooth_page_indicator: ^1.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  shared_preferences: ^2.1.1
+  http: ^0.13.6
+  get: ^4.6.5
+  image_picker: ^0.8.7+5
 
 dev_dependencies:
   flutter_test:
@@ -58,8 +66,16 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/mainlogo.jpg
+    - assets/images/userlogo.jpg
+    - assets/images/writterlogo.jpg
+    - assets/images/loginbtn.png
     - assets/images/publishing.jpg
-  #   - images/a_dot_ham.jpeg
+    - assets/images/visualize.jpg
+    - assets/images/help.jpg
+    - assets/images/profile_icon.png
+    - assets/images/add_image_icon.png
+    - assets/images/circle_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -72,17 +88,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Itim
+      fonts:
+        - asset: assets/fonts/Itim-Regular.ttf
+    - family: Khepri
+      fonts:
+        - asset: assets/fonts/Khepri-Round-Rough.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
