@@ -19,6 +19,8 @@ class AddPostPage extends StatefulWidget {
 
 class _AddPostPageState extends State<AddPostPage> {
   String? selectedCategory;
+  String? selectedAssociation;
+  double _currentValue1 = 150;
 
   @override
   Widget build(BuildContext context) {
@@ -96,30 +98,29 @@ class _AddPostPageState extends State<AddPostPage> {
                   label: Text('Title'),
                   prefixIcon: Icon(Icons.book),
                 ),
-              )
+              ),
             ],
           )),
           const SizedBox(
             height: 30,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             alignment: Alignment.center,
-            width: 200, // Define a largura desejada
-            height: 40, // Define a altura desejada
+            width: 200,
+            height: 40,
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.black, // Cor da borda
-                width: 2.0, // Espessura da borda
+                color: Colors.black,
+                width: 2.0,
               ),
-              borderRadius: BorderRadius.circular(
-                  4.0), // Arredondamento da borda, se desejado
+              borderRadius: BorderRadius.circular(4.0),
             ),
             child: DropdownButton<String>(
               borderRadius: BorderRadius.circular(30),
               isExpanded: false,
               value: selectedCategory,
-              hint: Text('Select a Category'),
+              hint: const Text('Select a Category'),
               items: categories.map((String category) {
                 return DropdownMenuItem<String>(
                   value: category,
@@ -132,6 +133,67 @@ class _AddPostPageState extends State<AddPostPage> {
                 });
               },
             ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Container(
+            padding: const EdgeInsets.all(50.0),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.blue,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(4.0),
+            ),
+            child: const Text(
+              'Sinopse do livro...',
+              style: TextStyle(fontSize: 16.0),
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            alignment: Alignment.center,
+            width: 200,
+            height: 40,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 2.0,
+              ),
+              borderRadius: BorderRadius.circular(4.0),
+            ),
+            child: DropdownButton<String>(
+              borderRadius: BorderRadius.circular(30),
+              isExpanded: false,
+              value: selectedAssociation,
+              hint: const Text('Select an Association'),
+              items: categories.map((String association) {
+                return DropdownMenuItem<String>(
+                  value: association,
+                  child: Text(association),
+                );
+              }).toList(),
+              onChanged: (String? newAssociation) {
+                setState(() {
+                  selectedAssociation = newAssociation;
+                });
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Slider(
+            value: _currentValue1,
+            max: 500,
+            min: 0,
+            divisions: 1,
+            label: _currentValue1.toString(),
+            onChanged: (value) => setState(() => _currentValue1 = value),
           ),
         ],
       ),
