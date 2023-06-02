@@ -1,27 +1,25 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pbh_project/screens/login/login_page.dart';
-
 import '../../controllers/login_controller.dart';
-import '../../reusable_widgets/alert_forgot_pass_dialog.dart';
 import '../../reusable_widgets/alert_reset_pass_dialog.dart';
 import '../../reusable_widgets/input_fields.dart';
 import '../../reusable_widgets/submit_button.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
+class ForgotPasswordPage extends StatefulWidget {
   ForgotPasswordPage({super.key});
 
+  @override
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+}
+
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(191, 229, 192, 1),
+        backgroundColor: const Color.fromRGBO(191, 229, 192, 1),
         shadowColor: Colors.transparent,
         leading: const BackButton(
           color: Colors.black,
@@ -29,7 +27,7 @@ class ForgotPasswordPage extends StatelessWidget {
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromRGBO(191, 229, 192, 1),
+      backgroundColor: const Color.fromRGBO(191, 229, 192, 1),
       body: SingleChildScrollView(
         reverse: true,
         child: Column(

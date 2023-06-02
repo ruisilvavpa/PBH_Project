@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
-
 import '../exceptions/invalid_email_exception.dart';
 
+///if the Email is valid
 class EmailValidator {
-  TextEditingController emailController = TextEditingController();
+  String? emailController;
 
   static const String _pattern =
       r'^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$';
@@ -17,9 +16,10 @@ class EmailValidator {
   }
 }
 
+///if the Password is valid
 class PasswordValidator {
-  TextEditingController passwordController = TextEditingController();
-  static final String _pattern =
+  String? passwordController;
+  static const String _pattern =
       r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$';
   static final RegExp _regex = RegExp(_pattern);
 

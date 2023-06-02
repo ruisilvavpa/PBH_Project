@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class InputTextFieldWidget extends StatelessWidget {
+  //variables
   final TextEditingController textEditingController;
   final String hintText;
   final IconData icon;
-  InputTextFieldWidget(this.textEditingController, this.hintText, this.icon);
+
+  const InputTextFieldWidget(
+      this.textEditingController, this.hintText, this.icon,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 46,
       child: TextField(
         controller: textEditingController,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'Itim',
           fontSize: 20,
           color: Color.fromRGBO(87, 61, 28, 1),
@@ -22,7 +24,7 @@ class InputTextFieldWidget extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
-            color: Color.fromRGBO(87, 61, 28, 1),
+            color: const Color.fromRGBO(87, 61, 28, 1),
           ),
           labelText: hintText,
           labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),

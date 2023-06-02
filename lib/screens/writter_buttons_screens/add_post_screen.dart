@@ -1,14 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:get/get_utils/get_utils.dart';
-import 'package:image_picker/image_picker.dart';
-
+import '../../reusable_widgets/app_bar.dart';
 import '../../reusable_widgets/combo_category_list.dart';
-import '../../reusable_widgets/input_fields.dart';
-import '../../reusable_widgets/reusable_widgets.dart';
+import '../../reusable_widgets/image_picker.dart';
 
 class AddPostPage extends StatefulWidget {
   const AddPostPage({super.key});
@@ -18,6 +11,7 @@ class AddPostPage extends StatefulWidget {
 }
 
 class _AddPostPageState extends State<AddPostPage> {
+  //variables
   String? selectedCategory;
   String? selectedAssociation;
   double _currentValue1 = 150;
@@ -25,31 +19,24 @@ class _AddPostPageState extends State<AddPostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(235, 178, 125, 1),
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(235, 178, 125, 1),
-        shadowColor: Colors.transparent,
-        leading: const BackButton(
-          color: Colors.black,
-        ),
-        title: const Text('Add New Post'),
-        titleTextStyle:
-            TextStyle(fontFamily: 'Khepri', fontSize: 20, color: Colors.black),
-        centerTitle: true,
-      ),
+      backgroundColor: const Color.fromRGBO(235, 178, 125, 1),
+      appBar: const CustomAppBarWBB(title: 'Add New Post'),
+      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
+          Row(),
           const SizedBox(
-            height: 50,
+            height: 10,
           ),
           Align(
             alignment: Alignment.center,
             child: Stack(
               children: [
+                //Image container
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color.fromRGBO(235, 178, 125, 1),
+                      color: const Color.fromRGBO(235, 178, 125, 1),
                     ),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(100),
@@ -85,18 +72,19 @@ class _AddPostPageState extends State<AddPostPage> {
           Form(
               child: Column(
             children: [
+              const Padding(padding: EdgeInsets.zero),
               TextFormField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30)),
                   prefixIconColor: Colors.black,
-                  floatingLabelStyle: TextStyle(color: Colors.blue),
+                  floatingLabelStyle: const TextStyle(color: Colors.blue),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(100),
-                    borderSide: BorderSide(width: 2, color: Colors.black),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(width: 2, color: Colors.black),
                   ),
-                  label: Text('Title'),
-                  prefixIcon: Icon(Icons.book),
+                  label: const Text('Title'),
+                  prefixIcon: const Icon(Icons.book),
                 ),
               ),
             ],
@@ -137,64 +125,96 @@ class _AddPostPageState extends State<AddPostPage> {
           const SizedBox(
             height: 30,
           ),
-          Container(
-            padding: const EdgeInsets.all(50.0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.blue,
-                width: 2.0,
-              ),
-              borderRadius: BorderRadius.circular(4.0),
-            ),
-            child: const Text(
-              'Sinopse do livro...',
-              style: TextStyle(fontSize: 16.0),
+          const TextField(
+            decoration: InputDecoration(
+              labelText: 'Sinopse',
+              hintText: 'Digite a sinopse do livro',
+              border: OutlineInputBorder(),
             ),
           ),
           const SizedBox(
             height: 30,
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            alignment: Alignment.center,
-            width: 200,
-            height: 40,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 2.0,
+          Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                alignment: Alignment.center,
+                width: 250,
+                height: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+                child: Expanded(
+                  child: DropdownButton<String>(
+                    borderRadius: BorderRadius.circular(30),
+                    isExpanded: true,
+                    value: selectedAssociation,
+                    hint: const Text(
+                      textAlign: TextAlign.center,
+                      'Select an Association',
+                    ),
+                    items: associations.map((String association) {
+                      return DropdownMenuItem<String>(
+                        value: association,
+                        child: Text(association),
+                      );
+                    }).toList(),
+                    onChanged: (String? newAssociation) {
+                      setState(() {
+                        selectedAssociation = newAssociation;
+                      });
+                    },
+                  ),
+                ),
               ),
-              borderRadius: BorderRadius.circular(4.0),
-            ),
-            child: DropdownButton<String>(
-              borderRadius: BorderRadius.circular(30),
-              isExpanded: false,
-              value: selectedAssociation,
-              hint: const Text('Select an Association'),
-              items: categories.map((String association) {
-                return DropdownMenuItem<String>(
-                  value: association,
-                  child: Text(association),
-                );
-              }).toList(),
-              onChanged: (String? newAssociation) {
-                setState(() {
-                  selectedAssociation = newAssociation;
-                });
-              },
-            ),
+            ],
           ),
           const SizedBox(
-            height: 30,
+            height: 60,
           ),
+          const Text('How much do you need'),
           Slider(
             value: _currentValue1,
             max: 500,
             min: 0,
-            divisions: 1,
+            divisions: 500,
             label: _currentValue1.toString(),
             onChanged: (value) => setState(() => _currentValue1 = value),
           ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 50,
+            margin: const EdgeInsets.fromLTRB(80, 10, 80, 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(90),
+            ),
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith((states) {
+                    if (states.contains(MaterialState.pressed)) {
+                      return Colors.black26;
+                    }
+                    return const Color.fromRGBO(87, 61, 28, 1);
+                  }),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)))),
+              child: const Text(
+                'Submit',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'Khepri',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
+          )
         ],
       ),
     );

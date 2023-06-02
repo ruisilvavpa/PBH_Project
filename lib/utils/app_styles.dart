@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/size_configs.dart';
+import 'package:pbh_project/utils/size_configs.dart';
 
 //defaultLogoColor = Color.fromRGBO(191, 229, 192, 1),
 //userLogoColor = Color.fromRGBO(138, 210, 224, 1),
@@ -18,5 +18,5 @@ final kBodyText1 = TextStyle(
   fontFamily: 'Itim',
   fontSize: SizeConfig.blockSizeH! * 4.5,
   fontWeight: FontWeight.bold,
-  color: kPrimaryColor,
+  color: kSecondaryColor,
 );

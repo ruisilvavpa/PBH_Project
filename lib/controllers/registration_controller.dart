@@ -37,11 +37,11 @@ class RegistrationController extends GetxController {
           print(token);
           final SharedPreferences prefs = await _prefs;
 
-          await prefs?.setString('token', token);
+          await prefs.setString('token', token);
           nameController.clear();
           emailController.clear();
           passwordController.clear();
-          Get.off(const HomeScreen());
+          Get.off(HomeScreen());
         } else {
           throw jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
         }

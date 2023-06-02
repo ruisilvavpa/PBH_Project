@@ -2,14 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/controllers/login_controller.dart';
-import 'package:pbh_project/reusable_widgets/reusable_widgets.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 import 'package:pbh_project/screens/home_screen.dart';
 import 'package:pbh_project/screens/login/forgot_password_page.dart';
-import 'package:pbh_project/screens/sign_up/sign_up_page.dart';
-
-import '../../controllers/registration_controller.dart';
 import '../../reusable_widgets/input_fields.dart';
+import '../../reusable_widgets/logo_widget.dart';
+import '../../reusable_widgets/sign_up_option.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -23,11 +21,9 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width,
-        h = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromRGBO(191, 229, 192, 1),
+      backgroundColor: const Color.fromRGBO(191, 229, 192, 1),
       body: SingleChildScrollView(
         reverse: true,
         child: Column(
@@ -81,8 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                                 fontWeight: FontWeight.bold,
                               ),
                               recognizer: TapGestureRecognizer()
-                                ..onTap =
-                                    () => Get.to(() => const HomeScreen()),
+                                ..onTap = () => Get.to(() => HomeScreen()),
                             ),
                           ],
                         ),
@@ -109,8 +104,9 @@ class _LoginPageState extends State<LoginPage> {
                                 fontFamily: 'Itim',
                                 fontSize: 20),
                             recognizer: TapGestureRecognizer()
-                              ..onTap =
-                                  () => Get.to(() => ForgotPasswordPage()),
+                              ..onTap = () => Get.to(
+                                    () => ForgotPasswordPage(),
+                                  ),
                           ),
                         ),
                       ]),
@@ -118,7 +114,10 @@ class _LoginPageState extends State<LoginPage> {
                         height: 30,
                       ),
                       SubmitButton(
-                          onPressed: () => loginController.loginWithEmail(),
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen())),
                           title: 'Log In!'),
                       signUpOption(context),
                     ],
@@ -129,33 +128,6 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
-    );
-  }
-
-  Row signUpOption(context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          'Don\'t have account?   ',
-          style: TextStyle(
-            color: Colors.grey,
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => SignUpPage()));
-          },
-          child: const Text(
-            'Sign Up',
-            style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Khepri',
-                fontWeight: FontWeight.bold),
-          ),
-        )
-      ],
     );
   }
 }

@@ -1,19 +1,11 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/controllers/registration_controller.dart';
 import 'package:pbh_project/models/type_account.dart';
-import 'package:pbh_project/models/onboard_data.dart';
-import 'package:pbh_project/models/user_data.dart';
 import 'package:pbh_project/reusable_widgets/input_fields.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 import 'package:pbh_project/screens/home_screen.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
-import '../../reusable_widgets/reusable_widgets.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -157,8 +149,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         height: 30,
                       ),
                       SubmitButton(
-                        onPressed: () =>
-                            registrationController.registerWithEmail(),
+                        onPressed: () => HomeScreen(),
                         title: 'Register',
                       ),
                     ],
@@ -184,8 +175,8 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => LoginPage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const LoginPage()));
           },
           child: const Text(
             'Sign In',

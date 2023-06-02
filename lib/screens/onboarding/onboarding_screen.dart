@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/app_styles.dart';
+import 'package:pbh_project/utils/app_styles.dart';
 import 'package:pbh_project/models/onboard_data.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
-import 'package:pbh_project/size_configs.dart';
+import 'package:pbh_project/utils/size_configs.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -15,17 +15,15 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  //variables
   int currentPage = 0;
-
   final PageController _pageController = PageController(initialPage: 0);
-
   bool isLastPage = false;
 
   @override
   Widget build(BuildContext context) {
     //Initialize size config
     SizeConfig().init(context);
-    double sizeH = SizeConfig.blockSizeH!;
     double sizeV = SizeConfig.blockSizeV!;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -120,7 +118,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       child: SmoothPageIndicator(
                         controller: _pageController,
                         count: 3,
-                        effect: WormEffect(
+                        effect: const WormEffect(
                           spacing: 16,
                           activeDotColor: Color.fromRGBO(87, 61, 28, 1),
                         ),
@@ -141,43 +139,5 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ]),
             ),
     );
-  }
-}
-
-class OnboardContent extends StatelessWidget {
-  OnboardContent({
-    Key? key,
-    required this.image,
-    required this.title,
-    required this.description,
-  }) : super(key: key);
-
-  final String image, title, description;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      const Spacer(),
-      Image.asset(
-        image,
-        height: 250,
-      ),
-      const Spacer(),
-      Text(
-        title,
-        textAlign: TextAlign.center,
-        style: Theme.of(context)
-            .textTheme
-            .headline5!
-            .copyWith(fontWeight: FontWeight.w500),
-      ),
-      const SizedBox(height: 16),
-      Text(
-        description,
-        textAlign: TextAlign.center,
-        style: const TextStyle(fontWeight: FontWeight.w300),
-      ),
-      const Spacer(),
-    ]);
   }
 }

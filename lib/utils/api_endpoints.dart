@@ -1,9 +1,9 @@
 class ApiEndPoints {
-  static const String baseUrl = 'https://localhost:7197/api/';
+  static const String baseUrl = 'http://restapi.adequateshop.com/';
   static _AuthEndPoints authEndPoints = _AuthEndPoints();
 }
 
 class _AuthEndPoints {
-  final String registerEmail = 'Authentication/Register';
-  final String loginEmail = 'Authentication/Login';
+  final String registerEmail = 'authaccount/registration';
+  final String loginEmail = 'authaccount/login';
 }

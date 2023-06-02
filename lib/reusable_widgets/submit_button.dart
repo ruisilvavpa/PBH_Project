@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class SubmitButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -19,14 +17,6 @@ class SubmitButton extends StatelessWidget {
       ),
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(
-          title,
-          style: TextStyle(
-              fontSize: 18,
-              fontFamily: 'Khepri',
-              fontWeight: FontWeight.bold,
-              color: Colors.black),
-        ),
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith((states) {
               if (states.contains(MaterialState.pressed)) {
@@ -37,6 +27,14 @@ class SubmitButton extends StatelessWidget {
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)))),
+        child: Text(
+          title,
+          style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'Khepri',
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
+        ),
       ),
     );
   }

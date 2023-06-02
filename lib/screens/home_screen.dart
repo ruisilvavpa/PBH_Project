@@ -1,47 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
-import 'package:pbh_project/screens/sign_up/sign_up_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:pbh_project/screens/settings_page/setting_page.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/add_post_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import 'discovery_screen.dart';
 
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
 
-class _HomeScreenState extends State<HomeScreen> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final tabBarItems = [
+    const BottomNavigationBarItem(
+        icon: Icon(CupertinoIcons.home), label: "Discover"),
+    const BottomNavigationBarItem(
+        icon: Icon(CupertinoIcons.book), label: "Post"),
+    const BottomNavigationBarItem(icon: Icon(Icons.list), label: "Profile")
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(actions: [
-        TextButton(
-            onPressed: () async {
-              final SharedPreferences? prefs = await _prefs;
-              prefs?.clear();
-              Get.offAll(LoginPage());
-            },
-            child: Text(
-              'LogOut',
-              style: TextStyle(color: Colors.white),
-            ))
-      ]),
-      body: Center(
-        child: Column(
-          children: [
-            Text("Welcome Home"),
-            TextButton(
-                onPressed: () async {
-                  final SharedPreferences? prefs = await _prefs;
-                  print(prefs?.get('Token'));
-                },
-                child: Text('Print Token:')),
-          ],
-        ),
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        items: tabBarItems,
       ),
+      tabBuilder: (BuildContext context, int index) {
+        switch (index) {
+          case 0:
+            return const DiscoveryScreen();
+
+          case 1:
+            return const AddPostPage();
+
+          case 2:
+            return const SettingsPage();
+        }
+
+        return const LoginPage();
+      },
     );
   }
 }
