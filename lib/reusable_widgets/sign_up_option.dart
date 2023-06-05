@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../resources/strings.dart';
 import '../screens/sign_up/sign_up_page.dart';
 
 Row signUpOption(context) {
@@ -7,18 +8,18 @@ Row signUpOption(context) {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       const Text(
-        'Don\'t have account?   ',
+        Strings.kLoginHaveAccount,
         style: TextStyle(
           color: Colors.grey,
         ),
       ),
       GestureDetector(
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SignUpPage()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const SignUpPage()));
         },
         child: const Text(
-          'Sign Up',
+          Strings.kLoginSignup,
           style: TextStyle(
               color: Colors.black,
               fontFamily: 'Khepri',

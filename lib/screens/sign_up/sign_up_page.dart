@@ -6,6 +6,9 @@ import 'package:pbh_project/reusable_widgets/input_fields.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 import 'package:pbh_project/screens/home_screen.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
+import 'package:pbh_project/utils/app_styles.dart';
+
+import '../../resources/strings.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -28,12 +31,9 @@ class _SignUpPageState extends State<SignUpPage> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     final bottom = MediaQuery.of(context).viewInsets.bottom;
-    final users = ['Writter', 'User'];
-    String? selectedValue = 'Writter';
-    Type type = Type.user;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(191, 229, 192, 1),
+        backgroundColor: kOfflineBackgroundColor,
         shadowColor: Colors.transparent,
         leading: const BackButton(
           color: Colors.black,
@@ -41,7 +41,7 @@ class _SignUpPageState extends State<SignUpPage> {
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color.fromRGBO(191, 229, 192, 1),
+      backgroundColor: kOfflineBackgroundColor,
       body: SingleChildScrollView(
         reverse: true,
         child: Padding(
@@ -51,7 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               children: [
                 //Image Container
-                Container(
+                SizedBox(
                   width: w,
                   height: h * 0.22,
                   child: Column(
@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: const EdgeInsets.only(left: 20),
                     ),
                     const Text(
-                      'Type of Account',
+                      Strings.kSignupAccountType,
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                         fontSize: 12,
@@ -95,7 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       flex: 1,
                       child: RadioListTile(
                         //contentPadding: EdgeInsets.zero,
-                        title: const Text('Writter'),
+                        title: const Text(Strings.kSignupWritter),
                         value: Type.writter,
                         groupValue: _account.type,
                         onChanged: (value) =>
@@ -106,7 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       flex: 1,
                       child: RadioListTile(
                         contentPadding: EdgeInsets.zero,
-                        title: const Text('User'),
+                        title: const Text(Strings.kSignupUser),
                         value: Type.user,
                         groupValue: _account.type,
                         onChanged: (value) =>
@@ -124,33 +124,39 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       InputTextFieldWidget(
                           registrationController.nameController,
                           'Name',
-                          Icons.person_outline),
+                          Icons.person_outline,
+                          false),
                       SizedBox(
                         height: 20,
                       ),
                       InputTextFieldWidget(
                           registrationController.emailController,
                           'Email',
-                          Icons.email),
+                          Icons.email,
+                          false),
                       SizedBox(
                         height: 30,
                       ),
                       InputTextFieldWidget(
                           registrationController.passwordController,
                           'Password',
-                          Icons.password),
+                          Icons.password,
+                          true),
                       SizedBox(
                         height: 30,
                       ),
                       SubmitButton(
-                        onPressed: () => HomeScreen(),
-                        title: 'Register',
+                        onPressed: registrationController.isSignupValid() ==
+                                true
+                            ? () => registrationController.registerWithEmail()
+                            : null,
+                        title: Strings.kLoginSignup,
                       ),
                     ],
                   ),
@@ -161,6 +167,11 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+
+  pushHomeScreen() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HomeScreen()));
   }
 
   Row signInOption(context) {

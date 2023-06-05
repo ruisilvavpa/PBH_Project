@@ -1,69 +1,82 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controllers/login_controller.dart';
-import '../../reusable_widgets/alert_reset_pass_dialog.dart';
+import 'package:pbh_project/controllers/forgotpassword_controller.dart';
+import 'package:pbh_project/models/validations.dart';
+import 'package:pbh_project/utils/app_styles.dart';
+import '../../resources/strings.dart';
 import '../../reusable_widgets/input_fields.dart';
 import '../../reusable_widgets/submit_button.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
-  ForgotPasswordPage({super.key});
+  const ForgotPasswordPage({super.key});
 
   @override
   State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-  LoginController loginController = Get.put(LoginController());
+  ForgotPasswordController forgotController =
+      Get.put(ForgotPasswordController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(191, 229, 192, 1),
+        backgroundColor: kOfflineBackgroundColor,
         shadowColor: Colors.transparent,
         leading: const BackButton(
           color: Colors.black,
         ),
-        centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color.fromRGBO(191, 229, 192, 1),
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 5,
-            ),
-            const Text(
-              'Forgot Password',
-              style: TextStyle(
-                fontFamily: 'Khepri',
-                fontSize: 30,
-                color: Colors.black,
+      backgroundColor: kOfflineBackgroundColor,
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: SingleChildScrollView(
+          reverse: true,
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 8,
               ),
-            ),
-            const SizedBox(
-              height: 80,
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-            InputTextFieldWidget(
-              loginController.emailController,
-              'Enter your Email',
-              Icons.email,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            SubmitButton(
-                onPressed: () => AlertResetPassDialog.alertType(context,
-                    'Forgot Password', 'The Request as sent to your Email!'),
-                title: 'Send Request'),
-          ],
+              const Text(
+                Strings.kForgotPassword,
+                style: kTitle0,
+              ),
+              const SizedBox(
+                height: 42,
+              ),
+              const SizedBox(
+                height: 100,
+              ),
+              InputTextFieldWidget(
+                  forgotController.emailController,
+                  Strings.kFieldEmail,
+                  Icons.email,
+                  false,
+                  Strings.kFieldEmailError,
+                  Regex.email,
+                  TextInputType.emailAddress),
+              const SizedBox(
+                height: 24,
+              ),
+              SubmitButton(
+                  onPressed: forgotController.checkIsValid() == true
+                      ? () => sendRequest()
+                      : null,
+                  title: Strings.kForgotPasswordAction),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  sendRequest() {
+    FocusScope.of(context).unfocus();
+    forgotController.sendForgotPasswordRequest();
   }
 }

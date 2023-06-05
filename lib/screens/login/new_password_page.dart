@@ -49,19 +49,13 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
             const SizedBox(
               height: 100,
             ),
-            InputTextFieldWidget(
-              loginController.emailController,
-              'New password',
-              Icons.email,
-            ),
+            InputTextFieldWidget(loginController.emailController,
+                'New password', Icons.email, false),
             const SizedBox(
               height: 30,
             ),
-            InputTextFieldWidget(
-              loginController.emailController,
-              'Confirm new password',
-              Icons.email,
-            ),
+            InputTextFieldWidget(loginController.emailController,
+                'Confirm new password', Icons.email, false),
             const SizedBox(
               height: 90,
             ),

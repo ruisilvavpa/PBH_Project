@@ -40,7 +40,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
             height: 10,
           ),
           CustomSwitchListTile(
-            title: 'New Messages from Readers',
+            title: 'Update Donations',
             value: _newMessageNotificationsEnabled,
             onChanged: (value) {
               setState(() {
@@ -50,15 +50,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
           ),
           const SizedBox(
             height: 10,
-          ),
-          CustomSwitchListTile(
-            title: 'Updates Favorite Books',
-            value: _favoriteBookUpdatesEnabled,
-            onChanged: (value) {
-              setState(() {
-                _favoriteBookUpdatesEnabled = value;
-              });
-            },
           ),
           const SizedBox(
             height: 10,

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:pbh_project/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import '../models/validations.dart';
 import '../utils/api_endpoints.dart';
 
 class LoginController extends GetxController {
@@ -12,6 +13,11 @@ class LoginController extends GetxController {
   TextEditingController passwordController = TextEditingController();
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  bool isLoginValid() {
+    return (RegexValidator.validate(emailController.text, Regex.email) &&
+        RegexValidator.validate(passwordController.text, Regex.password));
+  }
 
   Future<void> loginWithEmail() async {
     try {
