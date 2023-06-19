@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
 
 class AlertForgotPassDialog {
@@ -16,12 +15,13 @@ class AlertForgotPassDialog {
       content: Text(message),
       actions: [
         ElevatedButton(
-          child: Text(
+          child: const Text(
             "Ok",
           ),
           onPressed: () {
-            Navigator.of(context)
-                .push(new MaterialPageRoute(builder: (context) => LoginPage()));
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const LoginPage()),
+            );
           },
         ),
       ],

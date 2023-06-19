@@ -1,26 +1,25 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pbh_project/screens/login/login_page.dart';
-
 import '../../controllers/login_controller.dart';
 import '../../reusable_widgets/alert_forgot_pass_dialog.dart';
 import '../../reusable_widgets/input_fields.dart';
 import '../../reusable_widgets/submit_button.dart';
 
-class NewPasswordPage extends StatelessWidget {
-  NewPasswordPage({super.key});
+class NewPasswordPage extends StatefulWidget {
+  const NewPasswordPage({super.key});
 
+  @override
+  State<NewPasswordPage> createState() => _NewPasswordPageState();
+}
+
+class _NewPasswordPageState extends State<NewPasswordPage> {
   LoginController loginController = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(191, 229, 192, 1),
+        backgroundColor: const Color.fromRGBO(191, 229, 192, 1),
         shadowColor: Colors.transparent,
         leading: const BackButton(
           color: Colors.black,
@@ -50,19 +49,13 @@ class NewPasswordPage extends StatelessWidget {
             const SizedBox(
               height: 100,
             ),
-            InputTextFieldWidget(
-              loginController.emailController,
-              'New password',
-              Icons.email,
-            ),
+            InputTextFieldWidget(loginController.emailController,
+                'New password', Icons.email, false),
             const SizedBox(
               height: 30,
             ),
-            InputTextFieldWidget(
-              loginController.emailController,
-              'Confirm new password',
-              Icons.email,
-            ),
+            InputTextFieldWidget(loginController.emailController,
+                'Confirm new password', Icons.email, false),
             const SizedBox(
               height: 90,
             ),

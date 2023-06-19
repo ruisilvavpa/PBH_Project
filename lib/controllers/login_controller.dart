@@ -2,11 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pbh_project/models/user_data.dart';
 import 'package:pbh_project/screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-
 import '../models/validations.dart';
 import '../utils/api_endpoints.dart';
 
@@ -16,14 +14,19 @@ class LoginController extends GetxController {
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
+  bool isLoginValid() {
+    return (RegexValidator.validate(emailController.text, Regex.email) &&
+        RegexValidator.validate(passwordController.text, Regex.password));
+  }
+
   Future<void> loginWithEmail() async {
     try {
       var headers = {'Content-Type': 'application/json'};
       var url = Uri.parse(
           ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.loginEmail);
       Map body = {
-        'email': EmailValidator(),
-        'password': PasswordValidator(),
+        'email': emailController.text.trim(),
+        'password': passwordController.text,
       };
 
       http.Response response =
@@ -36,10 +39,10 @@ class LoginController extends GetxController {
           print(token);
           final SharedPreferences prefs = await _prefs;
 
-          await prefs?.setString('token', token);
+          await prefs.setString('token', token);
           emailController.clear();
           passwordController.clear();
-          Get.off(const HomeScreen());
+          Get.off(HomeScreen());
         } else {
           throw jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
         }

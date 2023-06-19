@@ -42,6 +42,7 @@ dependencies:
   http: ^0.13.6
   get: ^4.6.5
   image_picker: ^0.8.7+5
+  flutter_xlider: ^3.5.0
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +77,8 @@ flutter:
     - assets/images/profile_icon.png
     - assets/images/add_image_icon.png
     - assets/images/circle_icon.png
+    - assets/images/image_profile.jpg
+    - resources/onboarding.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

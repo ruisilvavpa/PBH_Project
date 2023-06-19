@@ -16,6 +16,12 @@ class RegistrationController extends GetxController {
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
+  bool isSignupValid() {
+    return (RegexValidator.validate(emailController.text, Regex.email) &&
+        RegexValidator.validate(passwordController.text, Regex.password) &&
+        nameController.text.isNotEmpty);
+  }
+
   Future<void> registerWithEmail() async {
     try {
       var headers = {'Content-Type': 'application/json'};
@@ -23,8 +29,8 @@ class RegistrationController extends GetxController {
           ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.registerEmail);
       Map body = {
         'name': nameController.text,
-        'email': EmailValidator(),
-        'password': PasswordValidator(),
+        'email': emailController.text.trim(),
+        'password': passwordController.text,
       };
 
       http.Response response =
@@ -37,11 +43,11 @@ class RegistrationController extends GetxController {
           print(token);
           final SharedPreferences prefs = await _prefs;
 
-          await prefs?.setString('token', token);
+          await prefs.setString('token', token);
           nameController.clear();
           emailController.clear();
           passwordController.clear();
-          Get.off(const HomeScreen());
+          Get.off(HomeScreen());
         } else {
           throw jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
         }

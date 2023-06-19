@@ -11,7 +11,7 @@ List<String> categories = [
   'Horror',
 ];
 
-List<String> Associations = [
+List<String> associations = [
   'Cruz Vermelha Portuguesa',
   'Amnistia Internacional Portugal',
   'Médicos do Mundo Portugal',

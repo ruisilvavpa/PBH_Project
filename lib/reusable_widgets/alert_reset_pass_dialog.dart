@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pbh_project/screens/login/login_page.dart';
 import 'package:pbh_project/screens/login/new_password_page.dart';
 
 class AlertResetPassDialog {
@@ -17,12 +15,12 @@ class AlertResetPassDialog {
       content: Text(message),
       actions: [
         ElevatedButton(
-          child: Text(
+          child: const Text(
             "Ok",
           ),
           onPressed: () {
             Navigator.of(context).push(
-                new MaterialPageRoute(builder: (context) => NewPasswordPage()));
+                MaterialPageRoute(builder: (context) => NewPasswordPage()));
           },
         ),
       ],
