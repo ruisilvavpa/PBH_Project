@@ -27,6 +27,9 @@ class Strings {
   static const String kSignupWritter = "Writter";
   static const String kSignupUser = "User";
 
+  //PROFILE
+  static const String kProfileTitle = "Profile";
+
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
   static const String kFieldEmailError = "Please insert a valid email.";
@@ -34,4 +37,7 @@ class Strings {
   static const String kFieldPasswordError =
       "The password needs to have at least 8 characteres.";
   static const String kFieldName = "Name";
+  static const String kProfileHeading = 'User Name';
+  static const String kSubProfileHeading = 'emailUser@email.com';
+  static const String kSettingsHeading = 'Settings';
 }

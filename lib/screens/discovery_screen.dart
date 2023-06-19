@@ -62,7 +62,7 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
           authorName: 'J.K.Rowling',
           bookCount: 10,
           profilePhotoUrl:
-              'https://www.forbes.com/profile/jk-rowling/?sh=2d92d9753aeb',
+              'https://cdn.shopify.com/s/files/1/0450/0717/5837/articles/JKR-Children_s-Credit-Debra-Hurford-Brown_net_8b2895a1-a05b-4667-be47-96e940b22438.png?v=1666809722',
         );
       },
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/utils/size_configs.dart';
 
-//defaultLogoColor = Color.fromRGBO(191, 229, 192, 1),
-//userLogoColor = Color.fromRGBO(138, 210, 224, 1),
-//writterLogoColor = Color.fromRGBO(235, 178, 125, 1),
+const Color defaultLogoColor = Color.fromRGBO(191, 229, 192, 1);
+const Color userLogoColor = Color.fromRGBO(138, 210, 224, 1);
+const Color writterLogoColor = Color.fromRGBO(235, 178, 125, 1);
 
 Color kBackgroundColor = Colors.white;
 const Color kOfflineBackgroundColor = Color.fromRGBO(191, 229, 192, 1);
