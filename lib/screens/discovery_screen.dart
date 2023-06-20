@@ -1,86 +1,181 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pbh_project/reusable_widgets/app_bar.dart';
-import '../reusable_widgets/author_cards.dart';
-import '../reusable_widgets/book_cards.dart';
 
 class DiscoveryScreen extends StatefulWidget {
   const DiscoveryScreen({Key? key}) : super(key: key);
 
   @override
-  State<DiscoveryScreen> createState() => _DiscoveryScreenState();
+  _DiscoveryScreenState createState() => _DiscoveryScreenState();
 }
 
 class _DiscoveryScreenState extends State<DiscoveryScreen> {
-  int _selectedOption = 0;
+  TextEditingController _textController = TextEditingController();
 
-  final List<String> _writers = ['Escritor 1', 'Escritor 2', 'Escritor 3'];
-  final List<String> _books = ['Livro 1', 'Livro 2', 'Livro 3'];
+  @override
+  void initState() {
+    super.initState();
+    _textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarWBB(
-        title: 'Discover',
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: CupertinoSlidingSegmentedControl<int>(
-              groupValue: _selectedOption,
-              children: const {
-                0: Text('Writters'),
-                1: Text('Books'),
-              },
-              onValueChanged: (value) {
-                setState(() {
-                  _selectedOption = value!;
-                });
-              },
+      resizeToAvoidBottomInset: true,
+      backgroundColor: Colors.grey[200],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Image.asset(
+                  'assets/images/assortment-with-books-dark-background.jpg',
+                  width: double.infinity,
+                  height: 255,
+                  fit: BoxFit.cover,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 60, 20, 0),
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Discovery \nPage',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Khepri',
+                            color: Color(0xFFFFB383),
+                            fontSize: 40,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'Search for new amazing reads',
+                        style: TextStyle(
+                          fontFamily: 'Itim',
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 25,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 27),
+                        child: Container(
+                          width: double.infinity,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    // Perform search action
+                                  },
+                                  child: Icon(
+                                    Icons.search,
+                                    color: Colors.grey,
+                                    size: 24,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 5, bottom: 2),
+                                    child: TextFormField(
+                                      controller: _textController,
+                                      onFieldSubmitted: (_) async {
+                                        // Perform search action
+                                      },
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        hintText:
+                                            'Search for authors or books...',
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
+                                      ),
+                                      style: TextStyle(
+                                        fontFamily: 'Itim',
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(10, 15, 0, 20),
+                          child: Text(
+                            'Book Genres',
+                            style: TextStyle(
+                              fontFamily: 'Playfair Display',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                      GridView.builder(
+                        padding: EdgeInsets.zero,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          childAspectRatio: 1.6,
+                        ),
+                        primary: false,
+                        shrinkWrap: true,
+                        itemCount: 24, // Replace with actual genre count
+                        itemBuilder: (context, index) {
+                          return Card(
+                            color: Colors.white,
+                            elevation: 4,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: Text(
+                                  'Genre $index',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ),
-          Expanded(
-            child: Container(
-              child: _selectedOption == 0
-                  ? _buildWritersList()
-                  : _buildBooksList(),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
-    );
-  }
-
-  Widget _buildWritersList() {
-    return ListView.builder(
-      itemCount: _writers.length,
-      itemBuilder: (context, index) {
-        String writer = _writers[index];
-
-        return const AuthorCard(
-          authorName: 'J.K.Rowling',
-          bookCount: 10,
-          profilePhotoUrl:
-              'https://cdn.shopify.com/s/files/1/0450/0717/5837/articles/JKR-Children_s-Credit-Debra-Hurford-Brown_net_8b2895a1-a05b-4667-be47-96e940b22438.png?v=1666809722',
-        );
-      },
-    );
-  }
-
-  Widget _buildBooksList() {
-    return ListView.builder(
-      itemCount: _books.length,
-      itemBuilder: (context, index) {
-        String book = _books[index];
-
-        return BookCard(
-          authorName: 'J.K.Rowlling',
-          bookTitle: 'Harry Potter',
-          category: 'Fantasia',
-          onRatePressed: () {},
-        );
-      },
     );
   }
 }
