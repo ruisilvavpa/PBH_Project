@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/reusable_widgets/app_bar.dart';
-import 'package:pbh_project/reusable_widgets/settings.dart';
-import 'package:pbh_project/reusable_widgets/writter_profile_banner.dart';
-import 'package:pbh_project/utils/theme_helper.dart';
 
 import '../resources/strings.dart';
+import '../reusable_widgets/app_bar.dart';
+import '../reusable_widgets/book_profile_banner.dart';
+import '../reusable_widgets/settings.dart';
+import '../reusable_widgets/writter_profile_banner.dart';
+import '../utils/theme_helper.dart';
 
-class WritterProfileFromUserView extends StatefulWidget {
-  const WritterProfileFromUserView({super.key});
+class BookProfileScreen extends StatefulWidget {
+  const BookProfileScreen({super.key});
 
   @override
-  State<WritterProfileFromUserView> createState() =>
-      _WritterProfileFromUserViewState();
+  State<BookProfileScreen> createState() => _BookProfileScreenState();
 }
 
-class _WritterProfileFromUserViewState
-    extends State<WritterProfileFromUserView> {
+class _BookProfileScreenState extends State<BookProfileScreen> {
   Color? themeColor;
   @override
   void initState() {
@@ -28,13 +27,13 @@ class _WritterProfileFromUserViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarWBB(title: Strings.kProfileTitle),
+      appBar: const CustomAppBar(title: Strings.kBookProfileTitle),
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),
           child: Column(children: const [
-            WritterProfileBanner(),
+            BookProfileBanner(),
             SizedBox(
               height: 32,
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
+import 'package:pbh_project/screens/book_profile_screen.dart';
 import '../reusable_widgets/author_cards.dart';
 import '../reusable_widgets/book_cards.dart';
 

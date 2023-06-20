@@ -79,6 +79,7 @@ flutter:
     - assets/images/circle_icon.png
     - assets/images/image_profile.jpg
     - resources/onboarding.json
+    - assets/images/books.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

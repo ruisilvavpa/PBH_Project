@@ -29,6 +29,7 @@ class Strings {
 
   //PROFILE
   static const String kProfileTitle = "Profile";
+  static const String kBookProfileTitle = "Book Name";
 
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
