@@ -5,6 +5,7 @@ import 'package:pbh_project/reusable_widgets/settings_menu_widget.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 
 import '../screens/settings_page/faqs_page.dart';
+import '../screens/writter_buttons_screens/edit_profile.dart';
 import '../utils/app_styles.dart';
 
 class WritterProfileBanner extends StatefulWidget {
@@ -47,7 +48,9 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-          child: SubmitButton(onPressed: () {}, title: 'Edit Profile'),
+          child: SubmitButton(
+              onPressed: () => Get.to(() => EditProfile()),
+              title: 'Edit Profile'),
         ),
         SettingsMenuWidget(
           title: 'My Books',

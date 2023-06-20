@@ -6,7 +6,7 @@ import 'package:pbh_project/models/validations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-import '../screens/home_screen.dart';
+import '../screens/writter_buttons_screens/home_screen.dart';
 import '../utils/api_endpoints.dart';
 
 class RegistrationController extends GetxController {

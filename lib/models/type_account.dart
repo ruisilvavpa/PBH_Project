@@ -1,6 +1,7 @@
 enum Type {
   writter,
   user,
+  guest,
 }
 
 class Account {

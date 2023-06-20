@@ -5,18 +5,17 @@ import 'package:pbh_project/reusable_widgets/user_profile_banner.dart';
 import 'package:pbh_project/reusable_widgets/writter_profile_banner.dart';
 import 'package:pbh_project/utils/theme_helper.dart';
 
-import '../resources/strings.dart';
+import '../../resources/strings.dart';
+import '../../reusable_widgets/guest_profile_banner.dart';
 
-class WritterProfileFromUserView extends StatefulWidget {
-  const WritterProfileFromUserView({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<WritterProfileFromUserView> createState() =>
-      _WritterProfileFromUserViewState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _WritterProfileFromUserViewState
-    extends State<WritterProfileFromUserView> {
+class _ProfileScreenState extends State<ProfileScreen> {
   Color? themeColor;
   @override
   void initState() {

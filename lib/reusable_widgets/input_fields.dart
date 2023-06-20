@@ -30,19 +30,25 @@ class InputTextFieldWidget extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
-            color: kPrimaryColor,
+            color: defaultLogoColor,
           ),
           labelText: hintText,
-          labelStyle: TextStyle(color: kBackgroundColor),
+          labelStyle: const TextStyle(color: writterLogoColor),
           filled: true,
           helperText: " ",
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          fillColor: kBackgroundColor.withOpacity(0.3),
+          fillColor: Colors.white.withOpacity(0.3),
           errorText: validateInputField(textEditingController.text),
           contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-          border: OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(23.0),
-              borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+              borderSide: const BorderSide(width: 0, style: BorderStyle.solid)),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(23.0),
+            borderSide: BorderSide(
+              color: writterLogoColor,
+            ),
+          ),
         ),
       ),
     );

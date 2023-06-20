@@ -15,6 +15,8 @@ class Strings {
   static const String kLoginSignup = "SIGN UP";
 
   //FORGOT PASSWORD
+  static const String kFieldEmailBody = "Insert your Email";
+  static const String kForgotPasswordQuestion = 'Did you forgot your password?';
   static const String kForgotPassword = 'Forgot Password';
   static const String kForgotPasswordAction = 'Send Request';
   static const String kForgotPasswordSuccess =
@@ -29,6 +31,9 @@ class Strings {
 
   //PROFILE
   static const String kProfileTitle = "Profile";
+  static const String kEditProfileTitle = "Edit Profile";
+  static const String kBioProfileBody = 'About Me';
+  static const String kBioProfileTitle = 'Tell us a little bit about yourself';
 
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
@@ -38,6 +43,7 @@ class Strings {
       "The password needs to have at least 8 characteres.";
   static const String kFieldName = "Name";
   static const String kProfileHeading = 'User Name';
+  static const String kGuestProfileHeading = 'ME';
   static const String kSubProfileHeading = 'emailUser@email.com';
   static const String kSettingsHeading = 'Settings';
 }

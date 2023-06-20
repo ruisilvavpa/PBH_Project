@@ -4,7 +4,7 @@ import 'package:pbh_project/controllers/registration_controller.dart';
 import 'package:pbh_project/models/type_account.dart';
 import 'package:pbh_project/reusable_widgets/input_fields.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
-import 'package:pbh_project/screens/home_screen.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/home_screen.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
@@ -33,7 +33,8 @@ class _SignUpPageState extends State<SignUpPage> {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kOfflineBackgroundColor,
+        title: Text(Strings.kLoginSignup),
+        backgroundColor: writterLogoColor,
         shadowColor: Colors.transparent,
         leading: const BackButton(
           color: Colors.black,
@@ -41,7 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: kOfflineBackgroundColor,
+      backgroundColor: kBackgroundColor,
       body: SingleChildScrollView(
         reverse: true,
         child: Padding(
@@ -50,23 +51,8 @@ class _SignUpPageState extends State<SignUpPage> {
             key: _formKey,
             child: Column(
               children: [
-                //Image Container
-                SizedBox(
-                  width: w,
-                  height: h * 0.22,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: h * 0.05,
-                      ),
-                      const CircleAvatar(
-                        backgroundColor: Color.fromRGBO(191, 229, 192, 1),
-                        radius: 60,
-                        backgroundImage:
-                            AssetImage('assets/images/profile_icon.png'),
-                      ),
-                    ],
-                  ),
+                const SizedBox(
+                  height: 60,
                 ),
                 signInOption(context),
                 const SizedBox(
