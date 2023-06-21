@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pbh_project/screens/discovery_page/grid_search_screen.dart';
+import 'package:pbh_project/utils/app_styles.dart';
 
 class DiscoveryScreen extends StatefulWidget {
   const DiscoveryScreen({Key? key}) : super(key: key);
@@ -65,57 +67,44 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 27),
-                        child: Container(
-                          width: double.infinity,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    // Perform search action
-                                  },
-                                  child: Icon(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const GridSearchScreen()));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              color: writterLogoColor,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Row(
+                                children: [
+                                  Icon(
                                     Icons.search,
-                                    color: Colors.grey,
+                                    color: kBackgroundColor,
                                     size: 24,
                                   ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 5, bottom: 2),
-                                    child: TextFormField(
-                                      controller: _textController,
-                                      onFieldSubmitted: (_) async {
-                                        // Perform search action
-                                      },
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            'Search for authors or books...',
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        focusedErrorBorder: InputBorder.none,
-                                      ),
-                                      style: TextStyle(
-                                        fontFamily: 'Itim',
-                                        fontSize: 16,
+                                  Expanded(
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 5, bottom: 2),
+                                      child: Text(
+                                        'Search for authors or books...',
+                                        style: TextStyle(
+                                            color: kBackgroundColor,
+                                            fontFamily: 'Itim',
+                                            fontSize: 16),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
