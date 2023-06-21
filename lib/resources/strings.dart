@@ -29,6 +29,11 @@ class Strings {
 
   //PROFILE
   static const String kProfileTitle = "Profile";
+  //DISCOVERY
+  static const String kDiscoveryTitle = 'Discovery \nPage';
+  static const String kDiscoverySubtitle = 'Search for new amazing reads';
+  static const String kDiscoverySearchNoResults = 'No results found,\n'
+      'Please try a different keyword';
 
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
@@ -40,4 +45,5 @@ class Strings {
   static const String kProfileHeading = 'User Name';
   static const String kSubProfileHeading = 'emailUser@email.com';
   static const String kSettingsHeading = 'Settings';
+  static const String kFieldSearch = 'Search for authors or books...';
 }

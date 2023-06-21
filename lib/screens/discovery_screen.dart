@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/screens/discovery_page/grid_search_screen.dart';
+import 'package:pbh_project/screens/discovery_page/list_search_screen.dart';
 import 'package:pbh_project/utils/app_styles.dart';
+
+import '../resources/strings.dart';
+import 'discovery_page/my_grid_view.dart';
 
 class DiscoveryScreen extends StatefulWidget {
   const DiscoveryScreen({Key? key}) : super(key: key);
@@ -44,10 +47,10 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
                   padding: EdgeInsets.fromLTRB(20, 60, 20, 0),
                   child: Column(
                     children: [
-                      Align(
+                      const Align(
                         alignment: Alignment.center,
                         child: Text(
-                          'Discovery \nPage',
+                          Strings.kDiscoveryTitle,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'Khepri',
@@ -56,8 +59,8 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
                           ),
                         ),
                       ),
-                      Text(
-                        'Search for new amazing reads',
+                      const Text(
+                        Strings.kDiscoverySubtitle,
                         style: TextStyle(
                           fontFamily: 'Itim',
                           color: Color.fromARGB(255, 255, 255, 255),
@@ -66,13 +69,13 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 27),
+                        padding: EdgeInsets.only(top: 50),
                         child: InkWell(
                           onTap: () {
                             Navigator.pop(context);
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>
-                                    const GridSearchScreen()));
+                                    const ListSearchScreen()));
                           },
                           child: Container(
                             width: double.infinity,
@@ -95,7 +98,7 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
                                       padding:
                                           EdgeInsets.only(left: 5, bottom: 2),
                                       child: Text(
-                                        'Search for authors or books...',
+                                        Strings.kFieldSearch,
                                         style: TextStyle(
                                             color: kBackgroundColor,
                                             fontFamily: 'Itim',
@@ -109,54 +112,21 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
                           ),
                         ),
                       ),
-                      Align(
+                      const Align(
                         alignment: Alignment.centerLeft,
                         child: Padding(
-                          padding: EdgeInsets.fromLTRB(10, 15, 0, 20),
+                          padding: EdgeInsets.fromLTRB(10, 25, 0, 20),
                           child: Text(
                             'Book Genres',
                             style: TextStyle(
-                              fontFamily: 'Playfair Display',
-                              fontSize: 16,
+                              fontFamily: 'Khepri',
+                              fontSize: 30,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
                       ),
-                      GridView.builder(
-                        padding: EdgeInsets.zero,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
-                          childAspectRatio: 1.6,
-                        ),
-                        primary: false,
-                        shrinkWrap: true,
-                        itemCount: 24, // Replace with actual genre count
-                        itemBuilder: (context, index) {
-                          return Card(
-                            color: Colors.white,
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: Text(
-                                  'Genre $index',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
+                      MyGridView(),
                     ],
                   ),
                 ),

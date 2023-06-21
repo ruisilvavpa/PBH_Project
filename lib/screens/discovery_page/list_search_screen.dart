@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/screens/discovery_page/my_grid_view.dart';
+import 'package:pbh_project/screens/discovery_page/my_list_view.dart';
 import 'package:pbh_project/screens/discovery_page/results_not_found.dart';
-import 'package:pbh_project/screens/discovery_screen.dart';
+import 'package:pbh_project/screens/discovery_page/start_typing_widget.dart';
 import 'package:pbh_project/screens/home_screen.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
-class GridSearchScreen extends StatefulWidget {
-  const GridSearchScreen({Key? key}) : super(key: key);
+import '../../resources/strings.dart';
+
+class ListSearchScreen extends StatefulWidget {
+  const ListSearchScreen({Key? key}) : super(key: key);
 
   @override
-  State<GridSearchScreen> createState() => _GridSearchScreenState();
+  State<ListSearchScreen> createState() => _ListSearchScreenState();
 }
 
-class _GridSearchScreenState extends State<GridSearchScreen> {
+class _ListSearchScreenState extends State<ListSearchScreen> {
   final List<String> bookGenres = [
     'Mystery/Thriller',
     'Romance',
@@ -32,7 +34,7 @@ class _GridSearchScreenState extends State<GridSearchScreen> {
   ];
   List<String> itemsGridSearch = [];
   TextEditingController _textController = TextEditingController();
-  FocusNode _textFocusNode = FocusNode();
+  final FocusNode _textFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -53,7 +55,7 @@ class _GridSearchScreenState extends State<GridSearchScreen> {
       backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
         child: SizedBox(
-          height: MediaQuery.of(context).size.height, // Set a fixed height
+          height: MediaQuery.of(context).size.height,
           child: Stack(
             children: [
               Positioned(
@@ -61,10 +63,11 @@ class _GridSearchScreenState extends State<GridSearchScreen> {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                child:
-                    _textController.text.isNotEmpty && itemsGridSearch.isEmpty
+                child: _textController.text.isEmpty
+                    ? const StartTyping()
+                    : (itemsGridSearch.isEmpty
                         ? const ResultsNotFound()
-                        : MyGridView(),
+                        : MyListView()),
               ),
               Positioned(
                 top: 60,
@@ -95,7 +98,7 @@ class _GridSearchScreenState extends State<GridSearchScreen> {
                         ),
                       ),
                     ),
-                    Spacer(flex: 1),
+                    const Spacer(flex: 1),
                     Expanded(
                       flex: 48,
                       child: Container(
@@ -136,8 +139,7 @@ class _GridSearchScreenState extends State<GridSearchScreen> {
                                       });
                                     },
                                     decoration: const InputDecoration(
-                                      hintText:
-                                          'Search for authors or books...',
+                                      hintText: Strings.kFieldSearch,
                                       hintStyle:
                                           TextStyle(color: kBackgroundColor),
                                       enabledBorder: InputBorder.none,
