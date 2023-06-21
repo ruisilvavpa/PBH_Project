@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 import 'package:pbh_project/reusable_widgets/switch_list_tile.dart';
 
-import '../../reusable_widgets/custom_bottom_navigator.dart';
-
 class NotificationsPage extends StatefulWidget {
+  const NotificationsPage({super.key});
+
   @override
   State<NotificationsPage> createState() => _NotificationsPageState();
 }
