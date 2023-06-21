@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../resources/strings.dart';
-import '../reusable_widgets/app_bar.dart';
-import '../reusable_widgets/book_profile_banner.dart';
-import '../reusable_widgets/settings.dart';
-import '../reusable_widgets/writter_profile_banner.dart';
-import '../utils/theme_helper.dart';
+import '../../resources/strings.dart';
+import '../../reusable_widgets/app_bar.dart';
+import 'book_profile_banner.dart';
+import '../../reusable_widgets/settings.dart';
+import '../../reusable_widgets/writter_profile_banner.dart';
+import '../../utils/theme_helper.dart';
 
 class BookProfileScreen extends StatefulWidget {
   const BookProfileScreen({super.key});
@@ -28,16 +28,16 @@ class _BookProfileScreenState extends State<BookProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: Strings.kBookProfileTitle),
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: Column(children: const [
+          child: const Column(children: [
+            SizedBox(height: 20),
             BookProfileBanner(),
             SizedBox(
               height: 32,
             ),
-            Settings(),
           ]),
         ),
       ),

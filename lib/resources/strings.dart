@@ -30,6 +30,11 @@ class Strings {
   //PROFILE
   static const String kProfileTitle = "Profile";
   static const String kBookProfileTitle = "Book Name";
+  static const String kBookTitle = "Book Title";
+  static const String kBookAuthorName = "Book Author";
+  static const String kBookProfileNumberOfPages = "Number of Pages";
+  static const String kBookProfileRating = "Rating";
+  static const String kBookProfileSinopse = "Sinopse";
 
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
