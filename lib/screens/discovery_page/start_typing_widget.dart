@@ -28,8 +28,7 @@ class StartTyping extends StatelessWidget {
             right: 50,
           ),
           child: Text(
-            'Start typing\n'
-            'to show results...',
+            Strings.kDiscoverySearchIsEmpty,
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w600,

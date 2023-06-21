@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/utils/size_configs.dart';
 
-class MyGridView extends StatelessWidget {
-  const MyGridView({
+class MyGridViewCopy extends StatelessWidget {
+  const MyGridViewCopy({
     super.key,
   });
 
@@ -33,7 +33,7 @@ class MyGridView extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(5),
                 child: Text(
-                  'Genre $index',
+                  'Writter $index',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,

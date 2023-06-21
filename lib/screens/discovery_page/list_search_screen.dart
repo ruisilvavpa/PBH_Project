@@ -8,6 +8,7 @@ import 'package:pbh_project/utils/app_styles.dart';
 import '../../resources/strings.dart';
 
 class ListSearchScreen extends StatefulWidget {
+  ///this is the screen where the user searches for books or writters
   const ListSearchScreen({Key? key}) : super(key: key);
 
   @override
@@ -32,16 +33,21 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
     'Poetry',
     'Science/Nature',
   ];
-  List<String> itemsGridSearch = [];
-  TextEditingController _textController = TextEditingController();
-  final FocusNode _textFocusNode = FocusNode();
 
+  ///this is the list of results based on the keyword of input
+  List<String> itemsGridSearch = [];
+
+  ///this controller updates its value based on the input of the search bar
+  TextEditingController _textController = TextEditingController();
+
+  //this is the initial state for the controller
   @override
   void initState() {
     super.initState();
     _textController = TextEditingController();
   }
 
+  //disposes the controller
   @override
   void dispose() {
     _textController.dispose();
@@ -63,18 +69,27 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                 left: 0,
                 right: 0,
                 bottom: 0,
+                //if the value of the input from text form fielfd is empty
+                //it shows the widget StartTyping,
+                //else if the list of results is empty
+                //it shows the widget ResultsNotFound
+                //if the value of the input is not empty
+                //and the list of results is also not empty
+                //it shows the list of resulta in the widget MyListView
                 child: _textController.text.isEmpty
                     ? const StartTyping()
                     : (itemsGridSearch.isEmpty
                         ? const ResultsNotFound()
                         : MyListView()),
               ),
+              // this is the start of the header
               Positioned(
                 top: 60,
                 right: 10,
                 left: 10,
                 child: Row(
                   children: [
+                    //this is a back arrow button to go back to the homescreen
                     Expanded(
                       flex: 8,
                       child: InkWell(
@@ -98,7 +113,10 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                         ),
                       ),
                     ),
+                    //gives space between the backarrow button and
+                    //the search bar
                     const Spacer(flex: 1),
+                    //this is the start of the search bar
                     Expanded(
                       flex: 48,
                       child: Container(
@@ -122,9 +140,12 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                                   padding:
                                       const EdgeInsets.only(left: 5, bottom: 2),
                                   child: TextFormField(
+                                    textInputAction: TextInputAction.search,
                                     controller: _textController,
-                                    focusNode: _textFocusNode,
                                     onFieldSubmitted: (value) async {
+                                      // puts the value of the
+                                      //input in lower case and checks if
+                                      //it is in the data base
                                       setState(() {
                                         itemsGridSearch = bookGenres
                                             .where((e) => e

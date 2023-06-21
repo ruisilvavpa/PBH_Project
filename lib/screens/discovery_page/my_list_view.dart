@@ -19,10 +19,10 @@ class _MyListViewState extends State<MyListView> {
               padding: EdgeInsets.zero,
               primary: false,
               shrinkWrap: true,
-              itemCount: 23, // Replace with actual genre count
+              itemCount: 23,
               itemBuilder: (context, index) {
-                return Container(
-                  height: 100, // Replace with the desired height
+                return SizedBox(
+                  height: 100,
                   child: Card(
                     color: Colors.white,
                     elevation: 4,
