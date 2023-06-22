@@ -5,7 +5,7 @@ const Color defaultLogoColor = Color.fromRGBO(191, 229, 192, 1);
 const Color userLogoColor = Color.fromRGBO(138, 210, 224, 1);
 const Color writterLogoColor = Color.fromRGBO(235, 178, 125, 1);
 
-const Color kBackgroundColor = Colors.white;
+Color kBackgroundColor = Colors.white;
 const Color kOfflineBackgroundColor = Color.fromRGBO(191, 229, 192, 1);
 
 const Color kPrimaryColor = Color.fromRGBO(87, 61, 28, 1);
