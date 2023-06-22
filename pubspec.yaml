@@ -81,6 +81,7 @@ flutter:
     - assets/images/image_profile.jpg
     - resources/onboarding.json
     - assets/images/teste_book_1.png
+    - assests/images/assortment-with-books-dark-background.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
