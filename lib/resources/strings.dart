@@ -36,12 +36,21 @@ class Strings {
   static const String kBookProfileRating = "Rating";
   static const String kBookProfileSinopse = "Sinopse";
 
+  //DISCOVERY
+  static const String kDiscoveryTitle = 'Discovery \nPage';
+  static const String kDiscoverySubtitle = 'Search for new amazing reads';
+  static const String kDiscoverySearchNoResults = 'No results found,\n'
+      'Please try a different keyword';
+  static const String kDiscoverySearchIsEmpty = 'Type a keyword\n'
+      'to show results!';
+
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
   static const String kFieldEmailError = "Please insert a valid email.";
   static const String kFieldPassword = "Passord";
   static const String kFieldPasswordError =
       "The password needs to have at least 8 characteres.";
+  static const String kFieldSearch = 'Search for writters or books...';
   static const String kFieldName = "Name";
   static const String kProfileHeading = 'User Name';
   static const String kSubProfileHeading = 'emailUser@email.com';
