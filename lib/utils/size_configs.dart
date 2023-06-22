@@ -15,4 +15,16 @@ class SizeConfig {
     blockSizeH = screenWidth! / 100;
     blockSizeV = screenHeight! / 100;
   }
+
+  int calculateCrossAxisCount(context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    if (screenWidth < 600) {
+      return 2; // For smaller screens, show 2 columns
+    } else if (screenWidth < 900) {
+      return 3; // For medium-sized screens, show 3 columns
+    } else {
+      return 4; // For larger screens, show 4 columns
+    }
+  }
 }

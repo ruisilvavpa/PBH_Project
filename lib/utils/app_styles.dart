@@ -5,13 +5,13 @@ const Color defaultLogoColor = Color.fromRGBO(191, 229, 192, 1);
 const Color userLogoColor = Color.fromRGBO(138, 210, 224, 1);
 const Color writterLogoColor = Color.fromRGBO(235, 178, 125, 1);
 
-Color kshadowcolor = Color(0xFFD3D3D3);
-Color kBackgroundColor = Colors.white;
+const Color kshadowcolor = Color(0xFFD3D3D3);
+const Color kBackgroundColor = Colors.white;
 const Color kOfflineBackgroundColor = Color.fromRGBO(191, 229, 192, 1);
 
 const Color kPrimaryColor = Color.fromRGBO(87, 61, 28, 1);
 
-Color kSecondaryColor = Color.fromRGBO(228, 140, 24, 1);
+const Color kSecondaryColor = Color.fromRGBO(228, 140, 24, 1);
 
 final kTitle = TextStyle(
   fontFamily: 'Khepri',
