@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/screens/discovery_page/list_search_screen.dart';
 import 'package:pbh_project/screens/discovery_page/my_grid_view_copy.dart';
 import 'package:pbh_project/screens/discovery_page/search_button.dart';
 import 'package:pbh_project/utils/app_styles.dart';
