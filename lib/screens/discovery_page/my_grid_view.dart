@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/utils/size_configs.dart';
 
 class MyGridView extends StatelessWidget {
+  ///this is the grid view for the book genres and writters
   const MyGridView({
     super.key,
   });
@@ -20,7 +21,7 @@ class MyGridView extends StatelessWidget {
         ),
         primary: false,
         shrinkWrap: true,
-        itemCount: 16, // Replace with actual genre count
+        itemCount: 16,
         itemBuilder: (context, index) {
           return Card(
             color: Colors.white,

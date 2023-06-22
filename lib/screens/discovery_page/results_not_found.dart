@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import '../../resources/strings.dart';
 
 class ResultsNotFound extends StatelessWidget {
+  ///this widget is shown when the _textcontroller from
+  ///the list search screen is not empty but the itemsgridsearch is,
+  ///it shows an icon and a text bellow it
   const ResultsNotFound({super.key});
 
   @override

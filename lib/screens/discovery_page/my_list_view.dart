@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyListView extends StatefulWidget {
+  ///this is the list view builder for the list search screen
   const MyListView({super.key});
 
   @override
