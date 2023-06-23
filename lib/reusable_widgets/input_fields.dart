@@ -33,7 +33,7 @@ class InputTextFieldWidget extends StatelessWidget {
             color: writterLogoColor,
           ),
           labelText: hintText,
-          labelStyle: TextStyle(color: writterLogoColor),
+          labelStyle: kInfoText,
           filled: true,
           helperText: " ",
           floatingLabelBehavior: FloatingLabelBehavior.never,

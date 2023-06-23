@@ -87,7 +87,8 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
                     color: writterLogoColor,
                   ),
                   labelText: 'Amount',
-                  labelStyle: TextStyle(color: writterLogoColor, fontSize: 17),
+                  labelStyle:
+                      const TextStyle(color: Colors.black, fontSize: 17),
                   filled: true,
                   helperText: " ",
                   floatingLabelBehavior: FloatingLabelBehavior.never,

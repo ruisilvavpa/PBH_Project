@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 import 'package:pbh_project/screens/donation_page/donation_amount_card.dart';
+import 'package:pbh_project/screens/donation_page/payment.dart';
 import 'package:pbh_project/screens/donation_page/personal_info.dart';
 import 'donation_page/institution_book_author.dart';
 
@@ -34,6 +35,8 @@ class _DonationScreenState extends State<DonationScreen> {
                       InstitutionBookAuthorCard(),
                       const SizedBox(height: 10.0),
                       PersonalInformation(),
+                      const SizedBox(height: 10.0),
+                      Payment(),
                       const SizedBox(height: 10.0),
                       DonationAmountCard(),
                     ],

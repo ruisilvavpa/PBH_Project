@@ -47,6 +47,11 @@ class Strings {
   //DONATION
   static const String kDonationPersonalInfo = 'Personal Info';
   static const String kDonationAmount = 'Select Donation Amount';
+  static const String kDonationPaymentBanner = 'Payment';
+  static const String kDonationPaymentCard = 'Card Number';
+  static const String kDonationPaymentHolder = 'Holder Name';
+  static const String kDonationPaymentDate = 'Expiry Date';
+  static const String kDonationPaymentCVV = 'CVV';
   static const String kDonationSubmit = 'Donate';
 
   //INPUT FIELDS
