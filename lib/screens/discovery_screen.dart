@@ -60,7 +60,7 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
                 //this is the rest of the screen stacked
                 //on top of the background
                 Padding(
-                  padding: EdgeInsets.fromLTRB(20, 60, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 60, 20, 0),
                   child: Column(
                     children: [
                       //Title of the screen

@@ -44,6 +44,11 @@ class Strings {
   static const String kDiscoverySearchIsEmpty = 'Type a keyword\n'
       'to show results!';
 
+  //DONATION
+  static const String kDonationPersonalInfo = 'Personal Info';
+  static const String kDonationAmount = 'Select Donation Amount';
+  static const String kDonationSubmit = 'Donate';
+
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
   static const String kFieldEmailError = "Please insert a valid email.";
@@ -52,6 +57,8 @@ class Strings {
       "The password needs to have at least 8 characteres.";
   static const String kFieldSearch = 'Search for writters or books...';
   static const String kFieldName = "Name";
+  static const String kFieldNIF = "NIF";
+  static const String kFieldAddress = "Address";
   static const String kProfileHeading = 'User Name';
   static const String kSubProfileHeading = 'emailUser@email.com';
   static const String kSettingsHeading = 'Settings';
