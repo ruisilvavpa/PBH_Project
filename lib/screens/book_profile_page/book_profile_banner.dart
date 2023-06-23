@@ -39,7 +39,7 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
                 alignment: Alignment.topCenter,
                 height: 278,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(29)),
                   boxShadow: [
@@ -71,7 +71,7 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
                       ),
                       const BookInfoCard(
                         rating: 2.1,
-                        numberOfPages: 41,
+                        writterName: 'Tiaguinho',
                       ),
                       const BookSinopseCard(
                           sinopse: 'Ola eu sou o Tiaguinho\n'

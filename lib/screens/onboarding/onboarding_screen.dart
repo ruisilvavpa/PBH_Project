@@ -122,42 +122,46 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 style: kOnboardingAction,
               ),
               onPressed: () async {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
-              })
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
+              },
+            )
           : Container(
               padding: const EdgeInsets.symmetric(horizontal: 80),
               height: 80,
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        Strings.kSkip,
-                        style: kOnboardingAction,
-                      ),
-                      onPressed: () => _pageController.jumpToPage(lastIndex()),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    child: const Text(
+                      Strings.kSkip,
+                      style: kOnboardingAction,
                     ),
-                    Center(
-                      child: SmoothPageIndicator(
-                        controller: _pageController,
-                        count: _items.length,
-                        effect: const WormEffect(
-                          spacing: 16,
-                          activeDotColor: Color.fromRGBO(87, 61, 28, 1),
-                        ),
+                    onPressed: () => _pageController.jumpToPage(lastIndex()),
+                  ),
+                  Center(
+                    child: SmoothPageIndicator(
+                      controller: _pageController,
+                      count: _items.length,
+                      effect: const WormEffect(
+                        spacing: 16,
+                        activeDotColor: Color.fromRGBO(87, 61, 28, 1),
                       ),
                     ),
-                    TextButton(
-                      child: const Text(
-                        Strings.kNext,
-                        style: kOnboardingAction,
-                      ),
-                      onPressed: () => _pageController.nextPage(
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                  ),
+                  TextButton(
+                    child: const Text(
+                      Strings.kNext,
+                      style: kOnboardingAction,
                     ),
-                  ]),
+                    onPressed: () => _pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut),
+                  ),
+                ],
+              ),
             ),
     );
   }

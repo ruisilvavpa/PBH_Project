@@ -39,7 +39,7 @@ class _BookSinopseCardState extends State<BookSinopseCard> {
                       ),
                     ),
                     const SizedBox(height: 5.0),
-                    Text('${widget.sinopse}\n', style: kTitle2),
+                    Text('${widget.sinopse}\n', style: kTextAction),
                   ],
                 ),
               ),

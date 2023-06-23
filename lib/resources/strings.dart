@@ -32,7 +32,7 @@ class Strings {
   static const String kBookProfileTitle = "Book Name";
   static const String kBookTitle = "Book Title";
   static const String kBookAuthorName = "Book Author";
-  static const String kBookProfileNumberOfPages = "Number of Pages";
+  static const String kBookProfileWritterName = "Writter Name";
   static const String kBookProfileRating = "Rating";
   static const String kBookProfileSinopse = "Sinopse";
 

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:pbh_project/screens/author_profile_screen.dart';
+import 'package:pbh_project/screens/discovery_screen.dart';
 
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 
 class BookInfoCard extends StatefulWidget {
   final double rating;
-  final int numberOfPages;
+  final String writterName;
   const BookInfoCard(
-      {super.key, required this.rating, required this.numberOfPages});
+      {super.key, required this.rating, required this.writterName});
 
   @override
   State<BookInfoCard> createState() => _BookInfoCardState();
@@ -51,15 +53,24 @@ class _BookInfoCardState extends State<BookInfoCard> {
                 child: Column(
                   children: [
                     const Text(
-                      Strings.kBookProfileNumberOfPages,
+                      Strings.kBookProfileWritterName,
                       style: TextStyle(
                         fontFamily: 'Khepri',
                         fontSize: 15,
                         color: writterLogoColor,
                       ),
                     ),
-                    const SizedBox(height: 5.0),
-                    Text('${widget.numberOfPages}', style: kTitle2)
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AuthorProfileScreen(),
+                          ),
+                        );
+                      },
+                      child: Text(widget.writterName, style: kTitle2),
+                    ),
                   ],
                 ),
               ),
