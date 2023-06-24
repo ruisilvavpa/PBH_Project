@@ -43,6 +43,12 @@ const kTitle2 = TextStyle(
   color: Colors.black,
 );
 
+const kTitle3 = TextStyle(
+  fontFamily: 'Khepri',
+  fontSize: 15,
+  color: writterLogoColor,
+);
+
 // ITIM FONT STYLE
 final kDescription =
     TextStyle(color: Colors.grey[500], fontFamily: 'Itim', fontSize: 20);

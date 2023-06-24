@@ -35,6 +35,8 @@ class Strings {
   static const String kBookProfileWritterName = "Writter Name";
   static const String kBookProfileRating = "Rating";
   static const String kBookProfileSinopse = "Sinopse";
+  static const String kBookProfileAboutMe = "About Me";
+  static const String kBookProfileBooks = "Books";
 
   //DISCOVERY
   static const String kDiscoveryTitle = 'Discovery \nPage';

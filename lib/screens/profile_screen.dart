@@ -28,12 +28,12 @@ class _WritterProfileFromUserViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarWBB(title: Strings.kProfileTitle),
+      appBar: const CustomAppBar(title: Strings.kProfileTitle),
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: Column(children: const [
+          child: const Column(children: [
             WritterProfileBanner(),
             SizedBox(
               height: 32,
