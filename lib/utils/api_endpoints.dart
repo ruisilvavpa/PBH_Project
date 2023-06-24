@@ -7,4 +7,7 @@ class _AuthEndPoints {
   final String registerEmail = '/api/Authentication/register';
   final String loginEmail = '/api/Authentication/login';
   final String forgotPassword = 'authaccount/forgotPassword';
+  final String fetchMe = '/api/User/me';
+  final String logout = '/api/Authentication/logout';
+  final String delete = '/api/User';
 }

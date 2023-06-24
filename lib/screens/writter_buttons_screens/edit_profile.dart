@@ -5,18 +5,28 @@ import 'package:pbh_project/reusable_widgets/input_fields.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
+import '../../controllers/edit_controller.dart';
+import '../../models/user.dart';
 import '../../resources/strings.dart';
 import '../../reusable_widgets/app_bar.dart';
 import '../../reusable_widgets/image_picker.dart';
 
-class EditProfile extends StatelessWidget {
-  const EditProfile({super.key});
+class EditProfile extends StatefulWidget {
+  User? user;
+  EditProfile({super.key, this.user});
 
+  @override
+  State<EditProfile> createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  User? user;
   @override
   Widget build(BuildContext context) {
     final RegistrationController registrationController =
         Get.put(RegistrationController());
     //variables
+
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -29,7 +39,7 @@ class EditProfile extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {
-                // Código para lidar com a exclusão da conta
+                delete(context);
               },
               child: const Icon(
                 Icons.delete,
@@ -139,5 +149,17 @@ class EditProfile extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void delete(BuildContext context) {
+    EditController()
+        .deleteAccount(user?.id ?? 0)
+        .then((value) => handleDeleteAnswer(value, context));
+  }
+
+  void handleDeleteAnswer(bool response, BuildContext context) {
+    if (response) {
+      Navigator.popUntil(context, (route) => route.isFirst);
+    }
   }
 }

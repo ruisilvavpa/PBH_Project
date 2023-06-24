@@ -21,7 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
   //variables
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final Account _account = Account();
+  RegistrationController controller = RegistrationController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,10 +82,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: RadioListTile(
                         //contentPadding: EdgeInsets.zero,
                         title: const Text(Strings.kSignupWritter),
-                        value: Type.writter,
-                        groupValue: _account.type,
+                        value: AccountType.writter,
+                        groupValue: controller.type,
                         onChanged: (value) =>
-                            setState(() => _account.type = value),
+                            setState(() => controller.type = value),
                       ),
                     ),
                     Flexible(
@@ -93,10 +93,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: RadioListTile(
                         contentPadding: EdgeInsets.zero,
                         title: const Text(Strings.kSignupUser),
-                        value: Type.user,
-                        groupValue: _account.type,
+                        value: AccountType.user,
+                        groupValue: controller.type,
                         onChanged: (value) =>
-                            setState(() => _account.type = value),
+                            setState(() => controller.type = value),
                       ),
                     ),
                   ],

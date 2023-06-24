@@ -6,6 +6,7 @@ import 'package:pbh_project/models/validations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/type_account.dart';
 import '../screens/writter_buttons_screens/home_screen.dart';
 import '../utils/api_endpoints.dart';
 
@@ -13,6 +14,7 @@ class RegistrationController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  AccountType? type = AccountType.writter;
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -31,6 +33,7 @@ class RegistrationController extends GetxController {
         'name': nameController.text,
         'email': emailController.text.trim(),
         'password': passwordController.text,
+        'type': type?.index ?? 2,
       };
 
       http.Response response =
@@ -38,19 +41,14 @@ class RegistrationController extends GetxController {
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
-        if (json['code'] == 0) {
-          var token = json['data']['token'];
-          print(token);
-          final SharedPreferences prefs = await _prefs;
+        var token = json['token'];
+        final SharedPreferences prefs = await _prefs;
 
-          await prefs.setString('token', token);
-          nameController.clear();
-          emailController.clear();
-          passwordController.clear();
-          Get.off(HomeScreen());
-        } else {
-          throw jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
-        }
+        await prefs.setString('token', token);
+        nameController.clear();
+        emailController.clear();
+        passwordController.clear();
+        Get.off(HomeScreen());
       } else {
         showDialog(
             context: Get.context!,

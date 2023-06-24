@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/resources/strings.dart';
+import 'package:get/get.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 
+import '../models/user.dart';
+import '../screens/writter_buttons_screens/edit_profile.dart';
 import '../utils/app_styles.dart';
 
 class UserProfileBanner extends StatefulWidget {
-  const UserProfileBanner({
-    super.key,
-  });
+  final User? user;
+  const UserProfileBanner({super.key, this.user});
 
   @override
-  State<UserProfileBanner> createState() => _UserProfileBannerState();
+  State<UserProfileBanner> createState() => _UserProfileBannerState(user);
 }
 
 class _UserProfileBannerState extends State<UserProfileBanner> {
+  final User? user;
+  _UserProfileBannerState(this.user);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,8 +36,8 @@ class _UserProfileBannerState extends State<UserProfileBanner> {
         const SizedBox(
           height: 10,
         ),
-        const Text(Strings.kProfileHeading, style: kTitle1),
-        Text(Strings.kSubProfileHeading, style: kDescription),
+        Text(user?.name ?? '', style: kTitle1),
+        Text(user?.email ?? '', style: kDescription),
         const SizedBox(
           height: 16,
         ),
@@ -44,7 +47,9 @@ class _UserProfileBannerState extends State<UserProfileBanner> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-          child: SubmitButton(onPressed: () {}, title: 'Edit Profile'),
+          child: SubmitButton(
+              onPressed: () => Get.to(() => EditProfile(user: user)),
+              title: 'Edit Profile'),
         ),
       ],
     );
