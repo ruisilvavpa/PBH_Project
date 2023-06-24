@@ -15,8 +15,12 @@ class LoginController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   bool isLoginValid() {
-    return (RegexValidator.validate(emailController.text, Regex.email) &&
-        RegexValidator.validate(passwordController.text, Regex.password));
+    final email = emailController.text.trim();
+    final password = passwordController.text;
+
+    return RegexValidator.validate(email, Regex.email) &&
+        RegexValidator.validate(password, Regex.password) &&
+        password.length >= 8;
   }
 
   Future<void> loginWithEmail() async {
