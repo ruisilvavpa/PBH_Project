@@ -43,6 +43,7 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             InfoBanner(bannerInfo: Strings.kDonationAmount),
             SizedBox(height: 16.0),
@@ -86,7 +87,6 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
                     Icons.euro_rounded,
                     color: writterLogoColor,
                   ),
-                  labelText: 'Amount',
                   labelStyle:
                       const TextStyle(color: Colors.black, fontSize: 17),
                   filled: true,

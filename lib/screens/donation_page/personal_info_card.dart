@@ -4,29 +4,28 @@ import 'package:pbh_project/reusable_widgets/input_fields.dart';
 import 'package:pbh_project/screens/donation_page/info_banner.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
-class Payment extends StatefulWidget {
+class PersonalInformationCard extends StatefulWidget {
   ///this is the card with the name of institution, book
   ///and author's
-  const Payment({
+  const PersonalInformationCard({
     super.key,
   });
 
   @override
-  State<Payment> createState() => _PaymentState();
+  State<PersonalInformationCard> createState() =>
+      _PersonalInformationCardState();
 }
 
-class _PaymentState extends State<Payment> {
+class _PersonalInformationCardState extends State<PersonalInformationCard> {
   TextEditingController _textController1 = TextEditingController();
   TextEditingController _textController2 = TextEditingController();
   TextEditingController _textController3 = TextEditingController();
-  TextEditingController _textController4 = TextEditingController();
   @override
   void initState() {
     super.initState();
     _textController1 = TextEditingController();
     _textController2 = TextEditingController();
     _textController3 = TextEditingController();
-    _textController4 = TextEditingController();
   }
 
   //Disposes the text controller
@@ -35,7 +34,6 @@ class _PaymentState extends State<Payment> {
     _textController1.dispose();
     _textController2.dispose();
     _textController3.dispose();
-    _textController4.dispose();
     super.dispose();
   }
 
@@ -51,36 +49,19 @@ class _PaymentState extends State<Payment> {
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.min,
           children: [
             InfoBanner(
-              bannerInfo: Strings.kDonationPaymentBanner,
+              bannerInfo: Strings.kDonationPersonalInfo,
             ),
             const SizedBox(height: 20),
-            InputTextFieldWidget(_textController1,
-                Strings.kDonationPaymentHolder, Icons.person_3_rounded, false),
-            const SizedBox(height: 10),
-            InputTextFieldWidget(_textController2, Strings.kDonationPaymentCard,
+            InputTextFieldWidget(_textController1, Strings.kFieldName,
                 Icons.person_3_rounded, false),
             const SizedBox(height: 10),
-            Row(
-              children: [
-                Flexible(
-                  child: InputTextFieldWidget(
-                      _textController3,
-                      Strings.kDonationPaymentDate,
-                      Icons.person_3_rounded,
-                      false),
-                ),
-                Flexible(
-                  child: InputTextFieldWidget(
-                      _textController4,
-                      Strings.kDonationPaymentCVV,
-                      Icons.person_3_rounded,
-                      false),
-                ),
-              ],
-            ),
+            InputTextFieldWidget(_textController2, Strings.kFieldNIF,
+                Icons.person_3_rounded, false),
+            const SizedBox(height: 10),
+            InputTextFieldWidget(_textController3, Strings.kFieldAddress,
+                Icons.person_3_rounded, false),
           ],
         ),
       ),

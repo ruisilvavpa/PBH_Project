@@ -37,7 +37,7 @@ class InputTextFieldWidget extends StatelessWidget {
           filled: true,
           helperText: " ",
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          fillColor: kBackgroundColor.withOpacity(0.3),
+          fillColor: writterLogoColor.withOpacity(0.3),
           errorText: validateInputField(textEditingController.text),
           contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
           border: OutlineInputBorder(
