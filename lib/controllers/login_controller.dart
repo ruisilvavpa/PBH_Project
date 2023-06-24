@@ -18,9 +18,7 @@ class LoginController extends GetxController {
     final email = emailController.text.trim();
     final password = passwordController.text;
 
-    return RegexValidator.validate(email, Regex.email) &&
-        RegexValidator.validate(password, Regex.password) &&
-        password.length >= 8;
+    return RegexValidator.validate(email, Regex.email);
   }
 
   Future<void> loginWithEmail() async {
@@ -38,18 +36,14 @@ class LoginController extends GetxController {
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
-        if (json['code'] == 0) {
-          var token = json['data']['Token'];
-          print(token);
-          final SharedPreferences prefs = await _prefs;
+        var token = json['token'];
+        print(token);
+        final SharedPreferences prefs = await _prefs;
 
-          await prefs.setString('token', token);
-          emailController.clear();
-          passwordController.clear();
-          Get.off(HomeScreen());
-        } else {
-          throw jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
-        }
+        await prefs.setString('token', token);
+        emailController.clear();
+        passwordController.clear();
+        Get.off(HomeScreen());
       } else {
         jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
       }
