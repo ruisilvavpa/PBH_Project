@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 
 class AboutUsPage extends StatelessWidget {

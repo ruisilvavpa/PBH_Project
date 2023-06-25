@@ -4,7 +4,7 @@ import 'package:pbh_project/utils/size_configs.dart';
 const Color defaultLogoColor = Color.fromRGBO(191, 229, 192, 1);
 const Color userLogoColor = Color.fromRGBO(138, 210, 224, 1);
 const Color writterLogoColor = Color.fromRGBO(235, 178, 125, 1);
-
+const Color kshadowcolor = Color(0xFFD3D3D3);
 const Color kBackgroundColor = Colors.white;
 const Color kOfflineBackgroundColor = Color.fromRGBO(191, 229, 192, 1);
 
@@ -40,6 +40,12 @@ const kTitle2 = TextStyle(
   fontFamily: 'Khepri',
   fontSize: 10,
   color: Colors.black,
+);
+
+const kTitle3 = TextStyle(
+  fontFamily: 'Khepri',
+  fontSize: 15,
+  color: writterLogoColor,
 );
 
 // ITIM FONT STYLE

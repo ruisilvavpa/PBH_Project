@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/screens/writter_profile/carousel_books.dart';
-import 'package:pbh_project/screens/writter_profile/list_view_books.dart';
-import 'package:pbh_project/screens/writter_profile/writter_main_profile_banner.dart';
-
 import '../resources/strings.dart';
 import '../reusable_widgets/app_bar.dart';
-import 'book_profile_page/book_profile_banner.dart';
+import 'writter_profile/writter_main_profile_banner.dart';
 
 class WritterMainProfilePage extends StatefulWidget {
   const WritterMainProfilePage({Key? key}) : super(key: key);
@@ -23,7 +19,7 @@ class _WritterMainProfilePageState extends State<WritterMainProfilePage> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
+          child: const Column(
             children: [
               SizedBox(height: 20),
               WritterMainProfileBanner(),

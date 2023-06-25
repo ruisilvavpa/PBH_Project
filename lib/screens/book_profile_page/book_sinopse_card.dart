@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 
-class AboutMe extends StatefulWidget {
-  final String aboutMe;
-  const AboutMe({super.key, required this.aboutMe});
+class BookSinopseCard extends StatefulWidget {
+  final String sinopse;
+  const BookSinopseCard({super.key, required this.sinopse});
 
   @override
-  State<AboutMe> createState() => _AboutMeState();
+  State<BookSinopseCard> createState() => _BookSinopseCardState();
 }
 
-class _AboutMeState extends State<AboutMe> {
+class _BookSinopseCardState extends State<BookSinopseCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+        clipBehavior: Clip.antiAlias,
         color: Theme.of(context).scaffoldBackgroundColor,
         elevation: 5.0,
         child: Padding(
@@ -29,9 +29,16 @@ class _AboutMeState extends State<AboutMe> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(Strings.kBioProfileBody, style: kTitle3),
+                    const Text(
+                      Strings.kBookProfileSinopse,
+                      style: TextStyle(
+                        fontFamily: 'Khepri',
+                        fontSize: 15,
+                        color: writterLogoColor,
+                      ),
+                    ),
                     const SizedBox(height: 5.0),
-                    Text(widget.aboutMe, style: kTextAction),
+                    Text('${widget.sinopse}\n', style: kTextAction),
                   ],
                 ),
               ),

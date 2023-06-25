@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../utils/app_styles.dart';
 import '../book_profile_page/book_rating.dart';
-import 'carousel_books.dart';
 
 class BookCardFinalizado extends StatefulWidget {
   const BookCardFinalizado({super.key});
