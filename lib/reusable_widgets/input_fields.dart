@@ -24,7 +24,6 @@ class InputTextFieldWidget extends StatelessWidget {
         controller: textEditingController,
         style: kInputField,
         cursorColor: writterLogoColor,
-        autocorrect: false,
         keyboardType: keyboardType,
         obscureText: obscureValue,
         decoration: InputDecoration(
@@ -36,7 +35,6 @@ class InputTextFieldWidget extends StatelessWidget {
           labelStyle: kInfoText,
           filled: true,
           helperText: " ",
-          floatingLabelBehavior: FloatingLabelBehavior.never,
           fillColor: writterLogoColor.withOpacity(0.3),
           errorText: validateInputField(textEditingController.text),
           contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),

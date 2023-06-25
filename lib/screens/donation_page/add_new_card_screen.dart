@@ -58,7 +58,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(6),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Column(
@@ -67,7 +67,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                   bannerInfo: Strings.kDonationPaymentBanner,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 TextFormField(
                   style: kInputField,
@@ -83,7 +83,6 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                     labelText: Strings.kDonationPaymentCard,
                     labelStyle: kInfoText,
                     filled: true,
-                    helperText: " ",
                     fillColor: writterLogoColor.withOpacity(0.3),
                     contentPadding:
                         const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -93,6 +92,9 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                             width: 0, style: BorderStyle.none)),
                     suffix: CardUtils.getCardIcon(cardType),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 TextFormField(
                   style: kInputField,

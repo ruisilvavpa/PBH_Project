@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
-import 'package:pbh_project/screens/donation_page/card_donation.dart';
+import 'package:pbh_project/screens/donation_page/add_new_card_screen.dart';
 import 'package:pbh_project/screens/donation_page/donation_amount_card.dart';
-import 'package:pbh_project/screens/donation_page/payment_card.dart';
 import 'package:pbh_project/screens/donation_page/personal_info_card.dart';
 import 'donation_page/institution_book_author_card.dart';
 

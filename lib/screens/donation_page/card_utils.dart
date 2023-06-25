@@ -133,13 +133,11 @@ class CardUtils {
       year = -1; // Lets use an invalid year intentionally
     }
     if ((month < 1) || (month > 12)) {
-      // A valid month is between 1 (January) and 12 (December)
       return 'Expiry month is invalid';
     }
     var fourDigitsYear = convertYearTo4Digits(year);
     if ((fourDigitsYear < 1) || (fourDigitsYear > 2099)) {
       // We are assuming a valid should be between 1 and 2099.
-      // Note that, it's valid doesn't mean that it has not expired.
       return 'Expiry year is invalid';
     }
     if (!hasDateExpired(month, year)) {

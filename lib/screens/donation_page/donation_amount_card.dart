@@ -46,7 +46,7 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             InfoBanner(bannerInfo: Strings.kDonationAmount),
-            SizedBox(height: 16.0),
+            SizedBox(height: 30.0),
             SliderTheme(
               data: const SliderThemeData(
                 trackHeight: 20,
@@ -74,8 +74,8 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
             ),
             const SizedBox(height: 16.0),
             SizedBox(
-              height: 68,
-              width: 120,
+              height: 60,
+              width: 105,
               child: TextFormField(
                 controller: _textController,
                 style: kInputField,
@@ -92,7 +92,7 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
                   filled: true,
                   helperText: " ",
                   floatingLabelBehavior: FloatingLabelBehavior.never,
-                  fillColor: kBackgroundColor.withOpacity(0.3),
+                  fillColor: writterLogoColor.withOpacity(0.3),
                   contentPadding: const EdgeInsets.fromLTRB(20, 10.0, 0, 10.0),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(23.0),
