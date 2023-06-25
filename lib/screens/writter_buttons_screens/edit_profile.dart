@@ -1,34 +1,31 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:pbh_project/controllers/registration_controller.dart';
 import 'package:pbh_project/reusable_widgets/input_fields.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/change_password_screen.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
 import '../../controllers/edit_controller.dart';
 import '../../models/user.dart';
 import '../../resources/strings.dart';
-import '../../reusable_widgets/app_bar.dart';
 import '../../reusable_widgets/image_picker.dart';
+import '../login/forgot_password_page.dart';
 
 class EditProfile extends StatefulWidget {
   User? user;
   EditProfile({super.key, this.user});
 
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  State<EditProfile> createState() => _EditProfileState(user: user);
 }
 
 class _EditProfileState extends State<EditProfile> {
   User? user;
+  _EditProfileState({this.user});
+  EditController controller = EditController();
   @override
   Widget build(BuildContext context) {
-    final RegistrationController registrationController =
-        Get.put(RegistrationController());
-    //variables
-
     double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: writterLogoColor,
@@ -103,21 +100,22 @@ class _EditProfileState extends State<EditProfile> {
                 const SizedBox(
                   height: 30,
                 ),
-                InputTextFieldWidget(registrationController.nameController,
-                    'Name', Icons.person_outline, false),
+                InputTextFieldWidget(controller.nameController, 'Name',
+                    Icons.person_outline, false),
                 const SizedBox(
                   height: 20,
                 ),
-                InputTextFieldWidget(registrationController.emailController,
-                    'Email', Icons.email, false),
+                InputTextFieldWidget(
+                    controller.emailController, 'Email', Icons.email, false),
                 const SizedBox(
                   height: 30,
                 ),
-                const SingleChildScrollView(
+                SingleChildScrollView(
                   child: TextField(
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
-                    decoration: InputDecoration(
+                    controller: controller.bioController,
+                    decoration: const InputDecoration(
                       labelText: Strings.kBioProfileTitle,
                       labelStyle: TextStyle(color: writterLogoColor),
                       hintText: Strings.kBioProfileBody,
@@ -138,17 +136,40 @@ class _EditProfileState extends State<EditProfile> {
                   height: 30,
                 ),
                 SubmitButton(
-                  onPressed: registrationController.isSignupValid() == true
-                      ? () => registrationController.registerWithEmail()
-                      : null,
+                  onPressed: () => edit(context),
                   title: Strings.kEditProfileTitle,
                 ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  RichText(
+                    text: TextSpan(
+                        text: Strings.kEditChangePassword,
+                        style: kDescription,
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      (const ChangePasswordPage())))),
+                  ),
+                ]),
               ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  void edit(BuildContext context) {
+    controller
+        .updateUser(user!)
+        .then((value) => handleEditAnswer(value, context));
+  }
+
+  void handleEditAnswer(bool response, BuildContext context) {
+    if (response) {
+      Navigator.pop(context);
+    }
   }
 
   void delete(BuildContext context) {

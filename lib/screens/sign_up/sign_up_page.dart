@@ -9,6 +9,7 @@ import 'package:pbh_project/screens/login/login_page.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
 import '../../resources/strings.dart';
+import '../../reusable_widgets/sign_in_option.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -54,7 +55,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 60,
                 ),
-                signInOption(context),
+                signInOption(context: context),
                 const SizedBox(
                   height: 40,
                 ),
@@ -158,32 +159,5 @@ class _SignUpPageState extends State<SignUpPage> {
   pushHomeScreen() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomeScreen()));
-  }
-
-  Row signInOption(context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          'Already have account?   ',
-          style: TextStyle(
-            color: Colors.grey,
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const LoginPage()));
-          },
-          child: const Text(
-            'Sign In',
-            style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Khepri',
-                fontWeight: FontWeight.bold),
-          ),
-        )
-      ],
-    );
   }
 }

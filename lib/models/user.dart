@@ -15,4 +15,7 @@ class User {
         id = json['id'],
         bio = json['bio'],
         type = json['type'];
+
+  Map<String, dynamic> toJson() =>
+      {'name': name, 'email': email, 'id': id, 'bio': bio, 'type': type};
 }

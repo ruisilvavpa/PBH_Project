@@ -36,6 +36,12 @@ class Strings {
   static const String kBioProfileBody = 'About Me';
   static const String kBioProfileTitle = 'Tell us a little bit about yourself';
 
+  //EDIT PROFILE
+  static const String kEditChangePassword = "Change Password?";
+
+  //CHANGE PASSWORD
+  static const String kChangePasswordTitle = "Change Password";
+
   //DISCOVERY
   static const String kDiscoveryTitle = 'Discovery \nPage';
   static const String kDiscoverySubtitle = 'Search for new amazing reads';
@@ -48,6 +54,9 @@ class Strings {
   static const String kFieldEmail = "Email";
   static const String kFieldEmailError = "Please insert a valid email.";
   static const String kFieldPassword = "Passord";
+  static const String kFieldOldPassword = "Old Passord";
+  static const String kFieldNewPassword = "New Passord";
+  static const String kFieldConfirmPassword = "Confirm Passord";
   static const String kFieldPasswordError =
       "The password needs to have at least 8 characteres.";
   static const String kFieldName = "Name";

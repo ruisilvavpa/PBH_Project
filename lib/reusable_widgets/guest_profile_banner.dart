@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/resources/strings.dart';
+import 'package:pbh_project/reusable_widgets/sign_in_option.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 import 'package:pbh_project/screens/writter_buttons_screens/edit_profile.dart';
 
@@ -39,6 +40,7 @@ class _GuestProfileBannerState extends State<GuestProfileBanner> {
         const SizedBox(
           height: 20,
         ),
+        signInOption(context: context),
       ],
     );
   }
