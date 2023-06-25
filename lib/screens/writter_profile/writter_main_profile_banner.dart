@@ -7,7 +7,6 @@ import 'package:pbh_project/screens/writter_profile/book_card_finalizado.dart';
 import 'package:pbh_project/screens/writter_profile/list_view_books.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 import '../book_profile_page/book_info_card.dart';
 import '../book_profile_page/book_sinopse_card.dart';
