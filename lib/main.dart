@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         cardColor: const Color.fromRGBO(191, 229, 192, 1),
       ),
       home: LoadingOverlay(
-        child: DonationScreen(),
+        child: DiscoveryScreen(),
       ),
     );
   }
