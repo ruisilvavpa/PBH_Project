@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/controllers/login_controller.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
-import 'package:pbh_project/screens/home_screen.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/home_screen.dart';
 import 'package:pbh_project/screens/login/forgot_password_page.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 import '../../models/validations.dart';
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: kOfflineBackgroundColor,
+      backgroundColor: kBackgroundColor,
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                         24, MediaQuery.of(context).size.height * 0.01, 24, 0),
                     child: Column(
                       children: <Widget>[
-                        logoWidget('assets/images/mainlogo.jpg'),
+                        logoWidget('assets/images/mainLogo.jpg'),
                         const Text(
                           Strings.kLoginTitle,
                           style: kTitle1,

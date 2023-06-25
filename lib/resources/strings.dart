@@ -15,6 +15,8 @@ class Strings {
   static const String kLoginSignup = "SIGN UP";
 
   //FORGOT PASSWORD
+  static const String kFieldEmailBody = "Insert your Email";
+  static const String kForgotPasswordQuestion = 'Did you forgot your password?';
   static const String kForgotPassword = 'Forgot Password';
   static const String kForgotPasswordAction = 'Send Request';
   static const String kForgotPasswordSuccess =
@@ -30,6 +32,15 @@ class Strings {
 
   //PROFILE
   static const String kProfileTitle = "Profile";
+  static const String kEditProfileTitle = "Edit Profile";
+  static const String kBioProfileBody = 'About Me';
+  static const String kBioProfileTitle = 'Tell us a little bit about yourself';
+
+  //EDIT PROFILE
+  static const String kEditChangePassword = "Change Password?";
+
+  //CHANGE PASSWORD
+  static const String kChangePasswordTitle = "Change Password";
 
   //DISCOVERY
   static const String kDiscoveryTitle = 'Discovery \nPage';
@@ -43,10 +54,14 @@ class Strings {
   static const String kFieldEmail = "Email";
   static const String kFieldEmailError = "Please insert a valid email.";
   static const String kFieldPassword = "Passord";
+  static const String kFieldOldPassword = "Old Passord";
+  static const String kFieldNewPassword = "New Passord";
+  static const String kFieldConfirmPassword = "Confirm Passord";
   static const String kFieldPasswordError =
       "The password needs to have at least 8 characteres.";
   static const String kFieldName = "Name";
   static const String kProfileHeading = 'User Name';
+  static const String kGuestProfileHeading = 'ME';
   static const String kSubProfileHeading = 'emailUser@email.com';
   static const String kSettingsHeading = 'Settings';
   static const String kFieldSearch = 'Search for writters or books...';

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pbh_project/screens/home_screen.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/home_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../models/validations.dart';
@@ -15,8 +15,10 @@ class LoginController extends GetxController {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   bool isLoginValid() {
-    return (RegexValidator.validate(emailController.text, Regex.email) &&
-        RegexValidator.validate(passwordController.text, Regex.password));
+    final email = emailController.text.trim();
+    final password = passwordController.text;
+
+    return RegexValidator.validate(email, Regex.email);
   }
 
   Future<void> loginWithEmail() async {
@@ -34,18 +36,14 @@ class LoginController extends GetxController {
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
-        if (json['code'] == 0) {
-          var token = json['data']['Token'];
-          print(token);
-          final SharedPreferences prefs = await _prefs;
+        var token = json['token'];
+        print(token);
+        final SharedPreferences prefs = await _prefs;
 
-          await prefs.setString('token', token);
-          emailController.clear();
-          passwordController.clear();
-          Get.off(HomeScreen());
-        } else {
-          throw jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
-        }
+        await prefs.setString('token', token);
+        emailController.clear();
+        passwordController.clear();
+        Get.off(HomeScreen());
       } else {
         jsonDecode(response.body)['message'] ?? 'Unknown Error Occured';
       }

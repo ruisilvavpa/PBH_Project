@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
 import 'package:pbh_project/screens/writter_buttons_screens/add_post_screen.dart';
-import 'package:pbh_project/screens/profile_screen.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/profile_screen.dart';
 
-import 'discovery_screen.dart';
+import '../discovery_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             return const AddPostPage();
 
           case 2:
-            return const WritterProfileFromUserView();
+            return const ProfileScreen();
         }
 
         return const LoginPage();

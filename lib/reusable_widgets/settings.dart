@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pbh_project/controllers/profile_controller.dart';
 import 'package:pbh_project/reusable_widgets/settings_menu_widget.dart';
 import 'package:pbh_project/screens/settings_page/faqs_page.dart';
 import '../resources/strings.dart';
@@ -11,41 +12,51 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 30, 16, 0),
-            child: Text(Strings.kSettingsHeading, style: kTitle1),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          SettingsMenuWidget(
-            title: 'FAQ\s',
-            icon: Icons.question_mark,
-            onPress: () => Get.to(() => FAQPage()),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          SettingsMenuWidget(
-            title: 'About us',
-            icon: Icons.info,
-            onPress: () => Get.to(() => const AboutUsPage()),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          SettingsMenuWidget(
-            title: 'Logout',
-            icon: Icons.logout_outlined,
-            hideArrow: true,
-            onPress: () {},
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.fromLTRB(16, 30, 16, 0),
+          child: Text(Strings.kSettingsHeading, style: kTitle1),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        SettingsMenuWidget(
+          title: 'FAQ\s',
+          icon: Icons.question_mark,
+          onPress: () => Get.to(() => FAQPage()),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        SettingsMenuWidget(
+          title: 'About us',
+          icon: Icons.info,
+          onPress: () => Get.to(() => const AboutUsPage()),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        SettingsMenuWidget(
+          title: 'Logout',
+          icon: Icons.logout_outlined,
+          hideArrow: true,
+          onPress: () => logout(context),
+        ),
+      ],
     );
+  }
+
+  void logout(BuildContext context) {
+    ProfileController()
+        .logout()
+        .then((value) => handleLogoutAnswer(value, context));
+  }
+
+  void handleLogoutAnswer(bool response, BuildContext context) {
+    if (response) {
+      Navigator.popUntil(context, (route) => route.isFirst);
+    }
   }
 }

@@ -4,11 +4,12 @@ import 'package:pbh_project/controllers/registration_controller.dart';
 import 'package:pbh_project/models/type_account.dart';
 import 'package:pbh_project/reusable_widgets/input_fields.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
-import 'package:pbh_project/screens/home_screen.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/home_screen.dart';
 import 'package:pbh_project/screens/login/login_page.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
 import '../../resources/strings.dart';
+import '../../reusable_widgets/sign_in_option.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -21,7 +22,7 @@ class _SignUpPageState extends State<SignUpPage> {
   //variables
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final Account _account = Account();
+  RegistrationController controller = RegistrationController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,8 @@ class _SignUpPageState extends State<SignUpPage> {
     final bottom = MediaQuery.of(context).viewInsets.bottom;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kOfflineBackgroundColor,
+        title: Text(Strings.kLoginSignup),
+        backgroundColor: writterLogoColor,
         shadowColor: Colors.transparent,
         leading: const BackButton(
           color: Colors.black,
@@ -41,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: kOfflineBackgroundColor,
+      backgroundColor: kBackgroundColor,
       body: SingleChildScrollView(
         reverse: true,
         child: Padding(
@@ -50,25 +52,10 @@ class _SignUpPageState extends State<SignUpPage> {
             key: _formKey,
             child: Column(
               children: [
-                //Image Container
-                SizedBox(
-                  width: w,
-                  height: h * 0.22,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: h * 0.05,
-                      ),
-                      const CircleAvatar(
-                        backgroundColor: Color.fromRGBO(191, 229, 192, 1),
-                        radius: 60,
-                        backgroundImage:
-                            AssetImage('assets/images/profile_icon.png'),
-                      ),
-                    ],
-                  ),
+                const SizedBox(
+                  height: 60,
                 ),
-                signInOption(context),
+                signInOption(context: context),
                 const SizedBox(
                   height: 40,
                 ),
@@ -96,10 +83,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: RadioListTile(
                         //contentPadding: EdgeInsets.zero,
                         title: const Text(Strings.kSignupWritter),
-                        value: Type.writter,
-                        groupValue: _account.type,
+                        value: AccountType.writter,
+                        groupValue: controller.type,
                         onChanged: (value) =>
-                            setState(() => _account.type = value),
+                            setState(() => controller.type = value),
                       ),
                     ),
                     Flexible(
@@ -107,10 +94,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: RadioListTile(
                         contentPadding: EdgeInsets.zero,
                         title: const Text(Strings.kSignupUser),
-                        value: Type.user,
-                        groupValue: _account.type,
+                        value: AccountType.user,
+                        groupValue: controller.type,
                         onChanged: (value) =>
-                            setState(() => _account.type = value),
+                            setState(() => controller.type = value),
                       ),
                     ),
                   ],
@@ -172,32 +159,5 @@ class _SignUpPageState extends State<SignUpPage> {
   pushHomeScreen() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomeScreen()));
-  }
-
-  Row signInOption(context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          'Already have account?   ',
-          style: TextStyle(
-            color: Colors.grey,
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const LoginPage()));
-          },
-          child: const Text(
-            'Sign In',
-            style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Khepri',
-                fontWeight: FontWeight.bold),
-          ),
-        )
-      ],
-    );
   }
 }

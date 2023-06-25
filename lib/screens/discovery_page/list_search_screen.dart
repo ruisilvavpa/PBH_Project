@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/screens/discovery_page/my_list_view.dart';
 import 'package:pbh_project/screens/discovery_page/results_not_found.dart';
 import 'package:pbh_project/screens/discovery_page/start_typing_widget.dart';
-import 'package:pbh_project/screens/home_screen.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/home_screen.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
 import '../../resources/strings.dart';
