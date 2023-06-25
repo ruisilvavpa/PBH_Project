@@ -80,7 +80,9 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                     ? const StartTyping()
                     : (itemsGridSearch.isEmpty
                         ? const ResultsNotFound()
-                        : MyListView()),
+                        : MyListView(
+                            bookGenres: itemsGridSearch,
+                          )),
               ),
               // this is the start of the header
               Positioned(
@@ -153,7 +155,7 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                                                 .contains(value.toLowerCase()))
                                             .toList();
                                         if (_textController.text.isNotEmpty &&
-                                            itemsGridSearch.isEmpty) {
+                                            itemsGridSearch.isNotEmpty) {
                                           print('itemsgridsearch lgth'
                                               ' ${itemsGridSearch.length}');
                                         }
