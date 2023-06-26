@@ -83,4 +83,9 @@ class Strings {
   static const String kGuestProfileHeading = 'ME';
   static const String kSubProfileHeading = 'emailUser@email.com';
   static const String kSettingsHeading = 'Settings';
+
+
+  // GRIDVIEW
+  static const String kGridViewName = 'Books';
+
 }
