@@ -11,13 +11,13 @@ class BookRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            offset: Offset(3, 7),
+            offset: const Offset(3, 7),
             blurRadius: 20,
             color: kshadowcolor.withOpacity(.5),
           ),
@@ -30,7 +30,7 @@ class BookRating extends StatelessWidget {
             color: Colors.amber,
             size: 15,
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             '$score',
             style: const TextStyle(

@@ -1,16 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:pbh_project/reusable_widgets/book_cards.dart';
+import 'package:pbh_project/screens/book_profile_page/book_rating.dart';
 import 'package:pbh_project/screens/writter_profile/about_me_card.dart';
-import 'package:pbh_project/screens/writter_profile/book_card_finalizado.dart';
-import 'package:pbh_project/screens/writter_profile/list_view_books.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-
-import '../../resources/strings.dart';
-import '../../utils/app_styles.dart';
-import '../book_profile_page/book_info_card.dart';
-import '../book_profile_page/book_sinopse_card.dart';
 import 'carousel_books.dart';
 
 class WritterMainProfileBanner extends StatefulWidget {
@@ -40,6 +30,7 @@ class _WritterMainProfileBannerState extends State<WritterMainProfileBanner> {
               ),
             ),
           ),
+          const BookRating(score: 4.7),
           const AboutMe(
             aboutMe: 'Ola eu sou o Tiaguinho\n'
                 'Tou a programar isto para o projeto final\n'
