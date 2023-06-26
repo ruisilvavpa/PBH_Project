@@ -4,19 +4,22 @@ import 'package:pbh_project/resources/strings.dart';
 import 'package:pbh_project/reusable_widgets/settings_menu_widget.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 
+import '../models/user.dart';
 import '../screens/settings_page/faqs_page.dart';
+import '../screens/writter_buttons_screens/edit_profile.dart';
 import '../utils/app_styles.dart';
 
 class WritterProfileBanner extends StatefulWidget {
-  const WritterProfileBanner({
-    super.key,
-  });
+  final User? user;
+  const WritterProfileBanner({super.key, this.user});
 
   @override
-  State<WritterProfileBanner> createState() => _WritterProfileBannerState();
+  State<WritterProfileBanner> createState() => _WritterProfileBannerState(user);
 }
 
 class _WritterProfileBannerState extends State<WritterProfileBanner> {
+  User? user;
+  _WritterProfileBannerState(this.user);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,8 +39,8 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         const SizedBox(
           height: 10,
         ),
-        const Text(Strings.kProfileHeading, style: kTitle1),
-        Text(Strings.kSubProfileHeading, style: kDescription),
+        Text(user?.name ?? '', style: kTitle1),
+        Text(user?.email ?? '', style: kDescription),
         const SizedBox(
           height: 16,
         ),
@@ -47,7 +50,9 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
-          child: SubmitButton(onPressed: () {}, title: 'Edit Profile'),
+          child: SubmitButton(
+              onPressed: () => Get.to(() => EditProfile(user: user)),
+              title: 'Edit Profile'),
         ),
         SettingsMenuWidget(
           title: 'My Books',

@@ -33,7 +33,7 @@ class SearchButton extends StatelessWidget {
           ),
 
           //content of the button
-          child: const Padding(
+          child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               children: [

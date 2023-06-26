@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 import '../../resources/strings.dart';
 
 class StartTyping extends StatelessWidget {
+  ///this widget is shown when the _textcontroller from
+  ///the list search screen is empty,
+  ///it shows an icon and a text bellow it
   const StartTyping({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Padding(

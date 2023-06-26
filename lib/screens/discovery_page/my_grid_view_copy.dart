@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/utils/size_configs.dart';
 
 class MyGridViewCopy extends StatelessWidget {
+  ///this is the grid view for the book genres and writters
   const MyGridViewCopy({
     super.key,
   });

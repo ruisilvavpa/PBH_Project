@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import '../../resources/strings.dart';
 
 class ResultsNotFound extends StatelessWidget {
+  ///this widget is shown when the _textcontroller from
+  ///the list search screen is not empty but the itemsgridsearch is,
+  ///it shows an icon and a text bellow it
   const ResultsNotFound({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(children: [
         SizedBox(
           height: 30,

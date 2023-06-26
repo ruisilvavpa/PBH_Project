@@ -10,6 +10,7 @@ Row signUpOption(context) {
       const Text(
         Strings.kLoginHaveAccount,
         style: TextStyle(
+          fontFamily: 'Itim',
           color: Colors.grey,
         ),
       ),

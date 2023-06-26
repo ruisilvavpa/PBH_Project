@@ -29,6 +29,7 @@ class InputTextFieldWidget extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
+<<<<<<< HEAD
             color: writterLogoColor,
           ),
           labelText: hintText,
@@ -36,11 +37,27 @@ class InputTextFieldWidget extends StatelessWidget {
           filled: true,
           helperText: " ",
           fillColor: writterLogoColor.withOpacity(0.3),
+=======
+            color: defaultLogoColor,
+          ),
+          labelText: hintText,
+          labelStyle: const TextStyle(color: writterLogoColor),
+          filled: true,
+          helperText: " ",
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          fillColor: Colors.white.withOpacity(0.3),
+>>>>>>> main
           errorText: validateInputField(textEditingController.text),
           contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-          border: OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(23.0),
-              borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+              borderSide: const BorderSide(width: 0, style: BorderStyle.solid)),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(23.0),
+            borderSide: BorderSide(
+              color: writterLogoColor,
+            ),
+          ),
         ),
       ),
     );
