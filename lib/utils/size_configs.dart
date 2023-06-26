@@ -16,8 +16,6 @@ class SizeConfig {
     blockSizeV = screenHeight! / 100;
   }
 
-  /// this functions changes the count of items from a grid view
-  /// to match a screen size
   int calculateCrossAxisCount(context) {
     final screenWidth = MediaQuery.of(context).size.width;
 

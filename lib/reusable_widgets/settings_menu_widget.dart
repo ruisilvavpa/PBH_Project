@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SettingsMenuWidget extends StatelessWidget {
@@ -13,7 +12,7 @@ class SettingsMenuWidget extends StatelessWidget {
   final String title;
   final IconData icon;
   final VoidCallback onPress;
-  bool? hideArrow;
+  final bool? hideArrow;
 
   @override
   Widget build(BuildContext context) {

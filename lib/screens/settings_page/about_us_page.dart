@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 
 class AboutUsPage extends StatelessWidget {
@@ -7,13 +9,13 @@ class AboutUsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: 'About Us'),
+    return const Scaffold(
+      appBar: CustomAppBar(title: 'About Us'),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text(
               'Welcome to our platform!',
               style: TextStyle(

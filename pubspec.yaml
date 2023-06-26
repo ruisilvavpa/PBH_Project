@@ -46,6 +46,7 @@ dependencies:
   percent_indicator: any
   carousel_slider: ^4.2.1
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -80,6 +81,9 @@ flutter:
     - assets/images/mainLogo.jpg
     - assets/images/assortment-with-books-dark-background.jpg
     - resources/onboarding.json
+    - assets/images/teste_book_1.png
+    - assets/images/assortment-with-books-dark-background.jpg
+    - assets/images/card_logos/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 import '../writter_main_profile_page.dart';
+
+
+import '../../resources/strings.dart';
+import '../../utils/app_styles.dart';
+
 
 class BookInfoCard extends StatefulWidget {
   final double rating;
@@ -63,8 +69,10 @@ class _BookInfoCardState extends State<BookInfoCard> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
+
                             builder: (context) =>
                                 const WritterMainProfilePage(),
+
                           ),
                         );
                       },

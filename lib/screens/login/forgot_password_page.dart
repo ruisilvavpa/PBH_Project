@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/controllers/forgotpassword_controller.dart';
 import 'package:pbh_project/models/validations.dart';
+
+import 'package:pbh_project/screens/login/new_password_page.dart';
+
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 import 'package:pbh_project/reusable_widgets/logo_widget.dart';
+
+import 'package:pbh_project/utils/app_styles.dart';
+
 import '../../resources/strings.dart';
 import '../../reusable_widgets/input_fields.dart';
 import '../../reusable_widgets/submit_button.dart';
@@ -55,7 +61,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               SubmitButton(
                   onPressed: forgotController.checkIsValid() == true
                       ? () => sendRequest()
-                      : null,
+                      : () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const NewPasswordPage(),
+                            ),
+                          ),
                   title: Strings.kForgotPasswordAction),
             ],
           ),
