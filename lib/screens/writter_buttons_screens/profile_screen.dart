@@ -8,6 +8,7 @@ import 'package:pbh_project/utils/theme_helper.dart';
 import '../../models/user.dart';
 import '../../resources/strings.dart';
 import '../../reusable_widgets/guest_profile_banner.dart';
+import '../../reusable_widgets/user_profile_banner.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

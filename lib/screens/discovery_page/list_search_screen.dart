@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/screens/discovery_page/my_list_view.dart';
 import 'package:pbh_project/screens/discovery_page/results_not_found.dart';
 import 'package:pbh_project/screens/discovery_page/start_typing_widget.dart';
-<<<<<<< HEAD
-import 'package:pbh_project/screens/home_screen.dart';
-=======
-import 'package:pbh_project/screens/writter_buttons_screens/home_screen.dart';
-import 'package:pbh_project/utils/app_styles.dart';
->>>>>>> main
 
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
+import '../writter_buttons_screens/home_screen.dart';
 
 class ListSearchScreen extends StatefulWidget {
   ///this is the screen where the user searches for books or writters

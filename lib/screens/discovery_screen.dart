@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:pbh_project/screens/discovery_page/my_grid_view_copy.dart';
 import 'package:pbh_project/screens/discovery_page/search_button.dart';
 import 'package:pbh_project/utils/app_styles.dart';
-=======
-import 'discovery_page/my_grid_view_copy.dart';
-import 'discovery_page/search_button.dart';
-import '../utils/app_styles.dart';
->>>>>>> main
 
 import '../resources/strings.dart';
 import 'discovery_page/my_grid_view.dart';

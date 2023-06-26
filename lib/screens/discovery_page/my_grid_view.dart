@@ -38,11 +38,7 @@ class MyGridView extends StatelessWidget {
         ),
         primary: false,
         shrinkWrap: true,
-<<<<<<< HEAD
         itemCount: _bookGenres.length, // Replace with actual genre count
-=======
-        itemCount: 16,
->>>>>>> main
         itemBuilder: (context, index) {
           return Card(
             color: Colors.white,

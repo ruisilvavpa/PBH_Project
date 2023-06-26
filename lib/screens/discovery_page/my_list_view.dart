@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MyListView extends StatefulWidget {
-<<<<<<< HEAD
   MyListView({super.key, required this.bookGenres});
 
   late final List<String> bookGenres;
-=======
-  ///this is the list view builder for the list search screen
-  const MyListView({super.key});
->>>>>>> main
 
   @override
   State<MyListView> createState() => _MyListViewState();
