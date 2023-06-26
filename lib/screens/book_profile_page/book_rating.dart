@@ -11,6 +11,8 @@ class BookRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 30,
+      width: 50,
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -23,7 +25,7 @@ class BookRating extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Row(
         children: [
           const Icon(
             Icons.star,

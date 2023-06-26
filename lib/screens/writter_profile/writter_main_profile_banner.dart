@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/screens/book_profile_page/book_rating.dart';
 import 'package:pbh_project/screens/writter_profile/about_me_card.dart';
+import 'package:pbh_project/screens/writter_profile/test_wish_list.dart';
+import '../../reusable_widgets/image_picker.dart';
 import 'carousel_books.dart';
 
 class WritterMainProfileBanner extends StatefulWidget {
@@ -17,19 +19,36 @@ class _WritterMainProfileBannerState extends State<WritterMainProfileBanner> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Container(
-            alignment: Alignment.center,
-            width: 120,
-            height: 120,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: const Image(
-                image: AssetImage(
-                  'assets/images/image_profile.jpg',
+          Stack(
+            children: [
+              Container(
+                alignment: Alignment.center,
+                width: 150,
+                height: 120,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: const Image(
+                    image: AssetImage(
+                      'assets/images/image_profile.jpg',
+                    ),
+                  ),
                 ),
               ),
-            ),
+              const Positioned(
+                bottom: -5,
+                right: -3,
+                child: IconButton(
+                  onPressed: TesteWishList,
+                  icon: Icon(
+                    Icons.my_library_add,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                ),
+              )
+            ],
           ),
+          const SizedBox(height: 10),
           const BookRating(score: 4.7),
           const AboutMe(
             aboutMe: 'Ola eu sou o Tiaguinho\n'

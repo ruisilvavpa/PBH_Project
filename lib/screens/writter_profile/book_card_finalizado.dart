@@ -31,7 +31,7 @@ class _BookCardFinalizadoState extends State<BookCardFinalizado> {
                 ),
               ),
               Positioned(
-                top: 20,
+                top: 5,
                 right: 5,
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
