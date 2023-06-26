@@ -4,15 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:pbh_project/screens/book_profile_page/book_profile_banner.dart';
 import 'package:pbh_project/reusable_widgets/loading_overlay.dart';
-<<<<<<< HEAD
-import 'package:pbh_project/screens/book_profile_screen.dart';
-import 'package:pbh_project/screens/discovery_screen.dart';
-import 'package:pbh_project/screens/donation_page/add_new_card_screen.dart';
-import 'package:pbh_project/screens/donation_screen.dart';
-=======
->>>>>>> main
+
 import 'package:pbh_project/screens/onboarding/onboarding_screen.dart';
+
+import 'package:pbh_project/screens/writter_main_profile_page.dart';
+
 import 'package:pbh_project/screens/profile_screen.dart';
+
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
@@ -29,13 +27,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         cardColor: const Color.fromRGBO(191, 229, 192, 1),
       ),
-<<<<<<< HEAD
+
       home: LoadingOverlay(
         child: DiscoveryScreen(),
-=======
-      home: const LoadingOverlay(
-        child: OnBoardingScreen(),
->>>>>>> main
+
       ),
     );
   }

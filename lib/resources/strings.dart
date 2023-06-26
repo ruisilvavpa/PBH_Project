@@ -42,6 +42,13 @@ class Strings {
   static const String kEditProfileTitle = "Edit Profile";
   static const String kBioProfileBody = 'About Me';
   static const String kBioProfileTitle = 'Tell us a little bit about yourself';
+  static const String kBookProfileTitle = "Book Name";
+  static const String kBookTitle = "Book Title";
+  static const String kBookAuthorName = "Book Author";
+  static const String kBookProfileWritterName = "Writter Name";
+  static const String kBookProfileRating = "Rating";
+  static const String kBookProfileSinopse = "Sinopse";
+  static const String kBookProfileBooks = "Books";
 
   //EDIT PROFILE
   static const String kEditChangePassword = "Change Password?";

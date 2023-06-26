@@ -32,14 +32,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void createUserWidget(User? user) {
-    if (user != null && user.type == 1) {
-      setState(() {
-        banner = WritterProfileBanner(user: user);
-      });
-    } else {
-      setState(() {
-        banner = UserProfileBanner(user: user);
-      });
+    if (user != null) {
+      if (user.type == 1) {
+        setState(() {
+          banner = WritterProfileBanner(user: user);
+        });
+      } else {
+        setState(() {
+          banner = UserProfileBanner(user: user);
+        });
+      }
     }
     user = user;
   }
