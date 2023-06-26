@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/screens/author_profile_screen.dart';
-import 'package:pbh_project/screens/discovery_screen.dart';
 
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
+import '../writter_main_profile_page.dart';
+
+
+import '../../resources/strings.dart';
+import '../../utils/app_styles.dart';
+
 
 class BookInfoCard extends StatefulWidget {
   final double rating;
@@ -65,7 +69,10 @@ class _BookInfoCardState extends State<BookInfoCard> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const AuthorProfileScreen(),
+
+                            builder: (context) =>
+                                const WritterMainProfilePage(),
+
                           ),
                         );
                       },

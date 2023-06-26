@@ -2,10 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/controllers/forgotpassword_controller.dart';
 import 'package:pbh_project/models/validations.dart';
+<<<<<<< HEAD
 import 'package:pbh_project/screens/login/new_password_page.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 import 'package:pbh_project/reusable_widgets/logo_widget.dart';
+=======
+
+import 'package:pbh_project/screens/login/new_password_page.dart';
+
+import 'package:pbh_project/reusable_widgets/app_bar.dart';
+import 'package:pbh_project/reusable_widgets/logo_widget.dart';
+
+>>>>>>> 23fdcd173290d46bcc2164cb238635933032552d
 import 'package:pbh_project/utils/app_styles.dart';
+
 import '../../resources/strings.dart';
 import '../../reusable_widgets/input_fields.dart';
 import '../../reusable_widgets/submit_button.dart';
