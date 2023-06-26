@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:pbh_project/controllers/book_categories_controller.dart';
 import 'package:pbh_project/controllers/institutions_controller.dart';
+import '../../models/categories.dart';
 import '../../reusable_widgets/app_bar.dart';
-import '../../reusable_widgets/combo_category_list.dart';
 import '../../reusable_widgets/image_picker.dart';
 import '../../utils/app_styles.dart';
+import 'package:pbh_project/models/categories.dart';
 
 class AddPostPage extends StatefulWidget {
   const AddPostPage({super.key});
@@ -16,16 +16,35 @@ class AddPostPage extends StatefulWidget {
 
 class _AddPostPageState extends State<AddPostPage> {
   //variables
-  String? selectedInstitution;
-  String? selectedCategory;
+  BookController bookController = BookController();
+  InstitutionsController institutionController = InstitutionsController();
+  List<DropdownMenuItem> categories = [];
+  List<DropdownMenuItem> institutions = [];
+  String? categoriesName;
+  String? institutionsName;
   double _currentValue1 = 150;
 
   @override
-  Widget build(BuildContext context) {
-    final BookController bookController = Get.put(BookController());
-    InstitutionsController institutionController =
-        Get.put(InstitutionsController());
+  void initState() {
+    super.initState();
+    bookController.getBookCategories().then((value) => {
+          setState(() {
+            categories = value.map((e) {
+              return DropdownMenuItem(value: e.name, child: Text(e.name));
+            }).toList();
+          })
+        });
+    institutionController.getInstitutions().then((value) => {
+          setState(() {
+            institutions = value.map((e) {
+              return DropdownMenuItem(value: e.name, child: Text(e.name));
+            }).toList();
+          })
+        });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: const CustomAppBarWBB(title: 'Add New Post'),
@@ -105,46 +124,12 @@ class _AddPostPageState extends State<AddPostPage> {
               height: 30,
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              alignment: Alignment.center,
-              width: double.infinity,
-              height: 40,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 2.0,
-                ),
-                borderRadius: BorderRadius.circular(4.0),
-              ),
-              child: FutureBuilder<List<String>>(
-                future: bookController.getBookCategories(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    List<String> categories = snapshot.data!;
-                    return DropdownButton<String>(
-                      borderRadius: BorderRadius.circular(30),
-                      isExpanded: true,
-                      value: selectedCategory,
-                      hint: const Text('Select a Category'),
-                      items: [
-                        for (String category in categories)
-                          DropdownMenuItem<String>(
-                            value: category,
-                            child: Text(category),
-                          ),
-                      ],
-                      onChanged: (String? newCategory) {
-                        setState(() {
-                          selectedCategory = newCategory;
-                        });
-                      },
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  } else {
-                    return const CircularProgressIndicator();
-                  }
-                },
+              padding: EdgeInsets.all(20.0),
+              child: DropdownButton(
+                isExpanded: true,
+                items: categories,
+                value: categoriesName,
+                onChanged: (value) => categoryDropdownDidChange(value),
               ),
             ),
             const SizedBox(
@@ -174,35 +159,11 @@ class _AddPostPageState extends State<AddPostPage> {
                     ),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
-                  child: FutureBuilder<List<String>>(
-                    future: institutionController.getInstitutions(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        List<String> institutions = snapshot.data!;
-                        return DropdownButton<String>(
-                          borderRadius: BorderRadius.circular(30),
-                          isExpanded: true,
-                          value: selectedInstitution,
-                          hint: const Text('Select an Institution'),
-                          items: [
-                            for (String institution in institutions)
-                              DropdownMenuItem<String>(
-                                value: institution,
-                                child: Text(institution),
-                              ),
-                          ],
-                          onChanged: (String? newInstitution) {
-                            setState(() {
-                              selectedInstitution = newInstitution;
-                            });
-                          },
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text('Error: ${snapshot.error}');
-                      } else {
-                        return const CircularProgressIndicator();
-                      }
-                    },
+                  child: DropdownButton(
+                    isExpanded: true,
+                    items: institutions,
+                    value: institutionsName,
+                    onChanged: (value) => institutionDropdownDidChange(value),
                   ),
                 ),
               ],
@@ -253,5 +214,14 @@ class _AddPostPageState extends State<AddPostPage> {
         ),
       ),
     );
+  }
+
+  void categoryDropdownDidChange(String value) {
+    //bookController.category = Categories(name: value.toString(), id: 0);
+    //setState(() => teamName = value);
+  }
+  void institutionDropdownDidChange(String value) {
+    //bookController.category = Categories(name: value.toString(), id: 0);
+    //setState(() => teamName = value);
   }
 }

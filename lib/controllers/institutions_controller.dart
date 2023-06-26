@@ -2,11 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:pbh_project/models/institutions.dart';
 
 import '../utils/api_endpoints.dart';
 
 class InstitutionsController extends GetxController {
-  Future<List<String>> getInstitutions() async {
+  Future<List<Institution>> getInstitutions() async {
     try {
       var url = Uri.parse(
           ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.institutions);
@@ -14,9 +15,12 @@ class InstitutionsController extends GetxController {
       http.Response response = await http.get(url);
 
       if (response.statusCode == 200) {
-        Map<String, dynamic> data = jsonDecode(response.body);
-        List<String> institutions =
-            data.values.map((item) => item['Name'].toString()).toList();
+        final data = jsonDecode(response.body);
+        List<Institution> institutions = [];
+        for (var element in data) {
+          Institution institution = Institution.fromJson(element);
+          institutions.add(institution);
+        }
         return institutions;
       } else {
         return [];
