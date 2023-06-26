@@ -54,7 +54,7 @@ class _BookListCardState extends State<BookListCard> {
           ),
           Positioned(
             top: 10,
-            right: 90,
+            right: 130,
             child: Column(
               children: [
                 IconButton(

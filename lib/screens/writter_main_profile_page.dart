@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pbh_project/grid_view_2.dart';
 import '../resources/strings.dart';
 import '../reusable_widgets/app_bar.dart';
 import 'writter_profile/writter_main_profile_banner.dart';
@@ -22,7 +23,7 @@ class _WritterMainProfilePageState extends State<WritterMainProfilePage> {
           child: const Column(
             children: [
               SizedBox(height: 20),
-              WritterMainProfileBanner(),
+              MyGridViewCopy2(),
             ],
           ),
         ),
