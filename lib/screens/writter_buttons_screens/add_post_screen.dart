@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:pbh_project/controllers/book_categories_controller.dart';
 import 'package:pbh_project/controllers/institutions_controller.dart';
@@ -23,6 +25,7 @@ class _AddPostPageState extends State<AddPostPage> {
   String? categoriesName;
   String? institutionsName;
   double _currentValue1 = 150;
+  File? bookNewImage;
 
   @override
   void initState() {
@@ -41,6 +44,16 @@ class _AddPostPageState extends State<AddPostPage> {
             }).toList();
           })
         });
+  }
+
+  void pickerAction() {
+    imagePickerOption((file) => handlePickedFile(file));
+  }
+
+  void handlePickedFile(File file) {
+    setState(() {
+      bookNewImage = file;
+    });
   }
 
   @override
@@ -81,12 +94,12 @@ class _AddPostPageState extends State<AddPostPage> {
                       ),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     bottom: -10,
                     right: -10,
                     child: IconButton(
-                      onPressed: imagePickerOption,
-                      icon: Icon(
+                      onPressed: () => pickerAction(),
+                      icon: const Icon(
                         Icons.add_a_photo_rounded,
                         color: Colors.black,
                         size: 30,

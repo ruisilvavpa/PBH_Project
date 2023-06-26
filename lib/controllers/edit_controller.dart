@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class EditController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController bioController = TextEditingController();
+  File? userImage;
 
   Future<bool> deleteAccount(int id) async {
     try {
@@ -45,37 +47,56 @@ class EditController extends GetxController {
   }
 
   Future<bool> updateUser(User user) async {
-    User userEdited = User(user.id, nameController.text, bioController.text,
-        emailController.text.trim(), user.type);
-    try {
-      final sharedPreferences = await SharedPreferences.getInstance();
-      String token = sharedPreferences.getString('token') ?? '';
-      var headers = {
-        'Content-Type': 'application/json',
-        'Token': token,
-      };
-      var url =
-          Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.update);
+    final sharedPreferences = await SharedPreferences.getInstance();
+    String token = sharedPreferences.getString('token') ?? '';
 
-      http.Response response = await http.put(url,
-          body: jsonEncode(userEdited.toJson()), headers: headers);
+    if (userImage != null) {
+      var request = http.MultipartRequest(
+          "PUT",
+          Uri.parse(ApiEndPoints.baseUrl +
+              ApiEndPoints.authEndPoints.updateUserImage));
 
-      if (response.statusCode == 200) {
-        return true;
-      } else {
+      request.headers["Token"] = token;
+      var pic = await http.MultipartFile.fromPath("ImageSent", userImage!.path);
+      request.files.add(pic);
+      var response = await request.send();
+      var responseData = await response.stream.toBytes();
+      var responseString = String.fromCharCodes(responseData);
+      print(responseString);
+
+      userImage = null;
+      return updateUser(user);
+    } else {
+      User userEdited = User(user.id, nameController.text, bioController.text,
+          emailController.text.trim(), user.type);
+      try {
+        var headers = {
+          'Content-Type': 'application/json',
+          'Token': token,
+        };
+        var url =
+            Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.update);
+
+        http.Response response = await http.put(url,
+            body: jsonEncode(userEdited.toJson()), headers: headers);
+
+        if (response.statusCode == 200) {
+          return true;
+        } else {
+          return false;
+        }
+      } catch (e) {
+        showDialog(
+            context: Get.context!,
+            builder: (context) {
+              return SimpleDialog(
+                title: const Text('Error'),
+                contentPadding: const EdgeInsets.all(20),
+                children: [Text(e.toString())],
+              );
+            });
         return false;
       }
-    } catch (e) {
-      showDialog(
-          context: Get.context!,
-          builder: (context) {
-            return SimpleDialog(
-              title: const Text('Error'),
-              contentPadding: const EdgeInsets.all(20),
-              children: [Text(e.toString())],
-            );
-          });
-      return false;
     }
   }
 }

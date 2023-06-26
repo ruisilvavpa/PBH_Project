@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pbh_project/reusable_widgets/input_fields.dart';
@@ -9,7 +11,6 @@ import '../../controllers/edit_controller.dart';
 import '../../models/user.dart';
 import '../../resources/strings.dart';
 import '../../reusable_widgets/image_picker.dart';
-import '../login/forgot_password_page.dart';
 
 class EditProfile extends StatefulWidget {
   User? user;
@@ -23,6 +24,38 @@ class _EditProfileState extends State<EditProfile> {
   User? user;
   _EditProfileState({this.user});
   EditController controller = EditController();
+  File? userNewImage;
+  Image placeholderImage = Image.asset(
+    'assets/images/image_profile.jpg',
+    width: 150,
+    height: 150,
+    fit: BoxFit.contain,
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    controller.nameController.text = user?.name ?? "";
+    controller.bioController.text = user?.bio ?? "";
+    controller.emailController.text = user?.email ?? "";
+  }
+
+  void pickerAction() {
+    imagePickerOption((file) => handlePickedFile(file));
+  }
+
+  void handlePickedFile(File file) {
+    controller.userImage = file;
+    setState(() {
+      placeholderImage = Image.file(
+        file,
+        width: 150,
+        height: 150,
+        fit: BoxFit.contain,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -68,20 +101,15 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                   ),
                   child: ClipOval(
-                    child: Image.asset(
-                      'assets/images/image_profile.jpg',
-                      width: 150,
-                      height: 150,
-                      fit: BoxFit.contain,
-                    ),
+                    child: placeholderImage,
                   ),
                 ),
-                const Positioned(
+                Positioned(
                   bottom: -10,
                   right: -10,
                   child: IconButton(
-                    onPressed: imagePickerOption,
-                    icon: Icon(
+                    onPressed: () => pickerAction(),
+                    icon: const Icon(
                       Icons.add_a_photo_outlined,
                       color: Colors.black,
                       size: 30,
