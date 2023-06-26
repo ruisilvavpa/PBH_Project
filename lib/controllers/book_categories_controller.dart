@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/categories.dart';
 import '../utils/api_endpoints.dart';
 
 class BookController extends GetxController {
-  Future<List<String>> getBookCategories() async {
+  Future<List<Categories>> getBookCategories() async {
     try {
       var url = Uri.parse(
           ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.categories);
@@ -14,10 +15,13 @@ class BookController extends GetxController {
       http.Response response = await http.get(url);
 
       if (response.statusCode == 200) {
-        List<dynamic> data = jsonDecode(response.body);
-        List<String> institutionNames =
-            data.map((item) => item['name'].toString()).toList();
-        return institutionNames;
+        final data = jsonDecode(response.body);
+        List<Categories> categories = [];
+        for (var element in data) {
+          Categories category = Categories.fromJson(element);
+          categories.add(category);
+        }
+        return categories;
       } else {
         return [];
       }
