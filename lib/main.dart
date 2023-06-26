@@ -6,7 +6,9 @@ import 'package:pbh_project/screens/book_profile_page/book_profile_banner.dart';
 import 'package:pbh_project/reusable_widgets/loading_overlay.dart';
 import 'package:pbh_project/screens/discovery_screen.dart';
 import 'package:pbh_project/screens/donation_screen.dart';
+
 import 'package:pbh_project/screens/grid_view_books/grid_view_books_screen.dart';
+
 
 import 'package:pbh_project/screens/onboarding/onboarding_screen.dart';
 
@@ -30,7 +32,9 @@ class MyApp extends StatelessWidget {
         cardColor: const Color.fromRGBO(191, 229, 192, 1),
       ),
       home: LoadingOverlay(
-        child: GridViewBooksScreen(),
+
+        child: OnBoardingScreen(),
+
       ),
     );
   }
