@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pbh_project/controllers/book_categories_controller.dart';
+import 'package:pbh_project/controllers/institutions_controller.dart';
 import '../../reusable_widgets/app_bar.dart';
 import '../../reusable_widgets/combo_category_list.dart';
 import '../../reusable_widgets/image_picker.dart';
@@ -13,12 +16,16 @@ class AddPostPage extends StatefulWidget {
 
 class _AddPostPageState extends State<AddPostPage> {
   //variables
+  String? selectedInstitution;
   String? selectedCategory;
-  String? selectedAssociation;
   double _currentValue1 = 150;
 
   @override
   Widget build(BuildContext context) {
+    final BookController bookController = Get.put(BookController());
+    InstitutionsController institutionController =
+        Get.put(InstitutionsController());
+
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: const CustomAppBarWBB(title: 'Add New Post'),
@@ -109,21 +116,34 @@ class _AddPostPageState extends State<AddPostPage> {
                 ),
                 borderRadius: BorderRadius.circular(4.0),
               ),
-              child: DropdownButton<String>(
-                borderRadius: BorderRadius.circular(30),
-                isExpanded: true,
-                value: selectedCategory,
-                hint: const Text('Select a Category'),
-                items: categories.map((String category) {
-                  return DropdownMenuItem<String>(
-                    value: category,
-                    child: Text(category),
-                  );
-                }).toList(),
-                onChanged: (String? newCategory) {
-                  setState(() {
-                    selectedCategory = newCategory;
-                  });
+              child: FutureBuilder<List<String>>(
+                future: bookController.getBookCategories(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<String> categories = snapshot.data!;
+                    return DropdownButton<String>(
+                      borderRadius: BorderRadius.circular(30),
+                      isExpanded: true,
+                      value: selectedCategory,
+                      hint: const Text('Select a Category'),
+                      items: [
+                        for (String category in categories)
+                          DropdownMenuItem<String>(
+                            value: category,
+                            child: Text(category),
+                          ),
+                      ],
+                      onChanged: (String? newCategory) {
+                        setState(() {
+                          selectedCategory = newCategory;
+                        });
+                      },
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    return const CircularProgressIndicator();
+                  }
                 },
               ),
             ),
@@ -146,7 +166,7 @@ class _AddPostPageState extends State<AddPostPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   alignment: Alignment.center,
                   width: double.infinity,
-                  height: 50,
+                  height: 40,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Colors.grey,
@@ -154,24 +174,34 @@ class _AddPostPageState extends State<AddPostPage> {
                     ),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
-                  child: DropdownButton<String>(
-                    borderRadius: BorderRadius.circular(30),
-                    isExpanded: true,
-                    value: selectedAssociation,
-                    hint: const Text(
-                      textAlign: TextAlign.center,
-                      'Select an Association',
-                    ),
-                    items: associations.map((String association) {
-                      return DropdownMenuItem<String>(
-                        value: association,
-                        child: Text(association),
-                      );
-                    }).toList(),
-                    onChanged: (String? newAssociation) {
-                      setState(() {
-                        selectedAssociation = newAssociation;
-                      });
+                  child: FutureBuilder<List<String>>(
+                    future: institutionController.getInstitutions(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List<String> institutions = snapshot.data!;
+                        return DropdownButton<String>(
+                          borderRadius: BorderRadius.circular(30),
+                          isExpanded: true,
+                          value: selectedInstitution,
+                          hint: const Text('Select an Institution'),
+                          items: [
+                            for (String institution in institutions)
+                              DropdownMenuItem<String>(
+                                value: institution,
+                                child: Text(institution),
+                              ),
+                          ],
+                          onChanged: (String? newInstitution) {
+                            setState(() {
+                              selectedInstitution = newInstitution;
+                            });
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
                     },
                   ),
                 ),

@@ -12,4 +12,6 @@ class _AuthEndPoints {
   final String delete = '/api/User';
   final String update = '/api/User';
   final String resetPassword = '/api/User/changePassword';
+  final String categories = '/api/Book/categories';
+  final String institutions = '/api/Institutions/institutions';
 }
