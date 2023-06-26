@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/controllers/forgotpassword_controller.dart';
 import 'package:pbh_project/models/validations.dart';
-import 'package:pbh_project/reusable_widgets/app_bar.dart';
-import 'package:pbh_project/reusable_widgets/logo_widget.dart';
+import 'package:pbh_project/screens/login/new_password_page.dart';
+import 'package:pbh_project/utils/app_styles.dart';
 import '../../resources/strings.dart';
 import '../../reusable_widgets/input_fields.dart';
 import '../../reusable_widgets/submit_button.dart';
@@ -22,11 +22,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Forgot Password',
+      appBar: AppBar(
+        backgroundColor: kOfflineBackgroundColor,
+        shadowColor: Colors.transparent,
+        leading: const BackButton(
+          color: Colors.black,
+        ),
       ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: kOfflineBackgroundColor,
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -36,26 +40,39 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
           child: Column(
             children: [
-              logoWidget('assets/images/mainLogo.jpg'),
               const SizedBox(
-                height: 50,
+                height: 8,
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 16, 24),
-                child: Text(Strings.kForgotPasswordQuestion),
+              const Text(
+                Strings.kForgotPassword,
+                style: kTitle0,
+              ),
+              const SizedBox(
+                height: 42,
+              ),
+              const SizedBox(
+                height: 100,
               ),
               InputTextFieldWidget(
                   forgotController.emailController,
-                  Strings.kFieldEmailBody,
+                  Strings.kFieldEmail,
                   Icons.email,
                   false,
                   Strings.kFieldEmailError,
                   Regex.email,
                   TextInputType.emailAddress),
+              const SizedBox(
+                height: 24,
+              ),
               SubmitButton(
                   onPressed: forgotController.checkIsValid() == true
                       ? () => sendRequest()
-                      : null,
+                      : () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const NewPasswordPage(),
+                            ),
+                          ),
                   title: Strings.kForgotPasswordAction),
             ],
           ),
