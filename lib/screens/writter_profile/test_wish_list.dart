@@ -1,3 +1,0 @@
-void TesteWishList() {
-  print('teste');
-}

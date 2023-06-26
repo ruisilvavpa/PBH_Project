@@ -10,7 +10,7 @@ const Color kOfflineBackgroundColor = Color.fromRGBO(191, 229, 192, 1);
 
 const Color kPrimaryColor = Color.fromRGBO(87, 61, 28, 1);
 
-Color kSecondaryColor = Color.fromRGBO(228, 140, 24, 1);
+const Color kSecondaryColor = Color.fromRGBO(228, 140, 24, 1);
 
 final kTitle = TextStyle(
   fontFamily: 'Khepri',
@@ -32,13 +32,13 @@ const kTitle0 = TextStyle(
 
 const kTitle1 = TextStyle(
   fontFamily: 'Khepri',
-  fontSize: 15,
+  fontSize: 20,
   color: Colors.black,
 );
 
 const kTitle2 = TextStyle(
   fontFamily: 'Khepri',
-  fontSize: 10,
+  fontSize: 15,
   color: Colors.black,
 );
 
@@ -66,10 +66,16 @@ const kInputField = TextStyle(
 );
 
 const kTextAction = TextStyle(
-  color: Colors.black,
+  color: writterLogoColor,
   fontFamily: 'Itim',
   fontSize: 20,
   fontWeight: FontWeight.bold,
+);
+
+const kInfoText = TextStyle(
+  color: Colors.black,
+  fontFamily: 'Itim',
+  fontSize: 18,
 );
 
 // BUTTON STYLE

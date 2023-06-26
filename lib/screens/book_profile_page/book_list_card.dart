@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../../utils/app_styles.dart';
 import 'book_rating.dart';
 import 'two_side_rounded_buttom.dart';
+
+import '../../utils/app_styles.dart';
+import 'book_rating.dart';
+
 
 class BookListCard extends StatefulWidget {
   final String image;
@@ -39,7 +44,9 @@ class _BookListCardState extends State<BookListCard> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(29),
+
               boxShadow: const [
+
                 BoxShadow(
                   offset: Offset(0, 10),
                   blurRadius: 33,
@@ -54,7 +61,7 @@ class _BookListCardState extends State<BookListCard> {
           ),
           Positioned(
             top: 10,
-            right: 130,
+            right: 90,
             child: Column(
               children: [
                 IconButton(

@@ -23,21 +23,19 @@ class InputTextFieldWidget extends StatelessWidget {
       child: TextField(
         controller: textEditingController,
         style: kInputField,
-        cursorColor: kPrimaryColor,
-        autocorrect: false,
+        cursorColor: writterLogoColor,
         keyboardType: keyboardType,
         obscureText: obscureValue,
         decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
-            color: defaultLogoColor,
+            color: writterLogoColor,
           ),
           labelText: hintText,
-          labelStyle: const TextStyle(color: writterLogoColor),
+          labelStyle: kInfoText,
           filled: true,
           helperText: " ",
-          floatingLabelBehavior: FloatingLabelBehavior.never,
-          fillColor: Colors.white.withOpacity(0.3),
+          fillColor: writterLogoColor.withOpacity(0.3),
           errorText: validateInputField(textEditingController.text),
           contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
           enabledBorder: OutlineInputBorder(

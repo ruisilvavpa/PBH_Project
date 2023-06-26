@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 
