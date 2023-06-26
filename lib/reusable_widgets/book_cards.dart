@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class BookCard extends StatelessWidget {
   final String bookTitle;
   final String authorName;

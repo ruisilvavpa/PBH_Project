@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 
-import '../../reusable_widgets/custom_bottom_navigator.dart';
-
 class FAQPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,7 +12,7 @@ class FAQPage extends StatelessWidget {
           return ExpansionTile(
             title: Text(
               faqs[index].question,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
