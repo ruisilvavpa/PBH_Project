@@ -43,8 +43,6 @@ dependencies:
   get: ^4.6.5
   image_picker: ^0.8.7+5
   flutter_xlider: ^3.5.0
-  percent_indicator: any
-  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -69,16 +67,17 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/mainlogo.jpg
+    - assets/images/userlogo.jpg
+    - assets/images/writterlogo.jpg
     - assets/images/loginbtn.png
     - assets/images/publishing.jpg
     - assets/images/visualize.jpg
     - assets/images/help.jpg
+    - assets/images/profile_icon.png
     - assets/images/add_image_icon.png
     - assets/images/circle_icon.png
     - assets/images/image_profile.jpg
-    - assets/images/book_icon.png
-    - assets/images/mainLogo.jpg
-    - assets/images/assortment-with-books-dark-background.jpg
     - resources/onboarding.json
 
   # An image asset can refer to one or more resolution-specific "variants", see

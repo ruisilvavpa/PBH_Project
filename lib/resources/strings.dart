@@ -20,8 +20,7 @@ class Strings {
   static const String kForgotPassword = 'Forgot Password';
   static const String kForgotPasswordAction = 'Send Request';
   static const String kForgotPasswordSuccess =
-      "Your request has been successfully made! You will receive an email"
-      " with your new password. Don't forget to change after you log in!";
+      "Your request has been successfully made! You will receive an email with your new password. Don't forget to change after you log in!";
   static const String kForgotPasswordError =
       "You are unable to finish the request. Try again!";
 
@@ -49,14 +48,6 @@ class Strings {
   //CHANGE PASSWORD
   static const String kChangePasswordTitle = "Change Password";
 
-  //DISCOVERY
-  static const String kDiscoveryTitle = 'Discovery \nPage';
-  static const String kDiscoverySubtitle = 'Search for new amazing reads';
-  static const String kDiscoverySearchNoResults = 'No results found,\n'
-      'Please try a different keyword';
-  static const String kDiscoverySearchIsEmpty = 'Type a keyword\n'
-      'to show results!';
-
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
   static const String kFieldEmailError = "Please insert a valid email.";
@@ -71,5 +62,4 @@ class Strings {
   static const String kGuestProfileHeading = 'ME';
   static const String kSubProfileHeading = 'emailUser@email.com';
   static const String kSettingsHeading = 'Settings';
-  static const String kFieldSearch = 'Search for writters or books...';
 }
