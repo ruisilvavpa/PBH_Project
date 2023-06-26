@@ -43,6 +43,7 @@ dependencies:
   get: ^4.6.5
   image_picker: ^0.8.7+5
   flutter_xlider: ^3.5.0
+  percent_indicator: any
 
 dev_dependencies:
   flutter_test:
@@ -74,10 +75,16 @@ flutter:
     - assets/images/add_image_icon.png
     - assets/images/circle_icon.png
     - assets/images/image_profile.jpg
+<<<<<<< HEAD
+=======
     - assets/images/book_icon.png
     - assets/images/mainLogo.jpg
     - assets/images/assortment-with-books-dark-background.jpg
+>>>>>>> main
     - resources/onboarding.json
+    - assets/images/teste_book_1.png
+    - assets/images/assortment-with-books-dark-background.jpg
+    - assets/images/card_logos/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 class MyListView extends StatefulWidget {
+<<<<<<< HEAD
+  MyListView({super.key, required this.bookGenres});
+
+  late final List<String> bookGenres;
+=======
   ///this is the list view builder for the list search screen
   const MyListView({super.key});
+>>>>>>> main
 
   @override
   State<MyListView> createState() => _MyListViewState();
@@ -20,7 +26,7 @@ class _MyListViewState extends State<MyListView> {
               padding: EdgeInsets.zero,
               primary: false,
               shrinkWrap: true,
-              itemCount: 23,
+              itemCount: widget.bookGenres.length,
               itemBuilder: (context, index) {
                 return SizedBox(
                   height: 100,
@@ -35,7 +41,7 @@ class _MyListViewState extends State<MyListView> {
                       child: Padding(
                         padding: const EdgeInsets.all(5),
                         child: Text(
-                          'Genre $index',
+                          widget.bookGenres[index],
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 14,

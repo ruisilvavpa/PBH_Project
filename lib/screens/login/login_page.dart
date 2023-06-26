@@ -11,6 +11,7 @@ import '../../resources/strings.dart';
 import '../../reusable_widgets/input_fields.dart';
 import '../../reusable_widgets/logo_widget.dart';
 import '../../reusable_widgets/sign_up_option.dart';
+import '../discovery_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -102,14 +103,17 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               RichText(
                                 text: TextSpan(
-                                    text: Strings.kLoginForgotPassword,
-                                    style: kDescription,
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () => Navigator.push(
+                                  text: Strings.kLoginForgotPassword,
+                                  style: kDescription,
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const ForgotPasswordPage()))),
+                                            builder: (context) =>
+                                                const ForgotPasswordPage(),
+                                          ),
+                                        ),
+                                ),
                               ),
                             ]),
                         const SizedBox(
@@ -118,7 +122,12 @@ class _LoginPageState extends State<LoginPage> {
                         SubmitButton(
                             onPressed: loginController.isLoginValid() == true
                                 ? () => loginController.loginWithEmail()
-                                : null,
+                                : () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => HomeScreen(),
+                                      ),
+                                    ),
                             title: Strings.kLogin),
                         signUpOption(context),
                       ],
