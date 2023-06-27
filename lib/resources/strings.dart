@@ -21,8 +21,7 @@ class Strings {
   static const String kForgotPassword = 'Forgot Password';
   static const String kForgotPasswordAction = 'Send Request';
   static const String kForgotPasswordSuccess =
-      "Your request has been successfully made! You will receive an email"
-      " with your new password. Don't forget to change after you log in!";
+      "Your request has been successfully made! You will receive an email with your new password. Don't forget to change after you log in!";
   static const String kForgotPasswordError =
       "You are unable to finish the request. Try again!";
 
@@ -33,9 +32,16 @@ class Strings {
 
   //PROFILE
   static const String kProfileTitle = "Profile";
+  static const String kBookProfileTitle = "Book Name";
+  static const String kBookTitle = "Book Title";
+  static const String kBookAuthorName = "Book Author";
+  static const String kBookProfileWritterName = "Writter Name";
+  static const String kBookProfileRating = "Rating";
+  static const String kBookProfileSinopse = "Sinopse";
   static const String kEditProfileTitle = "Edit Profile";
   static const String kBioProfileBody = 'About Me';
   static const String kBioProfileTitle = 'Tell us a little bit about yourself';
+  static const String kBookProfileBooks = "Books";
 
   //EDIT PROFILE
   static const String kEditChangePassword = "Change Password?";
@@ -51,6 +57,16 @@ class Strings {
   static const String kDiscoverySearchIsEmpty = 'Type a keyword\n'
       'to show results!';
 
+  //DONATION
+  static const String kDonationPersonalInfo = 'Personal Info';
+  static const String kDonationAmount = 'Select Donation Amount';
+  static const String kDonationPaymentBanner = 'Payment';
+  static const String kDonationPaymentCard = 'Card Number';
+  static const String kDonationPaymentHolder = 'Holder Name';
+  static const String kDonationPaymentDate = 'Expiry Date';
+  static const String kDonationPaymentCVV = 'CVV';
+  static const String kDonationSubmit = 'Donate';
+
   //INPUT FIELDS
   static const String kFieldEmail = "Email";
   static const String kFieldEmailError = "Please insert a valid email.";
@@ -60,10 +76,17 @@ class Strings {
   static const String kFieldConfirmPassword = "Confirm Passord";
   static const String kFieldPasswordError =
       "The password needs to have at least 8 characteres.";
+  static const String kFieldSearch = 'Search for writters or books...';
   static const String kFieldName = "Name";
+  static const String kFieldNIF = "NIF";
+  static const String kFieldAddress = "Address";
   static const String kProfileHeading = 'User Name';
   static const String kGuestProfileHeading = 'ME';
   static const String kSubProfileHeading = 'emailUser@email.com';
   static const String kSettingsHeading = 'Settings';
-  static const String kFieldSearch = 'Search for writters or books...';
+
+
+  // GRIDVIEW
+  static const String kGridViewName = 'Books';
+
 }

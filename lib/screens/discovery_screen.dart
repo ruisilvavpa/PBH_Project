@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'discovery_page/my_grid_view_copy.dart';
-import 'discovery_page/search_button.dart';
-import '../utils/app_styles.dart';
+import 'package:pbh_project/screens/discovery_page/my_grid_view_copy.dart';
+import 'package:pbh_project/screens/discovery_page/search_button.dart';
+import 'package:pbh_project/utils/app_styles.dart';
 
 import '../resources/strings.dart';
 import 'discovery_page/my_grid_view.dart';
@@ -60,7 +60,7 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
                 //this is the rest of the screen stacked
                 //on top of the background
                 Padding(
-                  padding: EdgeInsets.fromLTRB(20, 60, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 60, 20, 0),
                   child: Column(
                     children: [
                       //Title of the screen

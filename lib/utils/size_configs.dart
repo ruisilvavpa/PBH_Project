@@ -16,8 +16,6 @@ class SizeConfig {
     blockSizeV = screenHeight! / 100;
   }
 
-  /// this functions changes the count of items from a grid view
-  /// to match a screen size
   int calculateCrossAxisCount(context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
@@ -25,6 +23,19 @@ class SizeConfig {
       return 2; // For smaller screens, show 2 columns
     } else if (screenWidth < 900) {
       return 3; // For medium-sized screens, show 3 columns
+    } else {
+      return 4; // For larger screens, show 4 columns
+    }
+  }
+
+  //Cards
+  int calculateCrossAxisCountForCard(context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    if (screenWidth < 600) {
+      return 1; // For smaller screens, show 2 columns
+    } else if (screenWidth < 900) {
+      return 2; // For medium-sized screens, show 3 columns
     } else {
       return 4; // For larger screens, show 4 columns
     }

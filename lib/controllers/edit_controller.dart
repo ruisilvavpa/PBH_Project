@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/models/user.dart';
@@ -68,7 +67,7 @@ class EditController extends GetxController {
       return updateUser(user);
     } else {
       User userEdited = User(user.id, nameController.text, bioController.text,
-          emailController.text.trim(), user.type);
+          emailController.text.trim(), user.type, user.imagePath);
       try {
         var headers = {
           'Content-Type': 'application/json',

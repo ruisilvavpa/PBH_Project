@@ -17,11 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         cardColor: const Color.fromRGBO(191, 229, 192, 1),
       ),
-      home: const LoadingOverlay(
+      home: LoadingOverlay(
         child: OnBoardingScreen(),
       ),
     );

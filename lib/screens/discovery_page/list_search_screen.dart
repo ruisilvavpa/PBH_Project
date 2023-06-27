@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/screens/discovery_page/my_list_view.dart';
 import 'package:pbh_project/screens/discovery_page/results_not_found.dart';
 import 'package:pbh_project/screens/discovery_page/start_typing_widget.dart';
-import 'package:pbh_project/screens/writter_buttons_screens/home_screen.dart';
-import 'package:pbh_project/utils/app_styles.dart';
 
 import '../../resources/strings.dart';
+import '../../utils/app_styles.dart';
+import '../writter_buttons_screens/home_screen.dart';
 
 class ListSearchScreen extends StatefulWidget {
   ///this is the screen where the user searches for books or writters
@@ -80,7 +80,9 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                     ? const StartTyping()
                     : (itemsGridSearch.isEmpty
                         ? const ResultsNotFound()
-                        : MyListView()),
+                        : MyListView(
+                            bookGenres: itemsGridSearch,
+                          )),
               ),
               // this is the start of the header
               Positioned(
@@ -153,7 +155,7 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                                                 .contains(value.toLowerCase()))
                                             .toList();
                                         if (_textController.text.isNotEmpty &&
-                                            itemsGridSearch.isEmpty) {
+                                            itemsGridSearch.isNotEmpty) {
                                           print('itemsgridsearch lgth'
                                               ' ${itemsGridSearch.length}');
                                         }

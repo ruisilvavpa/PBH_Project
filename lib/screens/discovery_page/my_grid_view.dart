@@ -9,6 +9,23 @@ class MyGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> _bookGenres = [
+      'Mystery/Thriller',
+      'Romance',
+      'Science Fiction/Fantasy',
+      'Historical Fiction',
+      'Biography/Memoir',
+      'Self-Help/Personal Development',
+      'Young Adult',
+      'Children\'s Books',
+      'Business/Entrepreneurship',
+      'Travel',
+      'Horror',
+      'Comics/Graphic Novels',
+      'Classic Literature',
+      'Poetry',
+      'Science/Nature',
+    ];
     return Padding(
       padding: const EdgeInsets.only(bottom: 50),
       child: GridView.builder(
@@ -21,7 +38,7 @@ class MyGridView extends StatelessWidget {
         ),
         primary: false,
         shrinkWrap: true,
-        itemCount: 16,
+        itemCount: _bookGenres.length, // Replace with actual genre count
         itemBuilder: (context, index) {
           return Card(
             color: Colors.white,
@@ -32,11 +49,11 @@ class MyGridView extends StatelessWidget {
             child: Align(
               alignment: Alignment.center,
               child: Padding(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Text(
-                  'Genre $index',
+                  _bookGenres[index],
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                   ),
                 ),
