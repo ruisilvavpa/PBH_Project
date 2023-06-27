@@ -6,6 +6,7 @@ import 'package:pbh_project/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../utils/api_endpoints.dart';
+import 'package:path_provider/path_provider.dart';
 
 class EditController extends GetxController {
   //variables
@@ -96,6 +97,36 @@ class EditController extends GetxController {
             });
         return false;
       }
+    }
+  }
+
+  // Method to retrieve and display the image
+  Future<File?> displayImage(String imagePath) async {
+    String apiUrl = ApiEndPoints.baseUrl +
+        ApiEndPoints.authEndPoints.getImage +
+        "?imagePath=" +
+        imagePath;
+
+    var response = await http.get(Uri.parse(apiUrl));
+
+    if (response.statusCode == HttpStatus.ok) {
+      final jsonData = jsonDecode(response.body);
+      String imageBase64 = jsonData['imageBase64'];
+      String receivedImagePath = jsonData['imagePath'];
+
+      // Decode the base64 string to bytes
+      List<int> imageBytes = base64Decode(imageBase64);
+
+      // Get the document directory
+      final directory = await getApplicationDocumentsDirectory();
+      String filePath = '${directory.path}/image.jpg';
+
+      // Save the image bytes to a file in the document directory
+      File imageFile = File(filePath);
+      await imageFile.writeAsBytes(imageBytes);
+      return imageFile;
+    } else {
+      return null;
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pbh_project/controllers/profile_controller.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 import 'package:pbh_project/reusable_widgets/settings.dart';
@@ -9,6 +10,7 @@ import '../../models/user.dart';
 import '../../resources/strings.dart';
 import '../../reusable_widgets/guest_profile_banner.dart';
 import '../../reusable_widgets/user_profile_banner.dart';
+import 'edit_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -36,15 +38,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (user != null) {
       if (user.type == 1) {
         setState(() {
-          banner = WritterProfileBanner(user: user);
+          banner = WritterProfileBanner(
+              user: user, editProfileAction: editProfileAction);
         });
       } else {
         setState(() {
-          banner = UserProfileBanner(user: user);
+          banner = UserProfileBanner(
+              user: user, editProfileAction: editProfileAction);
         });
       }
     }
-    user = user;
+    setState(() {
+      this.user = user;
+    });
+  }
+
+  void editProfileAction() async {
+    await Get.to(() => EditProfile(user: user));
+    ProfileController().fetchMe().then((value) => createUserWidget(value));
   }
 
   @override

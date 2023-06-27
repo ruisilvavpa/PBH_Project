@@ -16,4 +16,5 @@ class _AuthEndPoints {
   final String categories = '/api/Book/categories';
   final String institutions = '/api/Institutions/institutions';
   final String addPost = '/api/Book';
+  final String getImage = '/api/Image/getImage';
 }

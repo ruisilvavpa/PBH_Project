@@ -38,6 +38,17 @@ class _EditProfileState extends State<EditProfile> {
     controller.nameController.text = user?.name ?? "";
     controller.bioController.text = user?.bio ?? "";
     controller.emailController.text = user?.email ?? "";
+
+    if (user?.imagePath != null) {
+      controller
+          .displayImage(user!.imagePath!)
+          .then((value) => setState(() => placeholderImage = Image.file(
+                value!,
+                width: 150,
+                height: 150,
+                fit: BoxFit.contain,
+              )));
+    }
   }
 
   void pickerAction() {
