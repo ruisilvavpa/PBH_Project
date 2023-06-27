@@ -10,8 +10,8 @@ import 'package:pbh_project/screens/donation_screen.dart';
 
 import 'package:pbh_project/screens/grid_view_books/grid_view_books_screen.dart';
 
-
 import 'package:pbh_project/screens/onboarding/onboarding_screen.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/home_screen.dart';
 
 import 'package:pbh_project/screens/writter_main_profile_page.dart';
 
@@ -33,13 +33,7 @@ class MyApp extends StatelessWidget {
         cardColor: const Color.fromRGBO(191, 229, 192, 1),
       ),
       home: LoadingOverlay(
-<<<<<<< HEAD
-        child: BookProfileScreen(),
-=======
-
-        child: OnBoardingScreen(),
-
->>>>>>> 5000eadc212decf8b184f6ddb447e8de6225aa22
+        child: HomeScreen(),
       ),
     );
   }
