@@ -4,7 +4,7 @@ import '../../resources/strings.dart';
 import '../../reusable_widgets/app_bar.dart';
 import 'book_profile_banner.dart';
 import '../../reusable_widgets/settings.dart';
-import '../../reusable_widgets/writter_profile_banner.dart';
+import '../writter_profile/writter_profile_banner.dart';
 import '../../utils/theme_helper.dart';
 
 class BookProfileScreen extends StatefulWidget {
