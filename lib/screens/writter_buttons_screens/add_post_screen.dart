@@ -86,7 +86,7 @@ class _AddPostPageState extends State<AddPostPage> {
                     bottom: -10,
                     right: -10,
                     child: IconButton(
-                      onPressed: imagePickerOption,
+                      onPressed: null,
                       icon: Icon(
                         Icons.add_a_photo_rounded,
                         color: Colors.black,

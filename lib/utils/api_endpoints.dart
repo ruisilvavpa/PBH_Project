@@ -11,10 +11,12 @@ class _AuthEndPoints {
   final String logout = '/api/Authentication/logout';
   final String delete = '/api/User';
   final String update = '/api/User';
+  final String updateUserImage = '/api/User/userImage';
   final String resetPassword = '/api/User/changePassword';
   final String categories = '/api/Book/categories';
   final String institutions = '/api/Institutions/institutions';
   final String addPost = '/api/Book';
+  final String getImage = '/api/Image/getImage';
   final String booksByWritter = '/api/Book/getAllBooksByWritter';
   final String allContributions = '/api/Donation/sumByUserId';
   final String allDonations = '/api/Donation/sumByWritter';
