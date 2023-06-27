@@ -17,7 +17,7 @@ class MyGridViewCopy2 extends StatelessWidget {
       child: GridView.builder(
         padding: EdgeInsets.zero,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+          crossAxisCount: 1,
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
           childAspectRatio: 1.11,
@@ -27,13 +27,13 @@ class MyGridViewCopy2 extends StatelessWidget {
         itemCount: 6,
         itemBuilder: (context, index) {
           return BookListCard(
-            image: 'assets/images/mainLogo.jpg',
-            auth: 'ola2',
-            title: 'ola',
-            pressDetails: () {},
-            pressDonate: () {},
-            rating: 3,
-          );
+              //image: 'assets/images/mainLogo.jpg',
+              //auth: 'ola2',
+              //title: 'ola',
+              //pressDetails: () {},
+              //pressDonate: () {},
+              //rating: 3,
+              );
         },
       ),
     );

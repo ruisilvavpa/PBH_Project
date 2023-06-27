@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pbh_project/controllers/contributions_controller.dart';
 import 'package:pbh_project/reusable_widgets/settings_menu_widget.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
-import 'package:pbh_project/screens/writter_buttons_screens/see_my_books_screen.dart';
 
 import '../../controllers/image_controller.dart';
 import '../../models/user.dart';
+
+import '../grid_view_books/grid_view_books_screen.dart';
 import '../../utils/app_styles.dart';
 
 class WritterProfileBanner extends StatefulWidget {
@@ -20,6 +22,8 @@ class WritterProfileBanner extends StatefulWidget {
 class _WritterProfileBannerState extends State<WritterProfileBanner> {
   ImageController controller = ImageController();
   Image placeholderImage = Image.asset('assets/images/image_profile.jpg');
+  ContributionsController contributionController = ContributionsController();
+  double total = 0;
 
   @override
   void initState() {
@@ -28,6 +32,10 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
       controller.displayImage(widget.user!.imagePath!).then(
           (value) => setState(() => placeholderImage = Image.file(value!)));
     }
+    contributionController.getTotalDonations().then((value) => setState(
+          () => total = value,
+        ));
+    super.initState();
   }
 
   @override
@@ -50,7 +58,7 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         const SizedBox(
           height: 16,
         ),
-        const Text('You already gained 500€', style: kTextAction),
+        Text('You already gained $total€', style: kTextAction),
         const SizedBox(
           height: 20,
         ),
@@ -64,7 +72,7 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         SettingsMenuWidget(
           title: 'My Books',
           icon: Icons.book,
-          onPress: () => Get.to(() => SeeMyBooks()),
+          onPress: () => Get.to(() => GridViewBooksScreen()),
         ),
       ],
     );
