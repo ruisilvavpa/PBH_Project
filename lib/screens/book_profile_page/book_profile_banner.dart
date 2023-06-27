@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 import 'book_info_card.dart';
 import 'book_sinopse_card.dart';
@@ -26,6 +27,25 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
           ),
         ),
         const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              width: 180,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              decoration: const BoxDecoration(
+                color: writterLogoColor,
+                borderRadius: BorderRadius.all(Radius.circular(29)),
+              ),
+              child: const Text(
+                Strings.kDonationSubmit,
+                style: kTitle4,
+              ),
+            ),
+          ),
+        ),
         Stack(
           children: [
             Positioned(
@@ -73,7 +93,7 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
                               'Tou a programar isto para o projeto final\n'
                               'Ate agr isto t6a responsivo e a correr bem\n'
                               'Isto é apenas um teste\n'
-                              'Para ver se da scroll ou n\n'),
+                              'Para ver se da scroll ou n'),
                     ],
                   ),
                 ),
@@ -81,6 +101,7 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
             ),
           ],
         ),
+        const SizedBox(height: 15),
       ],
     );
   }

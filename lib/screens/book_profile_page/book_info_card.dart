@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 import '../writter_main_profile_page.dart';
 
-
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
-
 
 class BookInfoCard extends StatefulWidget {
   final double rating;
@@ -37,12 +36,40 @@ class _BookInfoCardState extends State<BookInfoCard> {
                 flex: 1,
                 child: Column(
                   children: [
-                    const Text(
-                      Strings.kBookProfileRating,
-                      style: TextStyle(
-                        fontFamily: 'Khepri',
-                        fontSize: 15,
-                        color: writterLogoColor,
+                    TextButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                                  content: RatingBar.builder(
+                                    initialRating: 3,
+                                    minRating: 1,
+                                    direction: Axis.horizontal,
+                                    allowHalfRating: false,
+                                    itemCount: 5,
+                                    itemPadding: const EdgeInsets.symmetric(
+                                        horizontal: 4),
+                                    itemBuilder: (context, _) => const Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                    onRatingUpdate: (rating) {
+                                      print(rating);
+                                    },
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                ));
+                      },
+                      child: const Text(
+                        Strings.kBookProfileRating,
+                        style: kTitle3,
                       ),
                     ),
                     const SizedBox(
@@ -69,10 +96,8 @@ class _BookInfoCardState extends State<BookInfoCard> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-
                             builder: (context) =>
                                 const WritterMainProfilePage(),
-
                           ),
                         );
                       },
