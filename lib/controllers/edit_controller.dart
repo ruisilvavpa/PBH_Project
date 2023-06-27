@@ -46,7 +46,7 @@ class EditController extends GetxController {
 
   Future<bool> updateUser(User user) async {
     User userEdited = User(user.id, nameController.text, bioController.text,
-        emailController.text.trim(), user.type);
+        emailController.text.trim(), user.type, user.imagePath);
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       String token = sharedPreferences.getString('token') ?? '';

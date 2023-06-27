@@ -22,7 +22,7 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
       children: [
         Container(
           alignment: Alignment.topCenter,
-          child: const Stack(
+          child: Stack(
             children: [
               Image(image: AssetImage('assets/images/teste_book_1.png')),
             ],

@@ -21,7 +21,7 @@ class _BookCardFinalizadoState extends State<BookCardFinalizado> {
           Stack(
             children: [
               Container(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(29),
                   child: Image.asset(
@@ -35,7 +35,7 @@ class _BookCardFinalizadoState extends State<BookCardFinalizado> {
                 right: 5,
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
-                  child: const Column(
+                  child: Column(
                     children: [
                       BookRating(score: 2.0),
                     ],
