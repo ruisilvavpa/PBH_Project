@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/controllers/add_post_controller.dart';
 import 'package:pbh_project/controllers/book_categories_controller.dart';
 import 'package:pbh_project/controllers/institutions_controller.dart';
-import 'package:pbh_project/models/institutions.dart';
 import '../../models/categories.dart';
 import '../../reusable_widgets/app_bar.dart';
 import '../../reusable_widgets/image_picker.dart';
 import '../../utils/app_styles.dart';
+import 'package:pbh_project/models/categories.dart';
 
 class AddPostPage extends StatefulWidget {
   const AddPostPage({super.key});
@@ -19,11 +18,11 @@ class _AddPostPageState extends State<AddPostPage> {
   //variables
   BookController bookController = BookController();
   InstitutionsController institutionController = InstitutionsController();
-  AddPostController addPostController = AddPostController();
   List<DropdownMenuItem> categories = [];
   List<DropdownMenuItem> institutions = [];
-  Categories? categorySelected;
-  Institution? institutionSelected;
+  String? categoriesName;
+  String? institutionsName;
+  double _currentValue1 = 150;
 
   @override
   void initState() {
@@ -31,14 +30,14 @@ class _AddPostPageState extends State<AddPostPage> {
     bookController.getBookCategories().then((value) => {
           setState(() {
             categories = value.map((e) {
-              return DropdownMenuItem(value: e, child: Text(e.name));
+              return DropdownMenuItem(value: e.name, child: Text(e.name));
             }).toList();
           })
         });
     institutionController.getInstitutions().then((value) => {
           setState(() {
             institutions = value.map((e) {
-              return DropdownMenuItem(value: e, child: Text(e.name));
+              return DropdownMenuItem(value: e.name, child: Text(e.name));
             }).toList();
           })
         });
@@ -50,7 +49,8 @@ class _AddPostPageState extends State<AddPostPage> {
       backgroundColor: kBackgroundColor,
       appBar: const CustomAppBarWBB(title: 'Add New Post'),
       resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -104,7 +104,6 @@ class _AddPostPageState extends State<AddPostPage> {
               children: [
                 const Padding(padding: EdgeInsets.zero),
                 TextFormField(
-                  controller: addPostController.titleController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)),
@@ -129,16 +128,15 @@ class _AddPostPageState extends State<AddPostPage> {
               child: DropdownButton(
                 isExpanded: true,
                 items: categories,
-                value: categorySelected,
+                value: categoriesName,
                 onChanged: (value) => categoryDropdownDidChange(value),
               ),
             ),
             const SizedBox(
               height: 30,
             ),
-            TextField(
-              controller: addPostController.descriptionController,
-              decoration: const InputDecoration(
+            const TextField(
+              decoration: InputDecoration(
                 labelText: 'Sinopse',
                 hintText: 'Digite a sinopse do livro',
                 border: OutlineInputBorder(),
@@ -164,7 +162,7 @@ class _AddPostPageState extends State<AddPostPage> {
                   child: DropdownButton(
                     isExpanded: true,
                     items: institutions,
-                    value: institutionSelected,
+                    value: institutionsName,
                     onChanged: (value) => institutionDropdownDidChange(value),
                   ),
                 ),
@@ -175,13 +173,12 @@ class _AddPostPageState extends State<AddPostPage> {
             ),
             const Text('How much do you need'),
             Slider(
-              value: addPostController.currentValue1,
+              value: _currentValue1,
               max: 500,
               min: 0,
               divisions: 500,
-              label: addPostController.currentValue1.toString(),
-              onChanged: (value) =>
-                  setState(() => addPostController.currentValue1 = value),
+              label: _currentValue1.toString(),
+              onChanged: (value) => setState(() => _currentValue1 = value),
             ),
             Container(
               width: MediaQuery.of(context).size.width,
@@ -191,7 +188,7 @@ class _AddPostPageState extends State<AddPostPage> {
                 borderRadius: BorderRadius.circular(90),
               ),
               child: ElevatedButton(
-                onPressed: () => createPost(context),
+                onPressed: () {},
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.resolveWith((states) {
@@ -219,41 +216,12 @@ class _AddPostPageState extends State<AddPostPage> {
     );
   }
 
-  void categoryDropdownDidChange(Categories value) {
-    addPostController.category = value;
-    setState(() => categorySelected = value);
+  void categoryDropdownDidChange(String value) {
+    //bookController.category = Categories(name: value.toString(), id: 0);
+    //setState(() => teamName = value);
   }
-
-  void institutionDropdownDidChange(Institution value) {
-    addPostController.institution = value;
-    setState(() => institutionSelected = value);
-  }
-
-  void createPost(BuildContext context) {
-    addPostController
-        .addPost(context)
-        .then((value) => handleCreateAnswer(value, context));
-  }
-
-  void handleCreateAnswer(bool response, BuildContext context) {
-    if (response) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Post Created'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context); // Fechar o diálogo
-                  Navigator.pop(context); // Fechar a tela atual
-                },
-                child: Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
-    }
+  void institutionDropdownDidChange(String value) {
+    //bookController.category = Categories(name: value.toString(), id: 0);
+    //setState(() => teamName = value);
   }
 }
