@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 
-import '../models/user.dart';
-import '../screens/writter_buttons_screens/edit_profile.dart';
-import '../utils/app_styles.dart';
+import '../../controllers/contributions_controller.dart';
+import '../../models/user.dart';
+import 'edit_profile.dart';
+import '../../utils/app_styles.dart';
 
 class UserProfileBanner extends StatefulWidget {
   final User? user;
@@ -17,6 +18,17 @@ class UserProfileBanner extends StatefulWidget {
 class _UserProfileBannerState extends State<UserProfileBanner> {
   final User? user;
   _UserProfileBannerState(this.user);
+
+  ContributionsController controller = ContributionsController();
+  double total = 0;
+
+  void initState() {
+    controller.getTotalContributions().then((value) => setState(
+          () => total = value,
+        ));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,7 +53,7 @@ class _UserProfileBannerState extends State<UserProfileBanner> {
         const SizedBox(
           height: 16,
         ),
-        const Text('You already contributed with 250€', style: kTextAction),
+        Text('You already contributed with $total€', style: kTextAction),
         const SizedBox(
           height: 20,
         ),

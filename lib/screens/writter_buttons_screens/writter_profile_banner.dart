@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pbh_project/controllers/contributions_controller.dart';
 import 'package:pbh_project/resources/strings.dart';
 import 'package:pbh_project/reusable_widgets/settings_menu_widget.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
 import 'package:pbh_project/screens/writter_buttons_screens/see_my_books_screen.dart';
 
 import '../../models/user.dart';
+import '../discovery_page/my_grid_view_copy.dart';
+import '../grid_view_books/grid_view_books_screen.dart';
 import '../settings_page/faqs_page.dart';
-import '../writter_buttons_screens/edit_profile.dart';
+import 'edit_profile.dart';
 import '../../utils/app_styles.dart';
 
 class WritterProfileBanner extends StatefulWidget {
@@ -21,6 +24,17 @@ class WritterProfileBanner extends StatefulWidget {
 class _WritterProfileBannerState extends State<WritterProfileBanner> {
   User? user;
   _WritterProfileBannerState(this.user);
+  ContributionsController controller = ContributionsController();
+  double total = 0;
+
+  @override
+  void initState() {
+    controller.getTotalDonations().then((value) => setState(
+          () => total = value,
+        ));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,7 +59,7 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         const SizedBox(
           height: 16,
         ),
-        const Text('You already gained 500€', style: kTextAction),
+        Text('You already gained $total€', style: kTextAction),
         const SizedBox(
           height: 20,
         ),
@@ -58,7 +72,7 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         SettingsMenuWidget(
           title: 'My Books',
           icon: Icons.book,
-          onPress: () => Get.to(() => SeeMyBooks()),
+          onPress: () => Get.to(() => GridViewBooksScreen()),
         ),
       ],
     );
