@@ -32,11 +32,11 @@ class MyGridViewCopy extends StatelessWidget {
             child: Align(
               alignment: Alignment.center,
               child: Padding(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Text(
                   'Writter $index',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                   ),
                 ),

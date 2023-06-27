@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../utils/app_styles.dart';
 import 'book_rating.dart';
 import 'two_side_rounded_buttom.dart';
-
-import '../../utils/app_styles.dart';
-import 'book_rating.dart';
-
 
 class BookListCard extends StatefulWidget {
   final String image;
@@ -33,7 +28,7 @@ class _BookListCardState extends State<BookListCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 24, bottom: 40),
+      margin: const EdgeInsets.only(left: 24, bottom: 40),
       height: 275,
       width: 282,
       child: Stack(
@@ -44,9 +39,7 @@ class _BookListCardState extends State<BookListCard> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(29),
-
               boxShadow: const [
-
                 BoxShadow(
                   offset: Offset(0, 10),
                   blurRadius: 33,
@@ -74,28 +67,28 @@ class _BookListCardState extends State<BookListCard> {
           ),
           Positioned(
             top: 190,
-            child: Container(
+            child: SizedBox(
               height: 85,
               width: 202,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 24),
+                    padding: const EdgeInsets.only(left: 24),
                     child: RichText(
                       maxLines: 2,
                       text: TextSpan(
-                        style: TextStyle(color: kPrimaryColor),
+                        style: const TextStyle(color: kPrimaryColor),
                         children: [
                           TextSpan(
                             text: "${widget.title}\n",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           TextSpan(
                             text: widget.auth,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: kSecondaryColor,
                             ),
                           ),
@@ -103,18 +96,18 @@ class _BookListCardState extends State<BookListCard> {
                       ),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     children: [
                       GestureDetector(
-                        onTap: () => widget.pressDetails,
+                        onTap: () => widget.pressDetails(),
                         child: Container(
                           width: 101,
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: 10,
                           ),
                           alignment: Alignment.center,
-                          child: Text('Details'),
+                          child: const Text('Details'),
                         ),
                       ),
                       Expanded(
@@ -122,7 +115,7 @@ class _BookListCardState extends State<BookListCard> {
                         child: TwoSidesRoundedButtom(
                           text: 'Donate',
                           radious: 29,
-                          press: () => widget.pressDonate,
+                          press: () => widget.pressDonate(),
                         ),
                       ),
                     ],

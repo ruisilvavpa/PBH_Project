@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pbh_project/resources/strings.dart';
 import 'package:pbh_project/reusable_widgets/settings_menu_widget.dart';
 import 'package:pbh_project/reusable_widgets/submit_button.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/see_my_books_screen.dart';
 
 import '../models/user.dart';
 import '../screens/settings_page/faqs_page.dart';
@@ -57,7 +58,7 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         SettingsMenuWidget(
           title: 'My Books',
           icon: Icons.book,
-          onPress: () => Get.to(() => FAQPage()),
+          onPress: () => Get.to(() => SeeMyBooks()),
         ),
       ],
     );

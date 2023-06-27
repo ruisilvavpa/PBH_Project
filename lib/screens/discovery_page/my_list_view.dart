@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MyListView extends StatefulWidget {
-  MyListView({super.key, required this.bookGenres});
+  const MyListView({super.key, required this.bookGenres});
 
-  late final List<String> bookGenres;
+  final List<String> bookGenres;
 
   @override
   State<MyListView> createState() => _MyListViewState();
