@@ -1,33 +1,32 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pbh_project/models/user.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:pbh_project/models/books.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/api_endpoints.dart';
 
-class EditController extends GetxController {
-  //variables
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController bioController = TextEditingController();
-
-  Future<bool> deleteAccount(int id) async {
+class BookProfileController extends GetxController {
+  Future<List<BooksOut>> getMytBooks() async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       String token = sharedPreferences.getString('token') ?? '';
       var headers = {'Token': token};
-      var url =
-          Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.delete);
+      var url = Uri.parse(
+          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.booksByWritter);
 
-      http.Response response = await http.delete(url, headers: headers);
+      http.Response response = await http.get(url, headers: headers);
 
       if (response.statusCode == 200) {
-        final sharedPreferences = await SharedPreferences.getInstance();
-        await sharedPreferences.remove("token");
-        return true;
+        final data = jsonDecode(response.body);
+        List<BooksOut> books = [];
+        for (var element in data) {
+          BooksOut book = BooksOut.fromJson(element);
+          books.add(book);
+        }
+        return books;
       } else {
-        return false;
+        return [];
       }
     } catch (e) {
       showDialog(
@@ -39,27 +38,23 @@ class EditController extends GetxController {
               children: [Text(e.toString())],
             );
           });
-      return false;
+      return [];
     }
   }
 
-  Future<bool> updateUser(User user) async {
-    User userEdited = User(user.id, nameController.text, bioController.text,
-        emailController.text.trim(), user.type, user.imagePath);
+  Future<bool> getUserById(int id) async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       String token = sharedPreferences.getString('token') ?? '';
-      var headers = {
-        'Content-Type': 'application/json',
-        'Token': token,
-      };
+      var headers = {'Token': token};
       var url =
-          Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.update);
+          Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.delete);
 
-      http.Response response = await http.put(url,
-          body: jsonEncode(userEdited.toJson()), headers: headers);
+      http.Response response = await http.delete(url, headers: headers);
 
       if (response.statusCode == 200) {
+        final sharedPreferences = await SharedPreferences.getInstance();
+        await sharedPreferences.get("token");
         return true;
       } else {
         return false;

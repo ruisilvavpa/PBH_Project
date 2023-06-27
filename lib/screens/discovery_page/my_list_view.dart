@@ -10,7 +10,6 @@ import '../../models/items_for_search.dart';
 
 class MyListView extends StatefulWidget {
   MyListView({super.key, required this.itemsGridSearch});
-
   late List<ItemsForSearch> itemsGridSearch = [];
 
   @override

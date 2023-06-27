@@ -1,39 +1,33 @@
 import 'package:flutter/material.dart';
-
+import 'package:pbh_project/models/books.dart';
+import 'package:pbh_project/models/user.dart';
+import '../../controllers/book_profiles_controller.dart';
 import '../../utils/app_styles.dart';
+import '../grid_view_books/grid_view_books_screen.dart';
 import 'book_rating.dart';
 import 'two_side_rounded_buttom.dart';
 
-import '../../utils/app_styles.dart';
-import 'book_rating.dart';
-
-
 class BookListCard extends StatefulWidget {
-  final String image;
-  final String title;
-  final String auth;
-  final double rating;
-  final Function pressDetails;
-  final Function pressDonate;
-  const BookListCard(
-      {Key? key,
-      required this.image,
-      required this.title,
-      required this.auth,
-      required this.rating,
-      required this.pressDetails,
-      required this.pressDonate})
-      : super(key: key);
+  BooksOut? book;
+  User? user;
+  BookListCard({super.key, this.book, this.user});
 
   @override
-  State<BookListCard> createState() => _BookListCardState();
+  State<BookListCard> createState() =>
+      _BookListCardState(book: book, user: user);
 }
 
 class _BookListCardState extends State<BookListCard> {
+  //variables
+  User? user;
+  BooksOut? book;
+  _BookListCardState({this.book, this.user});
+
+  BookProfileController bookProfileController = BookProfileController();
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 24, bottom: 40),
+      margin: const EdgeInsets.only(left: 24, bottom: 40),
       height: 275,
       width: 282,
       child: Stack(
@@ -44,9 +38,7 @@ class _BookListCardState extends State<BookListCard> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(29),
-
               boxShadow: const [
-
                 BoxShadow(
                   offset: Offset(0, 10),
                   blurRadius: 33,
@@ -56,7 +48,7 @@ class _BookListCardState extends State<BookListCard> {
             ),
           ),
           Image.asset(
-            widget.image,
+            widget.book?.imagePath ?? '',
             width: 150,
           ),
           Positioned(
@@ -68,34 +60,34 @@ class _BookListCardState extends State<BookListCard> {
                   icon: const Icon(Icons.favorite_border),
                   onPressed: () {},
                 ),
-                BookRating(score: widget.rating),
+                BookRating(score: widget.book?.mediaRating ?? 0.0),
               ],
             ),
           ),
           Positioned(
             top: 190,
-            child: Container(
+            child: SizedBox(
               height: 85,
               width: 202,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 24),
+                    padding: const EdgeInsets.only(left: 24),
                     child: RichText(
                       maxLines: 2,
                       text: TextSpan(
-                        style: TextStyle(color: kPrimaryColor),
+                        style: const TextStyle(color: kPrimaryColor),
                         children: [
                           TextSpan(
-                            text: "${widget.title}\n",
-                            style: TextStyle(
+                            text: "${widget.book?.title}\n",
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           TextSpan(
-                            text: widget.auth,
-                            style: TextStyle(
+                            text: widget.user?.name,
+                            style: const TextStyle(
                               color: kSecondaryColor,
                             ),
                           ),
@@ -103,18 +95,22 @@ class _BookListCardState extends State<BookListCard> {
                       ),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     children: [
                       GestureDetector(
-                        onTap: () => widget.pressDetails,
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    (const GridViewBooksScreen()))),
                         child: Container(
                           width: 101,
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             vertical: 10,
                           ),
                           alignment: Alignment.center,
-                          child: Text('Details'),
+                          child: const Text('Details'),
                         ),
                       ),
                       Expanded(
@@ -122,7 +118,7 @@ class _BookListCardState extends State<BookListCard> {
                         child: TwoSidesRoundedButtom(
                           text: 'Donate',
                           radious: 29,
-                          press: () => widget.pressDonate,
+                          press: () => {},
                         ),
                       ),
                     ],

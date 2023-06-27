@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import '../../resources/strings.dart';
-
 import '../../utils/app_styles.dart';
 import 'book_info_card.dart';
 import 'book_sinopse_card.dart';
@@ -22,8 +20,8 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
       children: [
         Container(
           alignment: Alignment.topCenter,
-          child: const Stack(
-            children: [
+          child: Stack(
+            children: const [
               Image(image: AssetImage('assets/images/teste_book_1.png')),
             ],
           ),

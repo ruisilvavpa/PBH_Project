@@ -11,8 +11,8 @@ class StartTyping extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(children: [
-        const SizedBox(
+      child: Column(children: const [
+        SizedBox(
           height: 30,
         ),
         Padding(

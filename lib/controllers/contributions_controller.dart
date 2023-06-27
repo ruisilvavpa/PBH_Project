@@ -1,33 +1,27 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pbh_project/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../utils/api_endpoints.dart';
 
-class EditController extends GetxController {
-  //variables
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController bioController = TextEditingController();
-
-  Future<bool> deleteAccount(int id) async {
+class ContributionsController extends GetxController {
+  Future<double> getTotalContributions() async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       String token = sharedPreferences.getString('token') ?? '';
       var headers = {'Token': token};
-      var url =
-          Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.delete);
+      var url = Uri.parse(
+          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.allContributions);
 
-      http.Response response = await http.delete(url, headers: headers);
+      http.Response response = await http.get(url, headers: headers);
 
       if (response.statusCode == 200) {
-        final sharedPreferences = await SharedPreferences.getInstance();
-        await sharedPreferences.remove("token");
-        return true;
+        final data = jsonDecode(response.body);
+        return data;
       } else {
-        return false;
+        return 0;
       }
     } catch (e) {
       showDialog(
@@ -39,30 +33,25 @@ class EditController extends GetxController {
               children: [Text(e.toString())],
             );
           });
-      return false;
+      return 0;
     }
   }
 
-  Future<bool> updateUser(User user) async {
-    User userEdited = User(user.id, nameController.text, bioController.text,
-        emailController.text.trim(), user.type, user.imagePath);
+  Future<double> getTotalDonations() async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       String token = sharedPreferences.getString('token') ?? '';
-      var headers = {
-        'Content-Type': 'application/json',
-        'Token': token,
-      };
-      var url =
-          Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.update);
+      var headers = {'Token': token};
+      var url = Uri.parse(
+          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.allDonations);
 
-      http.Response response = await http.put(url,
-          body: jsonEncode(userEdited.toJson()), headers: headers);
+      http.Response response = await http.get(url, headers: headers);
 
       if (response.statusCode == 200) {
-        return true;
+        final data = jsonDecode(response.body);
+        return data;
       } else {
-        return false;
+        return 0;
       }
     } catch (e) {
       showDialog(
@@ -74,7 +63,7 @@ class EditController extends GetxController {
               children: [Text(e.toString())],
             );
           });
-      return false;
+      return 0;
     }
   }
 }

@@ -2,9 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pbh_project/controllers/book_categories_controller.dart';
-import 'package:pbh_project/models/books.dart';
 import 'package:http/http.dart' as http;
+import 'package:pbh_project/models/books.dart';
 import 'package:pbh_project/models/categories.dart';
 import 'package:pbh_project/models/institutions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,6 +15,7 @@ class AddPostController {
   Categories? category;
   Institution? institution;
   double currentValue1 = 150;
+
   Future<bool> addPost(BuildContext context) async {
     BooksIn bookEdited = BooksIn(
         title: titleController.text,
