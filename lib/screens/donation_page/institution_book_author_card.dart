@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
+import '../../models/books.dart';
+import '../../models/user.dart';
 import 'donation_texts_spans.dart';
 
 class InstitutionBookAuthorCard extends StatefulWidget {
   ///this is the card with the name of institution, book
   ///and author's
-  const InstitutionBookAuthorCard({
-    super.key,
-  });
+  final BooksOut? book;
+  final User? user;
+  const InstitutionBookAuthorCard({super.key, this.book, this.user});
 
   @override
   State<InstitutionBookAuthorCard> createState() =>
@@ -36,17 +38,17 @@ class _InstitutionBookAuthorCardState extends State<InstitutionBookAuthorCard> {
               children: [
                 DonationTextSpans(
                   text1: 'Book: ',
-                  text2: 'Alice in Wonderland',
+                  text2: widget.book?.title ?? "",
                 ),
-                SizedBox(height: 10),
-                DonationTextSpans(
+                const SizedBox(height: 10),
+                const DonationTextSpans(
                   text1: 'Institution: ',
                   text2: 'MakeAWish',
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 DonationTextSpans(
                   text1: 'Author: ',
-                  text2: 'Jonh McJohn',
+                  text2: widget.user?.name ?? "",
                 ),
               ],
             ),

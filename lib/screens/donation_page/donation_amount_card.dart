@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:pbh_project/controllers/donation_controller.dart';
 import 'package:pbh_project/screens/donation_page/info_banner.dart';
 
+import '../../models/books.dart';
+import '../../models/donation.dart';
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 
 class DonationAmountCard extends StatefulWidget {
+  final BooksOut? book;
+
+  const DonationAmountCard({super.key, this.book});
+
   @override
-  _DonationAmountCardState createState() => _DonationAmountCardState();
+  DonationAmountCardState createState() => DonationAmountCardState();
 }
 
-class _DonationAmountCardState extends State<DonationAmountCard> {
-  double _donationAmount = 0.0;
+class DonationAmountCardState extends State<DonationAmountCard> {
+  double donationAmount = 0.0;
   TextEditingController _textController = TextEditingController();
+  DonationController controller = DonationController();
 
   @override
   void initState() {
@@ -27,8 +35,8 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
 
   void updateDonationAmount(double value) {
     setState(() {
-      _donationAmount = value;
-      _textController.text = _donationAmount.toStringAsFixed(2);
+      donationAmount = value;
+      _textController.text = donationAmount.toStringAsFixed(2);
     });
   }
 
@@ -45,8 +53,8 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            InfoBanner(bannerInfo: Strings.kDonationAmount),
-            SizedBox(height: 30.0),
+            const InfoBanner(bannerInfo: Strings.kDonationAmount),
+            const SizedBox(height: 30.0),
             SliderTheme(
               data: const SliderThemeData(
                 trackHeight: 20,
@@ -63,7 +71,7 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
                 activeTickMarkColor: Colors.transparent,
               ),
               child: Slider(
-                value: _donationAmount,
+                value: donationAmount,
                 min: 0.0,
                 max: 20.0,
                 divisions: 20,
@@ -101,10 +109,10 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
                 ),
                 onChanged: (String value) {
                   setState(() {
-                    _donationAmount = double.tryParse(value) ?? 0.0;
-                    if (_donationAmount > 20.0) {
-                      _donationAmount = 20.0;
-                      _textController.text = _donationAmount.toStringAsFixed(2);
+                    donationAmount = double.tryParse(value) ?? 0.0;
+                    if (donationAmount > 20.0) {
+                      donationAmount = 20.0;
+                      _textController.text = donationAmount.toStringAsFixed(2);
                     }
                   });
                 },
@@ -112,7 +120,13 @@ class _DonationAmountCardState extends State<DonationAmountCard> {
             ),
             InkWell(
               onTap: () {
-                print('Donation Amount: $_donationAmount euros');
+                Donation donation =
+                    Donation(widget.book?.id ?? 0, donationAmount);
+                controller.donate(donation).then((value) {
+                  if (value) {
+                    Navigator.pop(context);
+                  }
+                });
               },
               child: Container(
                 width: 100,

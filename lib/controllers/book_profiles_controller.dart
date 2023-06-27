@@ -7,13 +7,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/api_endpoints.dart';
 
 class BookProfileController extends GetxController {
-  Future<List<BooksOut>> getMytBooks() async {
+  Future<List<BooksOut>> getMytBooks(int userId) async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       String token = sharedPreferences.getString('token') ?? '';
       var headers = {'Token': token};
-      var url = Uri.parse(
-          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.booksByWritter);
+      var url = Uri.parse(ApiEndPoints.baseUrl +
+          ApiEndPoints.authEndPoints.booksByWritter +
+          userId.toString());
 
       http.Response response = await http.get(url, headers: headers);
 
