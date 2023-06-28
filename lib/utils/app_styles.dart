@@ -54,6 +54,12 @@ const kTitle4 = TextStyle(
   color: Colors.white,
 );
 
+const kTitle5 = TextStyle(
+  fontFamily: 'Itim',
+  fontSize: 20,
+  color: Colors.white,
+);
+
 // ITIM FONT STYLE
 final kDescription =
     TextStyle(color: Colors.grey[500], fontFamily: 'Itim', fontSize: 20);

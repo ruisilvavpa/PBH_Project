@@ -23,7 +23,6 @@ class _GridViewBooksScreenState extends State<GridViewBooksScreen> {
           child: Column(
             children: [
               SizedBox(height: 20),
-              MyGridViewCopy2(),
             ],
           ),
         ),

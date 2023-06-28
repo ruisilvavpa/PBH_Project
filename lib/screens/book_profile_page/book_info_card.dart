@@ -96,8 +96,9 @@ class _BookInfoCardState extends State<BookInfoCard> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                const WritterMainProfilePage(),
+                            builder: (context) => const WritterMainProfilePage(
+                              userId: 2,
+                            ),
                           ),
                         );
                       },

@@ -17,4 +17,6 @@ class _AuthEndPoints {
   final String addPost = '/api/Book';
   final String getAllBooks = '/api/Book/getAllBooks';
   final String getAllWritters = '/api/User/writters';
+  final String getUserById = '/api/User/';
+  final String getWritterByBook = '/api/User/getWritterByBook?bookId=';
 }
