@@ -6,9 +6,14 @@ import 'package:pbh_project/screens/writter_buttons_screens/profile_screen.dart'
 
 import '../discovery_screen.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final tabBarItems = [
     const BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.home), label: "Discover"),

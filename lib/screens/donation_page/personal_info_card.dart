@@ -7,16 +7,17 @@ import 'package:pbh_project/utils/app_styles.dart';
 class PersonalInformationCard extends StatefulWidget {
   ///this is the card with the name of institution, book
   ///and author's
+
   const PersonalInformationCard({
     super.key,
   });
 
   @override
   State<PersonalInformationCard> createState() =>
-      _PersonalInformationCardState();
+      PersonalInformationCardState();
 }
 
-class _PersonalInformationCardState extends State<PersonalInformationCard> {
+class PersonalInformationCardState extends State<PersonalInformationCard> {
   TextEditingController _textController1 = TextEditingController();
   TextEditingController _textController2 = TextEditingController();
   TextEditingController _textController3 = TextEditingController();
@@ -50,7 +51,7 @@ class _PersonalInformationCardState extends State<PersonalInformationCard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            InfoBanner(
+            const InfoBanner(
               bannerInfo: Strings.kDonationPersonalInfo,
             ),
             const SizedBox(height: 10),
