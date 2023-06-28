@@ -51,8 +51,8 @@ class _CarouselBooksState extends State<CarouselBooks> {
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const BookProfileBanner()));
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => BookProfileBanner()));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(29),

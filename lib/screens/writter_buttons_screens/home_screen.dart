@@ -1,42 +1,56 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pbh_project/screens/login/login_page.dart';
-import 'package:pbh_project/screens/writter_buttons_screens/add_post_screen.dart';
-import 'package:pbh_project/screens/writter_buttons_screens/profile_screen.dart';
+import 'package:pbh_project/models/user.dart';
+import 'package:pbh_project/reusable_widgets/guest_navbar.dart';
+import 'package:pbh_project/reusable_widgets/user_navbar.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/user_profile_banner.dart';
 
-import '../discovery_screen.dart';
+import '../../controllers/profile_controller.dart';
+import '../../reusable_widgets/writter_navbar.dart';
+import '../../utils/theme_helper.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  final tabBarItems = [
-    const BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.home), label: "Discover"),
-    const BottomNavigationBarItem(
-        icon: Icon(CupertinoIcons.book), label: "Post"),
-    const BottomNavigationBarItem(icon: Icon(Icons.list), label: "Profile")
-  ];
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  //variables
+  Color? themeColor;
+  User? user;
+  Widget banner = GuestNavBar();
+
+  @override
+  void initState() {
+    super.initState();
+    ThemeHelper().fetchTintColorForCurrentUser().then((value) => setState(
+          () => themeColor = value,
+        ));
+    ProfileController().fetchMe().then((value) => createUserWidget(value));
+  }
+
+  void createUserWidget(User? user) {
+    if (user != null) {
+      if (user.type == 1) {
+        setState(() {
+          banner = WritterNavBar();
+        });
+      } else {
+        setState(() {
+          banner = UserNavBar();
+        });
+      }
+    } else {
+      setState(() {
+        banner = GuestNavBar();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        items: tabBarItems,
-      ),
-      tabBuilder: (BuildContext context, int index) {
-        switch (index) {
-          case 0:
-            return const DiscoveryScreen();
-
-          case 1:
-            return const AddPostPage();
-
-          case 2:
-            return const ProfileScreen();
-        }
-
-        return const LoginPage();
-      },
-    );
+    return banner;
   }
 }
