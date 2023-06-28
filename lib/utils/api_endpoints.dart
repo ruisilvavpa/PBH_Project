@@ -1,5 +1,5 @@
 class ApiEndPoints {
-  static const String baseUrl = 'https://10.0.2.2:7198';
+  static const String baseUrl = 'https://localhost:7198';
   static _AuthEndPoints authEndPoints = _AuthEndPoints();
 }
 
@@ -16,6 +16,7 @@ class _AuthEndPoints {
   final String categories = '/api/Book/categories';
   final String institutions = '/api/Institutions/institutions';
   final String addPost = '/api/Book';
+  final String insertRating = '/api/Rating/insertRating';
   final String getImage = '/api/Image/getImage';
   final String booksByWritter = '/api/Book/getAllBooksByWritter?userId=';
   final String allContributions = '/api/Donation/sumByUserId';

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/controllers/image_controller.dart';
-import 'package:pbh_project/models/books.dart';
 import 'package:pbh_project/models/user.dart';
 import 'package:pbh_project/screens/book_profile_page/book_profile_screen.dart';
-import 'package:pbh_project/screens/donation_screen.dart';
 import '../../controllers/book_profiles_controller.dart';
-import '../../utils/app_styles.dart';
-import 'book_rating.dart';
-import 'two_side_rounded_buttom.dart';
+import '../../models/books_out.dart';
 import '../../utils/app_styles.dart';
 import 'book_rating.dart';
 

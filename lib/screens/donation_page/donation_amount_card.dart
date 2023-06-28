@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/controllers/donation_controller.dart';
 import 'package:pbh_project/screens/donation_page/info_banner.dart';
 
-import '../../models/books.dart';
+import '../../models/books_out.dart';
 import '../../models/donation.dart';
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
@@ -121,7 +121,7 @@ class DonationAmountCardState extends State<DonationAmountCard> {
             InkWell(
               onTap: () {
                 Donation donation =
-                    Donation(widget.book?.id ?? 0, donationAmount);
+                    Donation(widget.book?.bookId ?? 0, donationAmount);
                 controller.donate(donation).then((value) {
                   if (value) {
                     Navigator.pop(context);

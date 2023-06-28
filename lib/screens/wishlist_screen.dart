@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../controllers/wishlist_controller.dart';
-import '../models/books.dart';
+import '../models/books_out.dart';
 import '../models/user.dart';
 import '../models/whislist.dart';
 import '../resources/strings.dart';
 import '../reusable_widgets/app_bar.dart';
 import '../utils/app_styles.dart';
-import 'book_profile_page/book_list_card.dart';
 import 'book_profile_page/book_profile_screen.dart';
 import 'book_profile_page/book_rating.dart';
 import 'book_profile_page/two_side_rounded_buttom.dart';

@@ -3,7 +3,7 @@ import 'package:pbh_project/controllers/book_filter_category_utils.dart';
 import 'package:pbh_project/screens/book_profile_page/book_list_card.dart';
 
 import '../../controllers/show_profile_controller.dart';
-import '../../models/books.dart';
+import '../../models/books_out.dart';
 import '../../models/user.dart';
 
 class MyGridViewCopy2 extends StatefulWidget {
@@ -65,7 +65,7 @@ class _MyGridViewCopy2State extends State<MyGridViewCopy2> {
         itemBuilder: (context, index) {
           final book = filteredBooks[index];
 
-          writterController.getWritterByBook(book.id).then((value) {
+          writterController.getWritterByBook(book.bookId).then((value) {
             if (mounted) {
               setState(() {
                 user = value;

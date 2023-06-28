@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../controllers/book_profiles_controller.dart';
-import '../../models/books.dart';
+import '../../models/books_out.dart';
 import '../../models/user.dart';
 import '../../resources/strings.dart';
 import '../../reusable_widgets/app_bar.dart';
