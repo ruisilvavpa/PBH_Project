@@ -29,7 +29,7 @@ class _BookProfileScreenState extends State<BookProfileScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: Column(children: const [
+          child: Column(children: [
             SizedBox(height: 20),
             BookProfileBanner(),
             SizedBox(

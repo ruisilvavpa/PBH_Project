@@ -22,4 +22,7 @@ class _AuthEndPoints {
   final String allDonations = '/api/Donation/sumByWritter';
   final String getAllBooks = '/api/Book/getAllBooks';
   final String getAllWritters = '/api/User/writters';
+  final String getWishlist = '/api/Wishlist/getWishlist';
+  final String insertWishlist = '/api/Wishlist/insertWishlist';
+  final String deleteWishlist = '/api/Wishlist';
 }

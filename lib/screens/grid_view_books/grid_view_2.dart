@@ -26,14 +26,7 @@ class MyGridViewCopy2 extends StatelessWidget {
         shrinkWrap: true,
         itemCount: 6,
         itemBuilder: (context, index) {
-          return BookListCard(
-              //image: 'assets/images/mainLogo.jpg',
-              //auth: 'ola2',
-              //title: 'ola',
-              //pressDetails: () {},
-              //pressDonate: () {},
-              //rating: 3,
-              );
+          return BookListCard();
         },
       ),
     );
