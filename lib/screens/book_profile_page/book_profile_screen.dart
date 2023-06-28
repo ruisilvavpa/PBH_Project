@@ -51,7 +51,10 @@ class _BookProfileScreenState extends State<BookProfileScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(children: [
             const SizedBox(height: 20),
-            BookProfileBanner(book: widget.book!, user: widget.user!),
+            BookProfileBanner(
+              user: widget.user,
+              book: widget.book,
+            ),
             const SizedBox(
               height: 32,
             ),

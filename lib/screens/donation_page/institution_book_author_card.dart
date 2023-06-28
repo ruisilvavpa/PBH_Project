@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
-import '../../models/books.dart';
+import '../../models/books_out.dart';
 import '../../models/user.dart';
 import 'donation_texts_spans.dart';
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import '../models/books.dart';
+import '../models/books_out.dart';
 import '../models/user.dart';
 import '../utils/api_endpoints.dart';
 
