@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import '../../models/books.dart';
+import '../../models/user.dart';
 import '../../resources/strings.dart';
 import '../../reusable_widgets/app_bar.dart';
 import 'book_profile_banner.dart';
 import '../../utils/theme_helper.dart';
 
 class BookProfileScreen extends StatefulWidget {
-  const BookProfileScreen({super.key});
+  //variables
+  User? user;
+  BooksOut? book;
+  BookProfileScreen({super.key, this.book, this.user});
 
   @override
   State<BookProfileScreen> createState() => _BookProfileScreenState();
@@ -29,10 +34,10 @@ class _BookProfileScreenState extends State<BookProfileScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: Column(children: const [
-            SizedBox(height: 20),
+          child: Column(children: [
+            const SizedBox(height: 20),
             BookProfileBanner(),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
           ]),

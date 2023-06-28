@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/screens/book_profile_page/book_profile_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../utils/app_styles.dart';
-import '../book_profile_page/book_profile_banner.dart';
 import 'book_card_finalizado.dart';
 
 class CarouselBooks extends StatefulWidget {
@@ -52,8 +51,8 @@ class _CarouselBooksState extends State<CarouselBooks> {
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const BookProfileScreen()));
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => BookProfileScreen()));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(29),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pbh_project/controllers/image_controller.dart';
 import 'package:pbh_project/models/books.dart';
 import 'package:pbh_project/models/user.dart';
+import 'package:pbh_project/screens/donation_screen.dart';
 import '../../controllers/book_profiles_controller.dart';
 import '../../utils/app_styles.dart';
-import '../grid_view_books/grid_view_books_screen.dart';
 import 'book_rating.dart';
 import 'two_side_rounded_buttom.dart';
 import '../../utils/app_styles.dart';
@@ -24,8 +25,21 @@ class _BookListCardState extends State<BookListCard> {
   User? user;
   BooksOut? book;
   _BookListCardState({this.book, this.user});
+  Image placeholderImage =
+      Image.asset('assets/images/image_profile.jpg', width: 150);
 
   BookProfileController bookProfileController = BookProfileController();
+  ImageController imageController = ImageController();
+
+  @override
+  void initState() {
+    if (book?.imagePath != null) {
+      imageController.displayImage(book!.imagePath!).then((value) =>
+          setState(() => placeholderImage = Image.file(value!, width: 150)));
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,10 +63,7 @@ class _BookListCardState extends State<BookListCard> {
               ],
             ),
           ),
-          Image.asset(
-            widget.book?.imagePath ?? '',
-            width: 150,
-          ),
+          placeholderImage,
           Positioned(
             top: 10,
             right: 90,
@@ -104,8 +115,8 @@ class _BookListCardState extends State<BookListCard> {
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    (const GridViewBooksScreen()))),
+                                builder: (context) => (DonationScreen(
+                                    book: widget.book, user: widget.user)))),
                         child: Container(
                           width: 101,
                           padding: const EdgeInsets.symmetric(
@@ -116,11 +127,14 @@ class _BookListCardState extends State<BookListCard> {
                         ),
                       ),
                       Expanded(
-                        // ignore: avoid_print
                         child: TwoSidesRoundedButtom(
                           text: 'Donate',
                           radious: 29,
-                          press: () => {},
+                          press: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => (DonationScreen(
+                                      book: widget.book, user: widget.user)))),
                         ),
                       ),
                     ],

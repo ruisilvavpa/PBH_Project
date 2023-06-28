@@ -1,11 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pbh_project/screens/book_profile_screen.dart';
 import 'package:pbh_project/screens/writter_main_profile_page.dart';
-import 'package:pbh_project/screens/writter_profile/writter_main_profile_banner.dart';
+
 import 'package:pbh_project/utils/app_styles.dart';
 
-import '../../models/books_out.dart';
 import '../../models/items_for_search.dart';
 import '../../models/type_of_Item.dart';
 

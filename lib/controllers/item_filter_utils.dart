@@ -1,4 +1,3 @@
-import '../models/books_out.dart';
 import '../models/items_for_search.dart';
 
 class ItemFilterUtils {

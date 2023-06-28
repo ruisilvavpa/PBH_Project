@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:pbh_project/controllers/profile_controller.dart';
 import 'package:pbh_project/reusable_widgets/app_bar.dart';
 import 'package:pbh_project/reusable_widgets/settings.dart';
+import 'package:pbh_project/screens/writter_buttons_screens/user_profile_banner.dart';
 import 'package:pbh_project/screens/writter_buttons_screens/writter_profile_banner.dart';
 import 'package:pbh_project/utils/theme_helper.dart';
 
 import '../../models/user.dart';
 import '../../resources/strings.dart';
-import '../../reusable_widgets/user_profile_banner.dart';
 import 'edit_profile.dart';
 import '../guest_profile_banner.dart';
 

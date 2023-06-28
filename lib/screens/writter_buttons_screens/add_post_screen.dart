@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:pbh_project/controllers/book_categories_controller.dart';
 import 'package:pbh_project/controllers/institutions_controller.dart';
@@ -22,7 +24,12 @@ class _AddPostPageState extends State<AddPostPage> {
   List<DropdownMenuItem> categories = [];
   List<DropdownMenuItem> institutions = [];
   AddPostController addPostController = AddPostController();
-
+  Image placeholderImage = Image.asset(
+    'assets/images/image_profile.jpg',
+    width: 150,
+    height: 150,
+    fit: BoxFit.contain,
+  );
   Categories? categorySelected;
   Institution? institutionSelected;
 
@@ -43,6 +50,22 @@ class _AddPostPageState extends State<AddPostPage> {
             }).toList();
           })
         });
+  }
+
+  void pickerAction() {
+    imagePickerOption((file) => handlePickedFile(file));
+  }
+
+  void handlePickedFile(File file) {
+    addPostController.bookImage = file;
+    setState(() {
+      placeholderImage = Image.file(
+        file,
+        width: 150,
+        height: 150,
+        fit: BoxFit.contain,
+      );
+    });
   }
 
   @override
@@ -74,20 +97,15 @@ class _AddPostPageState extends State<AddPostPage> {
                       ),
                     ),
                     child: ClipOval(
-                      child: Image.asset(
-                        'assets/images/circle_icon.png',
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.contain,
-                      ),
+                      child: placeholderImage,
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     bottom: -10,
                     right: -10,
                     child: IconButton(
-                      onPressed: null,
-                      icon: Icon(
+                      onPressed: () => pickerAction(),
+                      icon: const Icon(
                         Icons.add_a_photo_rounded,
                         color: Colors.black,
                         size: 30,
@@ -247,7 +265,6 @@ class _AddPostPageState extends State<AddPostPage> {
               TextButton(
                 onPressed: () {
                   Navigator.pop(context); // Fechar o diálogo
-                  Navigator.pop(context); // Fechar a tela atual
                 },
                 child: Text('OK'),
               ),

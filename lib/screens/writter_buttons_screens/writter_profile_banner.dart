@@ -35,7 +35,6 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
     contributionController.getTotalDonations().then((value) => setState(
           () => total = value,
         ));
-    super.initState();
   }
 
   @override
@@ -65,14 +64,12 @@ class _WritterProfileBannerState extends State<WritterProfileBanner> {
         Padding(
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
           child: SubmitButton(
-            title: 'Edit Profile',
-            onPressed: widget.editProfileAction,
-          ),
+              onPressed: widget.editProfileAction, title: 'Edit Profile'),
         ),
         SettingsMenuWidget(
           title: 'My Books',
           icon: Icons.book,
-          onPress: () => Get.to(() => GridViewBooksScreen()),
+          onPress: () => Get.to(() => GridViewBooksScreen(user: widget.user)),
         ),
       ],
     );

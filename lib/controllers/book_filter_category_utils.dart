@@ -1,8 +1,8 @@
-import '../models/books_out.dart';
+import '../models/books.dart';
 
 class BookFilterByCategory {
   static List<BooksOut> filterBooksByCategory(
       List<BooksOut> tofilter, int categoryId) {
-    return tofilter.where((book) => book.category == categoryId).toList();
+    return tofilter.where((book) => book.categoryId == categoryId).toList();
   }
 }
