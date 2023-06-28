@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pbh_project/controllers/book_profile_controller.dart';
+import 'package:pbh_project/models/books_out.dart';
+import 'package:pbh_project/models/rating.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import '../../models/user.dart';
 import '../../resources/strings.dart';
 
 import '../../utils/app_styles.dart';
@@ -8,13 +13,39 @@ import 'book_info_card.dart';
 import 'book_sinopse_card.dart';
 
 class BookProfileBanner extends StatefulWidget {
-  const BookProfileBanner({super.key});
+  final int bookId;
+
+  const BookProfileBanner({required this.bookId, Key? key}) : super(key: key);
 
   @override
   State<BookProfileBanner> createState() => _BookProfileBannerState();
 }
 
 class _BookProfileBannerState extends State<BookProfileBanner> {
+  BookProfileController writterController = BookProfileController();
+  BookProfileController bookController = BookProfileController();
+
+  List<BooksOut> allBooks = [];
+  BooksOut? book;
+  User? user;
+  @override
+  void initState() {
+    writterController.getWritterByBook(widget.bookId).then((value) {
+      user = value;
+    });
+    bookController.getAllBooks().then((value2) {
+      allBooks = value2;
+      book = BookProfileController.filterBookByBookId(allBooks, widget.bookId);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    bookController;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -81,21 +112,19 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
                               const Color.fromRGBO(230, 208, 190, 1),
                           barRadius: const Radius.circular(30),
                           center: const Text(
-                            'Achivement: 50%',
+                            'Achievement: 50%',
                             style: kTitle1,
                           ),
                         ),
                       ),
-                      const BookInfoCard(
-                        rating: 2.1,
-                        writterName: 'Tiaguinho',
+                      BookInfoCard(
+                        bookId: widget.bookId,
+                        rating: 2,
+                        writterName: user?.name ?? 'Unknown Author',
                       ),
-                      const BookSinopseCard(
-                          sinopse: 'Ola eu sou o Tiaguinho\n'
-                              'Tou a programar isto para o projeto final\n'
-                              'Ate agr isto t6a responsivo e a correr bem\n'
-                              'Isto é apenas um teste\n'
-                              'Para ver se da scroll ou n'),
+                      BookSinopseCard(
+                          sinopse:
+                              book?.description ?? 'No description available'),
                     ],
                   ),
                 ),

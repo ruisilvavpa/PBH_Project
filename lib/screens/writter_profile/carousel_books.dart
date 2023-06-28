@@ -52,7 +52,7 @@ class _CarouselBooksState extends State<CarouselBooks> {
         onTap: () {
           Navigator.pop(context);
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const BookProfileBanner()));
+              builder: (context) => BookProfileBanner(bookId: 1)));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(29),

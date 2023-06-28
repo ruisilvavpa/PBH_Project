@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pbh_project/controllers/all_books_controller.dart';
+import 'package:pbh_project/models/books_out.dart';
+import 'package:pbh_project/models/items_for_search.dart';
 import 'package:pbh_project/screens/discovery_page/my_list_view.dart';
 import 'package:pbh_project/screens/discovery_page/results_not_found.dart';
 import 'package:pbh_project/screens/discovery_page/start_typing_widget.dart';
 
+import '../../controllers/item_filter_utils.dart';
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 import '../writter_buttons_screens/home_screen.dart';
@@ -16,26 +20,12 @@ class ListSearchScreen extends StatefulWidget {
 }
 
 class _ListSearchScreenState extends State<ListSearchScreen> {
-  final List<String> bookGenres = [
-    'Mystery/Thriller',
-    'Romance',
-    'Science Fiction/Fantasy',
-    'Historical Fiction',
-    'Biography/Memoir',
-    'Self-Help/Personal Development',
-    'Young Adult',
-    'Children\'s Books',
-    'Business/Entrepreneurship',
-    'Travel',
-    'Horror',
-    'Comics/Graphic Novels',
-    'Classic Literature',
-    'Poetry',
-    'Science/Nature',
-  ];
+  final AllBooksController books = AllBooksController();
+  final AllWrittersController writters = AllWrittersController();
 
   ///this is the list of results based on the keyword of input
-  List<String> itemsGridSearch = [];
+  List<ItemsForSearch> itemsGridSearch = [];
+  List<ItemsForSearch> allItems = [];
 
   ///this controller updates its value based on the input of the search bar
   TextEditingController _textController = TextEditingController();
@@ -45,6 +35,14 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
   void initState() {
     super.initState();
     _textController = TextEditingController();
+    Future.wait([
+      books.getAllBooks(),
+      writters.getAllWritters(),
+    ]).then((results) {
+      setState(() {
+        allItems = [...results[0], ...results[1]];
+      });
+    });
   }
 
   //disposes the controller
@@ -81,7 +79,7 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                     : (itemsGridSearch.isEmpty
                         ? const ResultsNotFound()
                         : MyListView(
-                            bookGenres: itemsGridSearch,
+                            itemsGridSearch: itemsGridSearch,
                           )),
               ),
               // this is the start of the header
@@ -144,21 +142,11 @@ class _ListSearchScreenState extends State<ListSearchScreen> {
                                   child: TextFormField(
                                     textInputAction: TextInputAction.search,
                                     controller: _textController,
-                                    onFieldSubmitted: (value) async {
-                                      // puts the value of the
-                                      //input in lower case and checks if
-                                      //it is in the data base
+                                    onFieldSubmitted: (value) {
                                       setState(() {
-                                        itemsGridSearch = bookGenres
-                                            .where((e) => e
-                                                .toLowerCase()
-                                                .contains(value.toLowerCase()))
-                                            .toList();
-                                        if (_textController.text.isNotEmpty &&
-                                            itemsGridSearch.isNotEmpty) {
-                                          print('itemsgridsearch lgth'
-                                              ' ${itemsGridSearch.length}');
-                                        }
+                                        itemsGridSearch = ItemFilterUtils
+                                            .filterItemsByKeyword(
+                                                allItems, value);
                                       });
                                     },
                                     decoration: const InputDecoration(

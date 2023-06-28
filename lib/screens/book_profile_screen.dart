@@ -4,7 +4,6 @@ import '../resources/strings.dart';
 import '../reusable_widgets/app_bar.dart';
 import 'book_profile_page/book_profile_banner.dart';
 import '../reusable_widgets/settings.dart';
-import '../reusable_widgets/writter_profile_banner.dart';
 import '../utils/theme_helper.dart';
 
 class BookProfileScreen extends StatefulWidget {
@@ -32,9 +31,9 @@ class _BookProfileScreenState extends State<BookProfileScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: const Column(children: [
+          child: Column(children: [
             SizedBox(height: 20),
-            BookProfileBanner(),
+            BookProfileBanner(bookId: 1),
             SizedBox(
               height: 32,
             ),
