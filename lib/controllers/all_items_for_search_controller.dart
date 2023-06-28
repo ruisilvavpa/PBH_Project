@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:pbh_project/models/items_for_search.dart';
 
-import '../models/books_out.dart';
 import '../utils/api_endpoints.dart';
-import 'item_filter_utils.dart';
 
 class AllBooksController extends GetxController {
   Future<List<ItemsForSearch>> getAllBooks() async {

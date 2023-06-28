@@ -7,6 +7,8 @@ import '../../controllers/book_profiles_controller.dart';
 import '../../utils/app_styles.dart';
 import 'book_rating.dart';
 import 'two_side_rounded_buttom.dart';
+import '../../utils/app_styles.dart';
+import 'book_rating.dart';
 
 class BookListCard extends StatefulWidget {
   BooksOut? book;

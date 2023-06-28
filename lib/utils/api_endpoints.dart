@@ -22,6 +22,8 @@ class _AuthEndPoints {
   final String allDonations = '/api/Donation/sumByWritter';
   final String getAllBooks = '/api/Book/getAllBooks';
   final String getAllWritters = '/api/User/writters';
+  final String getUserById = '/api/User/';
+  final String getWritterByBook = '/api/User/getWritterByBook?bookId=';
   final String updateBookImage = '/api/Book/bookImage/';
   final String donation = '/api/Donation/insertDonation';
   final String getWishlist = '/api/Wishlist/getWishlist';
