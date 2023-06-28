@@ -11,13 +11,23 @@ class _AuthEndPoints {
   final String logout = '/api/Authentication/logout';
   final String delete = '/api/User';
   final String update = '/api/User';
+  final String updateUserImage = '/api/User/userImage';
   final String resetPassword = '/api/User/changePassword';
   final String categories = '/api/Book/categories';
   final String institutions = '/api/Institutions/institutions';
   final String addPost = '/api/Book';
+  final String insertRating = '/api/Rating/insertRating';
+  final String getImage = '/api/Image/getImage';
+  final String booksByWritter = '/api/Book/getAllBooksByWritter?userId=';
+  final String allContributions = '/api/Donation/sumByUserId';
+  final String allDonations = '/api/Donation/sumByWritter';
   final String getAllBooks = '/api/Book/getAllBooks';
   final String getAllWritters = '/api/User/writters';
-  final String insertRating = '/api/Rating/insertRating';
-  final String getWritterByBook = '/api/User/getWritterByBook?bookId=';
   final String getUserById = '/api/User/';
+  final String getWritterByBook = '/api/User/getWritterByBook?bookId=';
+  final String updateBookImage = '/api/Book/bookImage/';
+  final String donation = '/api/Donation/insertDonation';
+  final String getWishlist = '/api/Wishlist/getWishlist';
+  final String insertWishlist = '/api/Wishlist/insertWishlist';
+  final String deleteWishlist = '/api/Wishlist';
 }

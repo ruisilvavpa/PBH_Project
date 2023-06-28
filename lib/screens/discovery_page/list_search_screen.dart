@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/controllers/all_books_controller.dart';
-import 'package:pbh_project/models/books_out.dart';
+
+import 'package:pbh_project/controllers/all_items_for_search_controller.dart';
 import 'package:pbh_project/models/items_for_search.dart';
 import 'package:pbh_project/screens/discovery_page/my_list_view.dart';
 import 'package:pbh_project/screens/discovery_page/results_not_found.dart';

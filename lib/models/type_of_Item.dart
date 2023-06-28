@@ -1,0 +1,4 @@
+enum TypeOfItem {
+  book,
+  writter,
+}

@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:pbh_project/controllers/book_profile_controller.dart';
 import 'package:pbh_project/models/books_out.dart';
-import 'package:pbh_project/models/rating.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import '../../models/user.dart';
 import '../../resources/strings.dart';
-
 import '../../utils/app_styles.dart';
 import 'book_info_card.dart';
 import 'book_sinopse_card.dart';
 
 class BookProfileBanner extends StatefulWidget {
-  final int bookId;
-
-  const BookProfileBanner({required this.bookId, Key? key}) : super(key: key);
+  //variables
+  User? user;
+  BooksOut? book;
+  BookProfileBanner({super.key, this.book, this.user});
 
   @override
   State<BookProfileBanner> createState() => _BookProfileBannerState();
@@ -30,12 +28,13 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
   User? user;
   @override
   void initState() {
-    writterController.getWritterByBook(widget.bookId).then((value) {
+    writterController.getWritterByBook(widget.book!.bookId).then((value) {
       user = value;
     });
     bookController.getAllBooks().then((value2) {
       allBooks = value2;
-      book = BookProfileController.filterBookByBookId(allBooks, widget.bookId);
+      book = BookProfileController.filterBookByBookId(
+          allBooks, widget.book!.bookId);
     });
     super.initState();
   }
@@ -53,8 +52,8 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
       children: [
         Container(
           alignment: Alignment.topCenter,
-          child: const Stack(
-            children: [
+          child: Stack(
+            children: const [
               Image(image: AssetImage('assets/images/teste_book_1.png')),
             ],
           ),
@@ -85,7 +84,7 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
               child: Container(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
                 alignment: Alignment.topCenter,
-                height: 278,
+                height: 400,
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                   color: Colors.white,
@@ -106,7 +105,7 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
                         child: LinearPercentIndicator(
                           alignment: MainAxisAlignment.end,
                           lineHeight: 30,
-                          percent: 0.5,
+                          percent: 0.9,
                           progressColor: writterLogoColor,
                           backgroundColor:
                               const Color.fromRGBO(230, 208, 190, 1),
@@ -118,7 +117,7 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
                         ),
                       ),
                       BookInfoCard(
-                        bookId: widget.bookId,
+                        bookId: widget.book!.bookId,
                         rating: 2,
                         writterName: user?.name ?? 'Unknown Author',
                       ),

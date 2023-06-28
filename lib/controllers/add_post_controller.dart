@@ -1,10 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pbh_project/controllers/book_categories_controller.dart';
-import 'package:pbh_project/models/books.dart';
 import 'package:http/http.dart' as http;
+import 'package:pbh_project/models/books.dart';
 import 'package:pbh_project/models/categories.dart';
 import 'package:pbh_project/models/institutions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,6 +16,8 @@ class AddPostController {
   Categories? category;
   Institution? institution;
   double currentValue1 = 150;
+  File? bookImage;
+
   Future<bool> addPost(BuildContext context) async {
     BooksIn bookEdited = BooksIn(
         title: titleController.text,
@@ -39,10 +41,28 @@ class AddPostController {
           body: jsonEncode(bookEdited.toJson()), headers: headers);
 
       if (response.statusCode == 200) {
-        return true;
-      } else {
-        return false;
+        int bookID = jsonDecode(response.body);
+        if (bookImage != null) {
+          var request = http.MultipartRequest(
+              "PUT",
+              Uri.parse(ApiEndPoints.baseUrl +
+                  ApiEndPoints.authEndPoints.updateBookImage +
+                  bookID.toString()));
+
+          request.headers["Token"] = token;
+          var pic =
+              await http.MultipartFile.fromPath("ImageSent", bookImage!.path);
+          request.files.add(pic);
+          var response = await request.send();
+          var responseData = await response.stream.toBytes();
+          var responseString = String.fromCharCodes(responseData);
+          print(responseString);
+          return true;
+        } else {
+          return false;
+        }
       }
+      return false;
     } catch (e) {
       showDialog(
           context: Get.context!,
