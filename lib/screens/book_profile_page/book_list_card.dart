@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/controllers/image_controller.dart';
+import 'package:pbh_project/controllers/wishlist_controller.dart';
 import 'package:pbh_project/models/books.dart';
 import 'package:pbh_project/models/user.dart';
 import 'package:pbh_project/screens/donation_screen.dart';
@@ -24,6 +25,7 @@ class _BookListCardState extends State<BookListCard> {
   //variables
   User? user;
   BooksOut? book;
+  bool isFavorite = false;
   _BookListCardState({this.book, this.user});
   Image placeholderImage =
       Image.asset('assets/images/image_profile.jpg', width: 150);
@@ -70,8 +72,11 @@ class _BookListCardState extends State<BookListCard> {
             child: Column(
               children: [
                 IconButton(
-                  icon: const Icon(Icons.favorite_border),
-                  onPressed: () {},
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.red : null,
+                  ),
+                  onPressed: insertInWhislist,
                 ),
                 BookRating(score: widget.book?.mediaRating ?? 0.0),
               ],
@@ -146,5 +151,13 @@ class _BookListCardState extends State<BookListCard> {
         ],
       ),
     );
+  }
+
+  void insertInWhislist() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+
+    WishlistController().insertWishlist(widget.book!, "");
   }
 }
