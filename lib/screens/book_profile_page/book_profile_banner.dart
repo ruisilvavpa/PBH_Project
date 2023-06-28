@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/controllers/book_profiles_controller.dart';
+
+import 'package:pbh_project/screens/donation_screen.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import '../../models/books.dart';
+import '../../controllers/book_profile_controller.dart';
+import '../../models/books_out.dart';
 import '../../models/user.dart';
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
@@ -19,7 +21,31 @@ class BookProfileBanner extends StatefulWidget {
 }
 
 class _BookProfileBannerState extends State<BookProfileBanner> {
-  BookProfileController bookProfileController = BookProfileController();
+  BookProfileController writterController = BookProfileController();
+  BookProfileController bookController = BookProfileController();
+
+  List<BooksOut> allBooks = [];
+  BooksOut? book;
+  User? user;
+  @override
+  void initState() {
+    writterController.getWritterByBook(widget.book!.bookId).then((value) {
+      user = value;
+    });
+    bookController.getAllBooks().then((value2) {
+      allBooks = value2;
+      book = BookProfileController.filterBookByBookId(
+          allBooks, widget.book!.bookId);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    bookController;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,7 +63,15 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => (DonationScreen(
+                            book: widget.book,
+                            user: widget.user,
+                          ))));
+            },
             child: Container(
               width: 180,
               alignment: Alignment.center,
@@ -86,16 +120,19 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
                               const Color.fromRGBO(230, 208, 190, 1),
                           barRadius: const Radius.circular(30),
                           center: const Text(
-                            'Achivement: 50%',
+                            'Achievement: 50%',
                             style: kTitle1,
                           ),
                         ),
                       ),
                       BookInfoCard(
-                        rating: 2.1,
-                        writterName: widget.user?.name ?? '',
+                        bookId: widget.book!.bookId,
+                        rating: 2,
+                        writterName: user?.name ?? 'Unknown Author',
                       ),
-                      BookSinopseCard(sinopse: widget.user?.bio ?? ''),
+                      BookSinopseCard(
+                          sinopse:
+                              book?.description ?? 'No description available'),
                     ],
                   ),
                 ),

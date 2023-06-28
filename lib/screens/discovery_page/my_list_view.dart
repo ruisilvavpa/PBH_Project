@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:pbh_project/screens/book_profile_screen.dart';
 import 'package:pbh_project/screens/writter_main_profile_page.dart';
-
 import 'package:pbh_project/utils/app_styles.dart';
 
 import '../../models/items_for_search.dart';
 import '../../models/type_of_Item.dart';
+import '../book_profile_page/book_profile_screen.dart';
 
 class MyListView extends StatefulWidget {
   MyListView({super.key, required this.itemsGridSearch});
+
   late List<ItemsForSearch> itemsGridSearch = [];
 
   @override
@@ -35,7 +35,7 @@ class _MyListViewState extends State<MyListView> {
                     onTap: () {
                       widget.itemsGridSearch[index].types == TypeOfItem.book
                           ? Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const BookProfileScreen()))
+                              builder: (context) => BookProfileScreen()))
                           : Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => WritterMainProfilePage(
                                 userId: widget.itemsGridSearch[index].iD,

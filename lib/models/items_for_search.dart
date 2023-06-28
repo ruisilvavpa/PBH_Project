@@ -1,4 +1,4 @@
-import 'type_of_Item.dart';
+import 'package:pbh_project/models/type_of_Item.dart';
 
 class ItemsForSearch {
   String title;

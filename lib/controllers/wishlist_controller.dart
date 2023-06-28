@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pbh_project/models/books.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import '../models/books_out.dart';
 import '../models/user.dart';
 import '../models/whislist.dart';
 import '../utils/api_endpoints.dart';
@@ -60,7 +60,7 @@ class WishlistController {
           ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.insertWishlist);
 
       Map<String, dynamic> requestBody = {
-        'Book_Id': book.id.toString(),
+        'Book_Id': book.bookId.toString(),
         'Obs': obs,
       };
 

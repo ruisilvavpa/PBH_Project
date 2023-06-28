@@ -6,12 +6,12 @@ import '../models/books_out.dart';
 import '../models/user.dart';
 import '../utils/api_endpoints.dart';
 
-class ShowProfileController extends GetxController {
-  Future<User?> getUserById(int userId) async {
+class BookProfileController {
+  Future<User?> getWritterByBook(int bookId) async {
     try {
       var url = Uri.parse(ApiEndPoints.baseUrl +
-          ApiEndPoints.authEndPoints.getUserById +
-          userId.toString());
+          ApiEndPoints.authEndPoints.getWritterByBook +
+          bookId.toString());
 
       http.Response response = await http.get(url);
 
@@ -85,11 +85,11 @@ class ShowProfileController extends GetxController {
     }
   }
 
-  Future<User?> getWritterByBook(int bookId) async {
+  Future<User?> getUserById(int userId) async {
     try {
       var url = Uri.parse(ApiEndPoints.baseUrl +
-          ApiEndPoints.authEndPoints.getWritterByBook +
-          bookId.toString());
+          ApiEndPoints.authEndPoints.getUserById +
+          userId.toString());
 
       http.Response response = await http.get(url);
 
@@ -129,5 +129,11 @@ class ShowProfileController extends GetxController {
       );
       return null;
     }
+  }
+
+  static BooksOut filterBookByBookId(List<BooksOut> toFilter, int bookId) {
+    return toFilter.firstWhere(
+      (book) => book.bookId == bookId,
+    );
   }
 }

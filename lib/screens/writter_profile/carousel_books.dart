@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:pbh_project/screens/book_profile_page/book_profile_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../utils/app_styles.dart';
 import 'book_card_finalizado.dart';
@@ -49,11 +48,7 @@ class _CarouselBooksState extends State<CarouselBooks> {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(29)),
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: InkWell(
-        onTap: () {
-          Navigator.pop(context);
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => BookProfileScreen()));
-        },
+        onTap: () {},
         child: ClipRRect(
           borderRadius: BorderRadius.circular(29),
           child: const BookCardFinalizado(),
