@@ -50,7 +50,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: Strings.kWhislistTitle),
+      appBar: CustomAppBarWBB(title: Strings.kWhislistTitle),
       body: ListView.builder(
         itemCount: wishlist.length,
         itemBuilder: (context, index) {

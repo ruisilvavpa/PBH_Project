@@ -17,23 +17,21 @@ class GuestNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-          items: tabBarItems,
-        ),
-        tabBuilder: (BuildContext context, int index) {
-          switch (index) {
-            case 0:
-              return const DiscoveryScreen();
-
-            case 1:
-              return ProfileScreen();
-          }
-
-          return const LoginPage();
-        },
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        items: tabBarItems,
       ),
+      tabBuilder: (BuildContext context, int index) {
+        switch (index) {
+          case 0:
+            return const DiscoveryScreen();
+
+          case 1:
+            return const ProfileScreen();
+        }
+
+        return const LoginPage();
+      },
     );
   }
 }

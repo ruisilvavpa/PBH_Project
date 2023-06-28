@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:pbh_project/controllers/rating_controller.dart';
-import 'package:pbh_project/models/rating.dart';
-import 'package:pbh_project/reusable_widgets/input_fields.dart';
-
+import '../../controllers/rating_controller.dart';
+import '../../models/rating.dart';
 import '../../resources/strings.dart';
+import '../../reusable_widgets/input_fields.dart';
 import '../../utils/app_styles.dart';
 import '../writter_main_profile_page.dart';
-
-import '../../resources/strings.dart';
-import '../../utils/app_styles.dart';
 
 class BookInfoCard extends StatefulWidget {
   final double rating;

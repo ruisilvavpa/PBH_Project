@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pbh_project/controllers/book_categories_controller.dart';
 import 'package:pbh_project/controllers/institutions_controller.dart';
+import 'package:pbh_project/resources/strings.dart';
 import '../../controllers/add_post_controller.dart';
 import '../../models/categories.dart';
 import '../../models/institutions.dart';
@@ -75,6 +76,7 @@ class _AddPostPageState extends State<AddPostPage> {
       appBar: const CustomAppBarWBB(title: 'Add New Post'),
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -144,9 +146,20 @@ class _AddPostPageState extends State<AddPostPage> {
               height: 30,
             ),
             Container(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              alignment: Alignment.center,
+              width: double.infinity,
+              height: 40,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 2.0,
+                ),
+                borderRadius: BorderRadius.circular(4.0),
+              ),
               child: DropdownButton(
                 isExpanded: true,
+                hint: Text(Strings.kSelectCategory),
                 items: categories,
                 value: categorySelected,
                 onChanged: (value) => categoryDropdownDidChange(value),
@@ -181,6 +194,7 @@ class _AddPostPageState extends State<AddPostPage> {
                     borderRadius: BorderRadius.circular(4.0),
                   ),
                   child: DropdownButton(
+                    hint: Text(Strings.kSelectInstitution),
                     isExpanded: true,
                     items: institutions,
                     value: institutionSelected,

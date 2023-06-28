@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../screens/discovery_screen.dart';
 import '../screens/login/login_page.dart';
 import '../screens/wishlist_screen.dart';
-import '../screens/writter_buttons_screens/add_post_screen.dart';
 import '../screens/writter_buttons_screens/profile_screen.dart';
 
 class UserNavBar extends StatelessWidget {
@@ -36,7 +34,7 @@ class UserNavBar extends StatelessWidget {
               return WishlistScreen();
 
             case 2:
-              return ProfileScreen();
+              return const ProfileScreen();
           }
 
           return const LoginPage();

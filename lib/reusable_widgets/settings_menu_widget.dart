@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SettingsMenuWidget extends StatelessWidget {
-  SettingsMenuWidget({
+  const SettingsMenuWidget({
     Key? key,
     required this.title,
     required this.icon,

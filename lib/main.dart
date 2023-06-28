@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         cardColor: const Color.fromRGBO(191, 229, 192, 1),
       ),
-      debugShowCheckedModeBanner: false,
       home: LoadingOverlay(
         child: OnBoardingScreen(),
       ),
