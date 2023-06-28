@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Wishlist {
   final int userId;
   final int bookId;

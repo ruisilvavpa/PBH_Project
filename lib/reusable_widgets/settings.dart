@@ -23,7 +23,7 @@ class Settings extends StatelessWidget {
           height: 30,
         ),
         SettingsMenuWidget(
-          title: 'FAQ\s',
+          title: 'FAQ\'s',
           icon: Icons.question_mark,
           onPress: () => Get.to(() => FAQPage()),
         ),

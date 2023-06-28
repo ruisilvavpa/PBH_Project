@@ -62,7 +62,6 @@ class EditController extends GetxController {
       var response = await request.send();
       var responseData = await response.stream.toBytes();
       var responseString = String.fromCharCodes(responseData);
-      print(responseString);
 
       userImage = null;
       return updateUser(user);

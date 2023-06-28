@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         cardColor: const Color.fromRGBO(191, 229, 192, 1),
       ),
-      home: LoadingOverlay(
+      home: const LoadingOverlay(
         child: OnBoardingScreen(),
       ),
     );
