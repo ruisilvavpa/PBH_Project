@@ -134,7 +134,10 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            (BookProfileScreen()))),
+                                            (BookProfileScreen(
+                                              user: widget.user,
+                                              book: widget.book,
+                                            )))),
                                 child: Container(
                                   width: 101,
                                   padding: const EdgeInsets.symmetric(

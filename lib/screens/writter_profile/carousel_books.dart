@@ -50,9 +50,9 @@ class _CarouselBooksState extends State<CarouselBooks> {
       margin: const EdgeInsets.symmetric(horizontal: 12),
       child: InkWell(
         onTap: () {
-          Navigator.pop(context);
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => BookProfileScreen()));
+          // Navigator.pop(context);
+          // Navigator.of(context).push(
+          //     MaterialPageRoute(builder: (context) => BookProfileScreen()));
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(29),
