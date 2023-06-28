@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pbh_project/models/user.dart';
 import 'package:pbh_project/reusable_widgets/guest_navbar.dart';
 import 'package:pbh_project/reusable_widgets/user_navbar.dart';
-import 'package:pbh_project/screens/writter_buttons_screens/user_profile_banner.dart';
 
 import '../../controllers/profile_controller.dart';
 import '../../reusable_widgets/writter_navbar.dart';

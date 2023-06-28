@@ -49,7 +49,7 @@ class ContributionsController extends GetxController {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return data;
+        return data['totalDonations'];
       } else {
         return 0;
       }

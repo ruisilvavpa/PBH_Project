@@ -29,7 +29,7 @@ class _BookProfileScreenState extends State<BookProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: Strings.kBookProfileTitle),
+      appBar: CustomAppBar(title: Strings.kBookProfileTitle),
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Container(

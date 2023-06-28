@@ -1,3 +1,5 @@
+import 'type_of_Item.dart';
+
 class ItemsForSearch {
   String title;
   int iD;
@@ -25,9 +27,4 @@ class ItemsForSearch {
       types: types,
     );
   }
-}
-
-enum TypeOfItem {
-  book,
-  writter,
 }

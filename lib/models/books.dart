@@ -28,15 +28,15 @@ class BooksIn {
 }
 
 class BooksOut {
-  final String id;
-  final int title;
-  final String categoryId;
+  final int id;
+  final String title;
+  final int categoryId;
   final String description;
   final double mediaRating;
   final int goal;
   final int userId;
   final int institutionId;
-  final String imagePath;
+  final String? imagePath;
 
   BooksOut({
     required this.id,

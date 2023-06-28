@@ -31,7 +31,6 @@ class _UserProfileBannerState extends State<UserProfileBanner> {
     contributionController.getTotalContributions().then((value) => setState(
           () => total = value,
         ));
-    super.initState();
   }
 
   @override

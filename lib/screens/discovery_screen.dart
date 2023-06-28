@@ -1,8 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:pbh_project/controllers/all_items_for_search_controller.dart';
+import 'package:pbh_project/controllers/book_categories_controller.dart';
 import 'package:pbh_project/screens/discovery_page/my_grid_view_copy.dart';
 import 'package:pbh_project/screens/discovery_page/search_button.dart';
 import 'package:pbh_project/utils/app_styles.dart';
 
+import '../controllers/writter_controller.dart';
+import '../models/categories.dart';
+import '../models/user.dart';
 import '../resources/strings.dart';
 import 'discovery_page/my_grid_view.dart';
 
@@ -14,8 +20,12 @@ class DiscoveryScreen extends StatefulWidget {
 }
 
 class _DiscoveryScreenState extends State<DiscoveryScreen> {
-  /// this is a controller that 'listens' the text form field
-  TextEditingController _textController = TextEditingController();
+  final BookController categories = BookController();
+
+  final GetAllWrittersController writters = GetAllWrittersController();
+
+  List<Categories> allCategories = [];
+  List<User> users = [];
 
   ///this variable is used to toggle between the books and writters grid
   bool _isBookGenre = true;
@@ -30,13 +40,23 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
   @override
   void initState() {
     super.initState();
-    _textController = TextEditingController();
+    categories.getBookCategories().then((results1) {
+      setState(() {
+        allCategories = results1;
+      });
+    });
+    writters.getAllWritters().then((results2) {
+      setState(() {
+        users = results2;
+      });
+    });
   }
 
-  //Disposes the text controller
   @override
   void dispose() {
-    _textController.dispose();
+    categories;
+    writters;
+
     super.dispose();
   }
 
@@ -145,7 +165,13 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
 
                       // depending on the bool value of _isBookGenre
                       //it shows either the book genre or writers grid
-                      _isBookGenre ? MyGridView() : MyGridViewCopy(),
+                      _isBookGenre
+                          ? MyGridView(
+                              categories: allCategories,
+                            )
+                          : MyGridViewCopy(
+                              users: users,
+                            ),
                     ],
                   ),
                 ),

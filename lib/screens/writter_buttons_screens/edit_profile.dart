@@ -24,7 +24,6 @@ class _EditProfileState extends State<EditProfile> {
   User? user;
   _EditProfileState({this.user});
   EditController controller = EditController();
-  File? userNewImage;
   Image placeholderImage = Image.asset(
     'assets/images/image_profile.jpg',
     width: 150,
