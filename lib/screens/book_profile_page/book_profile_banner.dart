@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/controllers/book_profiles_controller.dart';
+import 'package:pbh_project/models/donation.dart';
+import 'package:pbh_project/screens/donation_screen.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../../models/books.dart';
 import '../../models/user.dart';
@@ -37,7 +39,15 @@ class _BookProfileBannerState extends State<BookProfileBanner> {
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => (DonationScreen(
+                            book: widget.book,
+                            user: widget.user,
+                          ))));
+            },
             child: Container(
               width: 180,
               alignment: Alignment.center,
