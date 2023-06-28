@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pbh_project/screens/grid_view_books/grid_view_2.dart';
 
+import '../../controllers/book_profiles_controller.dart';
+import '../../models/books.dart';
 import '../../resources/strings.dart';
 import '../../reusable_widgets/app_bar.dart';
 
@@ -12,6 +14,19 @@ class GridViewBooksScreen extends StatefulWidget {
 }
 
 class _GridViewBooksScreenState extends State<GridViewBooksScreen> {
+//variables
+  List<BooksOut> book = [];
+  BookProfileController bookProfileController = BookProfileController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    bookProfileController.getMytBooks().then((value) => setState(
+          () => book = value,
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

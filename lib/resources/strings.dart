@@ -15,6 +15,7 @@ class Strings {
   static const String kLoginSignup = "SIGN UP";
 
   //FORGOT PASSWORD
+  static const String kForgotPasswordTitle = "Forgot Password";
   static const String kFieldEmailBody = "Insert your Email";
   static const String kForgotPasswordQuestion = 'Did you forgot your password?';
   static const String kForgotPassword = 'Forgot Password';

@@ -1,8 +1,21 @@
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-void imagePickerOption() {
+Future<void> pickImageFromGallery(
+    Function(File) onPressed, ImageSource source) async {
+  final image = await ImagePicker().pickImage(source: source);
+  if (image == null) return;
+  final imageTemp = File(image.path);
+  onPressed(imageTemp);
+  Get.back();
+}
+
+void imagePickerOption(Function(File) onPressed) {
   Get.bottomSheet(
     SingleChildScrollView(
       child: ClipRRect(
@@ -19,7 +32,7 @@ void imagePickerOption() {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Text(
-                    'Pic image from',
+                    'Pick image from',
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -29,7 +42,8 @@ void imagePickerOption() {
                     height: 10,
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () =>
+                        pickImageFromGallery(onPressed, ImageSource.camera),
                     icon: const Icon(Icons.camera),
                     label: const Text('Camera'),
                     style: const ButtonStyle(
@@ -39,7 +53,8 @@ void imagePickerOption() {
                     ),
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () =>
+                        pickImageFromGallery(onPressed, ImageSource.gallery),
                     icon: const Icon(Icons.image),
                     label: const Text('Gallery'),
                     style: const ButtonStyle(

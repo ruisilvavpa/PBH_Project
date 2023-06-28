@@ -13,7 +13,7 @@ class SearchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(top: 50),
 
       //this widget wraps the container on makes it 'pressable'
       child: InkWell(
@@ -34,9 +34,9 @@ class SearchButton extends StatelessWidget {
 
           //content of the button
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
-              children: [
+              children: const [
                 //search icon, placed on left of the container
                 Icon(
                   Icons.search,

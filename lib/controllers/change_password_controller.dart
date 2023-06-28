@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pbh_project/models/change_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import '../models/validations.dart';
@@ -21,19 +22,21 @@ class ChangePasswordController extends GetxController {
         newPassController.text == confirmNewPassController.text;
   }
 
-  Future<bool> deleteAccount(int id) async {
+  Future<bool> changePassword() async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       String token = sharedPreferences.getString('token') ?? '';
-      var headers = {'Token': token};
-      var url =
-          Uri.parse(ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.delete);
+      var headers = {'Content-Type': 'application/json', 'Token': token};
+      var url = Uri.parse(
+          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.resetPassword);
 
-      http.Response response = await http.delete(url, headers: headers);
+      var body = ChangePassword(oldPassController.text, newPassController.text,
+          confirmNewPassController.text);
+
+      http.Response response = await http.put(url,
+          body: jsonEncode(body.toJson()), headers: headers);
 
       if (response.statusCode == 200) {
-        final sharedPreferences = await SharedPreferences.getInstance();
-        await sharedPreferences.remove("token");
         return true;
       } else {
         return false;

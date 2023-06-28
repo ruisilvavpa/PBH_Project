@@ -77,5 +77,14 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   sendRequest() {
     FocusScope.of(context).unfocus();
+    controller
+        .changePassword()
+        .then((value) => handleChangePasswordAnswer(value, context));
+  }
+
+  void handleChangePasswordAnswer(bool response, BuildContext context) {
+    if (response) {
+      Navigator.pop(context);
+    }
   }
 }

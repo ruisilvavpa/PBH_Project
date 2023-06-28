@@ -13,7 +13,6 @@ import '../../models/user.dart';
 
 class MyGridViewCopy2 extends StatefulWidget {
   final int categoryId;
-
   const MyGridViewCopy2({
     Key? key,
     required this.categoryId,
@@ -56,11 +55,11 @@ class _MyGridViewCopy2State extends State<MyGridViewCopy2> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 50),
+      padding: const EdgeInsets.only(bottom: 10),
       child: GridView.builder(
         padding: EdgeInsets.zero,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: SizeConfig().calculateCrossAxisCountForCard(context),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
           childAspectRatio: 1.11,

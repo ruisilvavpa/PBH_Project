@@ -24,9 +24,7 @@ class _TwoSidesRoundedButtomState extends State<TwoSidesRoundedButtom> {
       onTap: () => widget.press,
       child: Container(
         alignment: Alignment.center,
-
         padding: const EdgeInsets.symmetric(vertical: 10),
-
         decoration: BoxDecoration(
           color: kPrimaryColor,
           borderRadius: BorderRadius.only(
@@ -35,10 +33,8 @@ class _TwoSidesRoundedButtomState extends State<TwoSidesRoundedButtom> {
           ),
         ),
         child: Text(
-
           widget.text,
           style: const TextStyle(color: Colors.white),
-
         ),
       ),
     );
