@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
 import '../../resources/strings.dart';
 import '../../utils/app_styles.dart';
 import '../writter_main_profile_page.dart';
-
-import '../../resources/strings.dart';
-import '../../utils/app_styles.dart';
 
 class BookInfoCard extends StatefulWidget {
   final double rating;

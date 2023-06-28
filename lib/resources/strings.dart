@@ -42,6 +42,8 @@ class Strings {
   static const String kBioProfileBody = 'About Me';
   static const String kBioProfileTitle = 'Tell us a little bit about yourself';
   static const String kBookProfileBooks = "Books";
+  static const String kSelectCategory = 'Please Select a Category';
+  static const String kSelectInstitution = 'Please Select a Institution';
 
   //EDIT PROFILE
   static const String kEditChangePassword = "Change Password?";
